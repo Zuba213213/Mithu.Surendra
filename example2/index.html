@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mithu Surendra — Spiritual Healer | Author</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --deep-blue: #0a0e1a;
+    --mid-blue: #0d1f3c;
+    --sky-blue: #1a3a6b;
+    --gold-dark: #8B6914;
+    --gold: #C9920A;
+    --gold-mid: #E8A820;
+    --gold-light: #F5C842;
+    --gold-glow: #FFD96A;
+    --cream: #FDF5E0;
+    --white: #ffffff;
+    --text-muted: rgba(255,255,255,0.6);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep-blue);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.2rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(to bottom, rgba(10,14,26,0.95), transparent);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    color: var(--gold-light);
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    padding: 0.5rem 1.4rem;
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--deep-blue); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 80%, rgba(201,146,10,0.35) 0%, transparent 70%),
+      radial-gradient(ellipse 80% 60% at 50% 100%, rgba(232,168,32,0.2) 0%, transparent 60%),
+      linear-gradient(180deg, #0a0e1a 0%, #0d1f3c 40%, #1a2d50 65%, #2a1a00 100%);
+  }
+  .hero-light {
+    position: absolute;
+    bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(ellipse at center bottom, rgba(245,200,66,0.55) 0%, rgba(201,146,10,0.2) 35%, transparent 70%);
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.8; transform: translateX(-50%) scaleY(1); }
+    50% { opacity: 1; transform: translateX(-50%) scaleY(1.08); }
+  }
+  .hero-silhouette {
+    position: absolute;
+    bottom: 80px; left: 50%; transform: translateX(-50%);
+    width: 60px; height: 160px;
+    background: linear-gradient(to top, rgba(10,14,26,0.95), rgba(10,14,26,0.5));
+    clip-path: polygon(35% 0%, 65% 0%, 75% 15%, 80% 40%, 65% 45%, 70% 100%, 55% 100%, 50% 60%, 45% 100%, 30% 100%, 35% 45%, 20% 40%, 25% 15%);
+    filter: drop-shadow(0 0 20px rgba(245,200,66,0.4));
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    max-width: 800px;
+    animation: fade-up 1.2s ease both;
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold-mid);
+    margin-bottom: 1.5rem;
+    animation: fade-up 1.2s ease 0.2s both;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
+    animation: fade-up 1.2s ease 0.4s both;
+  }
+  .hero-title span {
+    display: block;
+    background: linear-gradient(135deg, var(--gold-glow) 0%, var(--gold-mid) 50%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+    animation: fade-up 1.2s ease 0.6s both;
+  }
+  .hero-cta-group {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    animation: fade-up 1.2s ease 0.8s both;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold-mid), var(--gold));
+    color: var(--deep-blue);
+    border: none;
+    padding: 1rem 2.2rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,146,10,0.5);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 1rem 2.2rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  .scroll-indicator {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    animation: fade-up 1.2s ease 1.2s both;
+  }
+  .scroll-indicator span {
+    font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--gold-mid), transparent);
+    animation: scroll-drop 2s ease-in-out infinite;
+  }
+  @keyframes scroll-drop {
+    0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
+    50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+    100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+  }
+
+  /* ── SECTION SHARED ── */
+  section { position: relative; }
+  .section-inner { max-width: 1100px; margin: 0 auto; padding: 6rem 2rem; }
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .gold-line {
+    width: 60px; height: 2px;
+    background: linear-gradient(to right, var(--gold-mid), transparent);
+    margin-bottom: 2rem;
+  }
+
+  /* ── MISSION STRIP ── */
+  .mission-strip {
+    background: linear-gradient(135deg, rgba(201,146,10,0.12), rgba(232,168,32,0.06));
+    border-top: 1px solid rgba(201,146,10,0.2);
+    border-bottom: 1px solid rgba(201,146,10,0.2);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  .mission-strip p {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-style: italic;
+    color: var(--gold-light);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ── STORY ── */
+  .story-section { background: var(--deep-blue); }
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .story-image-block {
+    position: relative;
+  }
+  .story-image-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(180deg, var(--mid-blue) 0%, #1a2a00 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .story-image-placeholder::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center bottom, rgba(201,146,10,0.3), transparent 70%);
+  }
+  .story-image-placeholder span {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+  .story-accent {
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 120px; height: 120px;
+    border: 1px solid rgba(201,146,10,0.3);
+    z-index: -1;
+  }
+  .story-text p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 1.5rem;
+  }
+  .story-text p strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+  .story-text .big-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--gold-light);
+    border-left: 2px solid var(--gold);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    line-height: 1.5;
+  }
+
+  /* ── WHAT HE DOES ── */
+  .process-section {
+    background: linear-gradient(180deg, var(--deep-blue) 0%, #080c18 100%);
+  }
+  .process-header { text-align: center; margin-bottom: 4rem; }
+  .process-header .section-title { margin: 0 auto; max-width: 600px; }
+  .process-header .gold-line { margin: 1.5rem auto; }
+  .process-header p {
+    color: rgba(255,255,255,0.65);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 3.5rem; left: 16.67%; right: 16.67%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-dark), var(--gold), var(--gold-dark), transparent);
+  }
+  .step {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    position: relative;
+  }
+  .step-number {
+    width: 4rem; height: 4rem;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    background: var(--deep-blue);
+    position: relative; z-index: 1;
+  }
+  .step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+    color: var(--white);
+  }
+  .step p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* ── SCHOOL ── */
+  .school-section {
+    background: linear-gradient(135deg, #080c18 0%, #0d1a10 50%, #080c18 100%);
+    border-top: 1px solid rgba(201,146,10,0.15);
+  }
+  .school-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .school-badge {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    background: rgba(201,146,10,0.1);
+    border: 1px solid rgba(201,146,10,0.3);
+    padding: 0.5rem 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+  .school-features {
+    list-style: none;
+    margin: 2rem 0;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .school-features li {
+    display: flex; align-items: flex-start; gap: 1rem;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+  .school-features li::before {
+    content: '→';
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+  .school-card {
+    background: linear-gradient(180deg, rgba(201,146,10,0.08), rgba(201,146,10,0.03));
+    border: 1px solid rgba(201,146,10,0.2);
+    padding: 2.5rem;
+    text-align: center;
+  }
+  .school-card-hero {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: linear-gradient(180deg, #0d1f3c 0%, #2a1a00 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .school-card-hero::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 60%;
+    background: radial-gradient(ellipse at center bottom, rgba(201,146,10,0.4), transparent);
+  }
+  .school-card-hero-text {
+    position: relative; z-index: 1; text-align: center;
+  }
+  .school-card-hero-text h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+  .school-card-hero-text p {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.7);
+    margin-top: 0.25rem;
+  }
+  .school-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+  }
+  .school-price span {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+  }
+  .school-card p.trial-note {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── COACHING ── */
+  .coaching-section {
+    background: var(--deep-blue);
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .coaching-inner { text-align: center; }
+  .coaching-inner .section-title { margin: 0 auto 1rem; }
+  .coaching-inner .gold-line { margin: 0 auto 1.5rem; }
+  .coaching-inner > p {
+    max-width: 560px;
+    margin: 0 auto 3rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.9;
+    font-size: 1rem;
+  }
+  .coaching-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+  }
+  .coaching-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 2rem;
+    text-align: left;
+    transition: border-color 0.3s;
+  }
+  .coaching-card:hover { border-color: rgba(201,146,10,0.4); }
+  .coaching-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+  .coaching-card p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+  }
+  .coaching-card .tag {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-section {
+    background: linear-gradient(180deg, #080c18, var(--deep-blue));
+    border-top: 1px solid rgba(201,146,10,0.1);
+  }
+  .testimonials-header { text-align: center; margin-bottom: 3rem; }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .testimonial {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 2rem;
+    position: relative;
+  }
+  .testimonial::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    line-height: 0.5;
+    color: rgba(201,146,10,0.15);
+    position: absolute;
+    top: 1.5rem; left: 1.5rem;
+  }
+  .testimonial p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 1.5rem;
+    position: relative; z-index: 1;
+  }
+  .testimonial-author {
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .testimonial-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold-dark), var(--sky-blue));
+    flex-shrink: 0;
+  }
+  .testimonial-author-info strong {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .testimonial-author-info span {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ── EMAIL CAPTURE ── */
+  .email-section {
+    background: linear-gradient(135deg,
+      rgba(201,146,10,0.12) 0%,
+      rgba(10,14,26,0.98) 40%,
+      rgba(10,14,26,0.98) 60%,
+      rgba(201,146,10,0.08) 100%);
+    border-top: 1px solid rgba(201,146,10,0.2);
+    border-bottom: 1px solid rgba(201,146,10,0.2);
+  }
+  .email-inner {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+  .email-inner .section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+  .email-inner .gold-line { margin: 1rem auto 1.5rem; }
+  .email-inner p {
+    color: rgba(255,255,255,0.65);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .email-form {
+    display: flex; gap: 0;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .email-form input {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-right: none;
+    padding: 1rem 1.5rem;
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+  }
+  .email-form input::placeholder { color: rgba(255,255,255,0.35); }
+  .email-form input:focus { border-color: rgba(201,146,10,0.5); }
+  .email-form button {
+    background: linear-gradient(135deg, var(--gold-mid), var(--gold));
+    color: var(--deep-blue);
+    border: none;
+    padding: 1rem 1.8rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+  }
+  .email-form button:hover { opacity: 0.85; }
+  .email-fine {
+    margin-top: 1rem;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #060810;
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+  }
+  .footer-mission {
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 1.5rem;
+  }
+  .footer-links {
+    display: flex; justify-content: center; gap: 2rem;
+    list-style: none; margin-bottom: 2rem;
+  }
+  .footer-links a {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .story-grid, .school-inner, .coaching-options { grid-template-columns: 1fr; gap: 2.5rem; }
+    .process-steps { grid-template-columns: 1fr; }
+    .process-steps::before { display: none; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .email-form { flex-direction: column; }
+    .email-form input { border-right: 1px solid rgba(255,255,255,0.15); border-bottom: none; }
+    .section-inner { padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Mithu Surendra</div>
+  <ul class="nav-links">
+    <li><a href="#story">Story</a></li>
+    <li><a href="#school">School</a></li>
+    <li><a href="#coaching">Coaching</a></li>
+  </ul>
+  <button class="nav-cta">Start Free Trial</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-light"></div>
+  <div class="hero-silhouette"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Spiritual Healer &nbsp;·&nbsp; Author &nbsp;·&nbsp; Guide</p>
+    <h1 class="hero-title">
+      <span>The Way Back</span>
+      <span style="font-size: 0.55em; font-weight: 700; -webkit-text-fill-color: rgba(255,255,255,0.85); background: none; font-style: italic;">is through love.</span>
+    </h1>
+    <p class="hero-sub">You've been carrying pain that was never supposed to be yours. There's a version of you on the other side of it — free, purposeful, alive. Let's find that person together.</p>
+    <div class="hero-cta-group">
+      <a href="#school" class="btn-primary">Join the School</a>
+      <a href="#coaching" class="btn-secondary">Work With Mithu</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- MISSION STRIP -->
+<div class="mission-strip">
+  <p>"Guiding humanity back into a state of love."</p>
+</div>
+
+<!-- STORY -->
+<section class="story-section" id="story">
+  <div class="section-inner">
+    <div class="story-grid">
+      <div class="story-image-block">
+        <div class="story-image-placeholder">
+          <span>[ Mithu's Photo ]</span>
+        </div>
+        <div class="story-accent"></div>
+      </div>
+      <div class="story-text">
+        <p class="section-label">The Story</p>
+        <h2 class="section-title">I've Been<br>Where You Are.</h2>
+        <div class="gold-line"></div>
+        <p>I didn't arrive here with answers. I arrived here with damage. With shame I couldn't name, with pain I kept performing around, with a version of myself I'd built just to survive — and couldn't figure out how to let go of.</p>
+        <blockquote class="big-quote">"The wound was never the problem. Not knowing how to walk through it — that was."</blockquote>
+        <p>What I found on the other side wasn't some perfect, healed version of myself. It was <strong>presence. Aliveness. The ability to actually feel my own life.</strong> That's what I'm here to help you find.</p>
+        <p>Not a shortcut. Not a quick fix. A real path — walked together, in the dark, toward the light that's already inside you.</p>
+        <a href="#school" class="btn-primary" style="margin-top: 1.5rem; display: inline-block;">Begin Your Path</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT HE DOES -->
+<section class="process-section">
+  <div class="section-inner">
+    <div class="process-header">
+      <p class="section-label">The Work</p>
+      <h2 class="section-title">From Darkness<br>Into Purpose</h2>
+      <div class="gold-line"></div>
+      <p>This isn't therapy. This isn't motivation. This is a full-body reckoning with who you are — and who you're capable of becoming.</p>
+    </div>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-number">01</div>
+        <h3>Name the Pain</h3>
+        <p>You can't move through what you won't face. We start by telling the truth about where you actually are — without judgment, without rushing past it.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">02</div>
+        <h3>Walk Through It</h3>
+        <p>Not around it. Not above it. Through it. Together, we hold the space for what needs to be felt, released, and understood.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">03</div>
+        <h3>Arrive in Love</h3>
+        <p>On the other side of your pain is your purpose. A life you're proud of. A self you actually want to be. That's where we're going.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHOOL -->
+<section class="school-section" id="school">
+  <div class="section-inner">
+    <div class="school-inner">
+      <div>
+        <p class="section-label">Community</p>
+        <h2 class="section-title">The Self-Love School</h2>
+        <div class="gold-line"></div>
+        <div class="school-badge">🔴 Free Trial — Unlimited Spots. Whenever You're Ready.</div>
+        <p style="color: rgba(255,255,255,0.65); line-height: 1.9; margin-bottom: 1rem;">This is where the work begins. A private community of people who are done pretending and ready to go somewhere real. Guided by Mithu. Built for transformation.</p>
+        <ul class="school-features">
+          <li>Direct access to Mithu's frameworks and teachings</li>
+          <li>A community of people walking the same path</li>
+          <li>Weekly live sessions and guided practices</li>
+          <li>The foundation for those ready to go deeper into 1-on-1 coaching</li>
+        </ul>
+        <a href="https://skool.com/self-love-school-4884" target="_blank" class="btn-primary">Start Your Free Trial</a>
+      </div>
+      <div class="school-card">
+        <div class="school-card-hero">
+          <div class="school-card-hero-text">
+            <h3>Self-Love School</h3>
+            <p>Guiding humanity back into a state of love</p>
+          </div>
+        </div>
+        <div class="school-price">$50 <span>/ month</span></div>
+        <p class="trial-note">Free trial available · Cancel anytime</p>
+        <a href="https://skool.com/self-love-school-4884" target="_blank" class="btn-primary" style="width: 100%; text-align: center; display: block;">Join Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COACHING -->
+<section class="coaching-section" id="coaching">
+  <div class="section-inner">
+    <div class="coaching-inner">
+      <p class="section-label">1-on-1 Work</p>
+      <h2 class="section-title">Ready to Go Deeper?</h2>
+      <div class="gold-line"></div>
+      <p>Some people need more than a community. They need someone who will walk directly into the fire with them. If you're at that point — you already know it.</p>
+      <div class="coaching-options">
+        <div class="coaching-card">
+          <h4>Personal Coaching</h4>
+          <p>Direct, high-intensity, 1-on-1 work with Mithu. For people who are serious about transformation and ready to do the real work.</p>
+          <span class="tag">By Application</span>
+        </div>
+        <div class="coaching-card">
+          <h4>Discovery Call</h4>
+          <p>Not sure if you're ready? Let's talk. A free conversation to see where you are and whether this is the right path for you.</p>
+          <span class="tag">No Obligation</span>
+        </div>
+      </div>
+      <a href="#contact" class="btn-primary">Book a Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-inner">
+    <div class="testimonials-header">
+      <p class="section-label">Results</p>
+      <h2 class="section-title">Real People.<br>Real Transformation.</h2>
+      <div class="gold-line" style="margin: 1rem auto;"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <p>I spent years thinking my pain was a life sentence. Three months with Mithu and I finally understand what it was trying to teach me. I feel free for the first time in my life.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div class="testimonial-author-info">
+            <strong>[ Client Name ]</strong>
+            <span>Self-Love School Member</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p>Mithu doesn't let you hide. He holds space, but he also holds you accountable to the version of yourself you say you want to be. That's rare. That's everything.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div class="testimonial-author-info">
+            <strong>[ Client Name ]</strong>
+            <span>1-on-1 Coaching Client</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p>I joined the school skeptical. I stayed because this community is the first place I've ever felt like it was safe to be honest about where I actually was. Completely changed my life.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"></div>
+          <div class="testimonial-author-info">
+            <strong>[ Client Name ]</strong>
+            <span>Self-Love School Member</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL CAPTURE -->
+<section class="email-section" id="contact">
+  <div class="email-inner">
+    <p class="section-label">Stay Connected</p>
+    <h2 class="section-title">You Don't Have to<br>Walk This Alone.</h2>
+    <div class="gold-line"></div>
+    <p>Join the people already on this path. Get Mithu's teachings, insights, and tools — straight to your inbox. No noise. Just the work.</p>
+    <div class="email-form">
+      <input type="email" placeholder="Your email address">
+      <button type="button">I'm In</button>
+    </div>
+    <p class="email-fine">No spam. Ever. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Mithu Surendra</div>
+  <p class="footer-mission">Guiding Humanity Back Into A State Of Love</p>
+  <ul class="footer-links">
+    <li><a href="#story">Story</a></li>
+    <li><a href="#school">School</a></li>
+    <li><a href="#coaching">Coaching</a></li>
+    <li><a href="https://instagram.com/mithu.surendra" target="_blank">Instagram</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Mithu Surendra · All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
