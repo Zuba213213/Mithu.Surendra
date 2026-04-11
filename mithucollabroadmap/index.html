@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mithu Surendra — Collaboration Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=Caveat:wght@500;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --stone:     #1a1610;
+  --earth:     #241e15;
+  --bark:      #2e2518;
+  --terra:     #b05c2a;
+  --rust:      #c4622a;
+  --dust:      #e8c89a;
+  --cream:     #f2e8d5;
+  --warm:      #faf4ea;
+  --gold:      #c89a2a;
+  --gold-hot:  #e8b830;
+  --leaf:      #3d6b35;
+  --ink:       #1a1610;
+  --ink-mid:   #3a3025;
+  --ink-light: #6b5a42;
+  --border:    rgba(26,22,16,0.1);
+  --muted:     rgba(242,232,213,0.4);
+  --dimmed:    rgba(242,232,213,0.72);
+  --p1:        #b05c2a;
+  --p2:        #c89a2a;
+  --p3:        #3d6b35;
+  --p4:        #1a3a6b;
+  --p5:        #6b2a8b;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--warm);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 1000;
+  pointer-events: none; opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px; mix-blend-mode: multiply;
+}
+
+/* ── COVER ── */
+.cover {
+  background: var(--stone); color: var(--cream);
+  padding: 5rem 3rem 4rem;
+  position: relative; overflow: hidden;
+  min-height: 400px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.cover::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 90%, rgba(200,154,42,0.18), transparent 55%),
+    radial-gradient(ellipse at 10% 10%, rgba(61,74,37,0.12), transparent 50%);
+  pointer-events: none;
+}
+.cover-grain {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px; mix-blend-mode: overlay;
+}
+.cover-meta { position: absolute; top: 3rem; right: 3rem; text-align: right; z-index: 1; }
+.cover-meta .name { font-family: 'Caveat', cursive; font-size: 1.3rem; font-weight: 700; color: var(--gold); }
+.cover-meta .sub { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 0.25rem; }
+.cover-tag { font-family: 'Caveat', cursive; font-size: 1rem; color: var(--terra); margin-bottom: 0.75rem; position: relative; z-index: 1; }
+.cover-title { font-family: 'Fraunces', serif; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 900; line-height: 0.92; position: relative; z-index: 1; margin-bottom: 1.25rem; }
+.cover-title em { font-style: italic; font-weight: 300; color: var(--gold); }
+.cover-desc { font-size: 0.92rem; color: var(--dimmed); line-height: 1.8; max-width: 540px; position: relative; z-index: 1; }
+
+/* ── PROGRESS BAR ── */
+.progress-bar {
+  background: var(--bark);
+  padding: 1.5rem 3rem;
+  display: flex; align-items: center; gap: 0;
+  overflow-x: auto;
+}
+.prog-step {
+  display: flex; align-items: center; gap: 0;
+  flex-shrink: 0;
+}
+.prog-node {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif; font-size: 0.85rem; font-weight: 700;
+  border: 2px solid rgba(242,232,213,0.2);
+  color: var(--muted); flex-shrink: 0;
+  position: relative;
+}
+.prog-node.active { border-color: var(--gold); color: var(--gold); background: rgba(200,154,42,0.1); }
+.prog-label { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-left: 0.6rem; white-space: nowrap; }
+.prog-label.active { color: var(--dust); }
+.prog-line { width: 2.5rem; height: 1px; background: rgba(242,232,213,0.12); flex-shrink: 0; margin: 0 0.4rem; }
+
+/* ── DOC ── */
+.doc { max-width: 920px; margin: 0 auto; padding: 3.5rem 2rem 6rem; }
+
+/* ── SHARED ── */
+.sec { margin-bottom: 4rem; }
+.sec-tag { font-family: 'Caveat', cursive; font-size: 1rem; color: var(--terra); display: block; margin-bottom: 0.4rem; }
+.sec-title { font-family: 'Fraunces', serif; font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 900; line-height: 1.05; color: var(--ink); margin-bottom: 0.75rem; }
+.sec-title em { font-style: italic; font-weight: 300; color: var(--terra); }
+.rule { width: 36px; height: 2px; background: var(--terra); border: none; margin-bottom: 1.5rem; }
+.body-p { font-size: 0.97rem; line-height: 1.9; color: var(--ink-mid); margin-bottom: 1rem; }
+.body-p strong { color: var(--ink); font-weight: 500; }
+hr.div { border: none; border-top: 1px solid var(--border); margin: 3.5rem 0; }
+
+/* ── VISION BOX ── */
+.vision-box {
+  background: var(--stone); color: var(--cream);
+  padding: 2.5rem 3rem; margin: 2rem 0;
+  border-left: 4px solid var(--gold);
+  position: relative; overflow: hidden;
+}
+.vision-box::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 90% 50%, rgba(200,154,42,0.1), transparent 60%);
+  pointer-events: none;
+}
+.vision-inner { position: relative; z-index: 1; }
+.vision-label { font-family: 'Caveat', cursive; font-size: 1rem; color: var(--gold); display: block; margin-bottom: 0.75rem; }
+.vision-title { font-family: 'Fraunces', serif; font-size: clamp(1.3rem, 3vw, 1.9rem); font-weight: 900; color: var(--cream); line-height: 1.1; margin-bottom: 1rem; }
+.vision-title em { font-style: italic; font-weight: 300; color: var(--gold); }
+.vision-items { display: flex; flex-direction: column; gap: 0.65rem; margin-top: 1.25rem; }
+.vision-item { display: flex; gap: 0.85rem; align-items: flex-start; font-size: 0.9rem; color: var(--dimmed); line-height: 1.65; }
+.vision-item::before { content: '✦'; color: var(--gold); font-size: 0.65rem; flex-shrink: 0; margin-top: 0.3rem; }
+
+/* ── PHASE CARDS ── */
+.phases { display: flex; flex-direction: column; gap: 2rem; margin: 2rem 0; }
+
+.phase-card {
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: #fff;
+}
+.phase-header {
+  padding: 1.5rem 2rem;
+  display: flex; align-items: center; gap: 1.25rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s;
+}
+.phase-header:hover { background: rgba(26,22,16,0.02); }
+.phase-num {
+  width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 900;
+  flex-shrink: 0; color: #fff;
+}
+.phase-num.p1 { background: var(--p1); }
+.phase-num.p2 { background: var(--p2); }
+.phase-num.p3 { background: var(--p3); }
+.phase-num.p4 { background: var(--p4); }
+.phase-num.p5 { background: var(--p5); }
+
+.phase-head-text { flex: 1; }
+.phase-head-text h3 { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); line-height: 1.1; }
+.phase-head-text p { font-size: 0.8rem; color: var(--ink-light); margin-top: 0.2rem; }
+.phase-status {
+  font-family: 'Caveat', cursive; font-size: 0.9rem; font-weight: 700;
+  padding: 0.2rem 0.75rem; flex-shrink: 0;
+}
+.phase-status.done { color: var(--leaf); background: rgba(61,107,53,0.1); }
+.phase-status.active { color: var(--terra); background: rgba(176,92,42,0.1); }
+.phase-status.upcoming { color: var(--ink-light); background: rgba(26,22,16,0.05); }
+.phase-toggle { color: var(--ink-light); font-size: 1rem; flex-shrink: 0; transition: transform 0.3s; }
+.phase-toggle.open { transform: rotate(180deg); }
+
+.phase-body { padding: 0 2rem 2rem; display: none; }
+.phase-body.open { display: block; }
+
+.phase-desc { font-size: 0.92rem; line-height: 1.85; color: var(--ink-mid); margin-bottom: 1.5rem; padding-top: 0.5rem; }
+.phase-desc strong { color: var(--ink); font-weight: 500; }
+
+/* deliverables */
+.phase-deliverables { margin-bottom: 1.5rem; }
+.phase-deliverables h5 { font-family: 'Fraunces', serif; font-size: 0.9rem; font-weight: 700; color: var(--ink); margin-bottom: 0.75rem; }
+.deliv-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.deliv-list li { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.87rem; color: var(--ink-mid); line-height: 1.6; }
+.deliv-list li .ico { flex-shrink: 0; font-size: 0.85rem; }
+
+/* asks */
+.phase-asks {
+  background: var(--warm); border: 1px solid var(--border);
+  padding: 1.5rem; margin-top: 1rem;
+}
+.phase-asks h5 {
+  font-family: 'Caveat', cursive; font-size: 1rem; color: var(--terra);
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;
+}
+.asks-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.ask-item { display: flex; gap: 0.75rem; align-items: flex-start; }
+.ask-check {
+  width: 18px; height: 18px; border: 1.5px solid rgba(176,92,42,0.4);
+  flex-shrink: 0; margin-top: 0.15rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; background: #fff;
+}
+.ask-check.checked { background: var(--terra); border-color: var(--terra); }
+.ask-check.checked::after { content: '✓'; color: #fff; font-size: 0.7rem; font-weight: 700; }
+.ask-text { font-size: 0.87rem; color: var(--ink-mid); line-height: 1.65; cursor: pointer; }
+.ask-text.checked { color: var(--ink-light); text-decoration: line-through; }
+.ask-note { font-size: 0.75rem; color: var(--ink-light); font-style: italic; display: block; margin-top: 0.2rem; }
+
+/* ── INTERVIEW QUESTIONS ── */
+.questions-section { margin: 2rem 0; }
+.q-group { margin-bottom: 2rem; }
+.q-group-title {
+  font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700;
+  color: var(--ink); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.6rem;
+}
+.q-group-title::before { content: ''; width: 24px; height: 2px; background: var(--terra); flex-shrink: 0; }
+.q-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.q-item {
+  display: flex; gap: 1rem; align-items: flex-start;
+  padding: 1rem 1.25rem; background: #fff; border: 1px solid var(--border);
+  transition: border-color 0.3s;
+}
+.q-item:hover { border-color: rgba(176,92,42,0.25); }
+.q-num { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 700; font-style: italic; color: rgba(176,92,42,0.3); flex-shrink: 0; min-width: 1.5rem; }
+.q-text { font-size: 0.9rem; color: var(--ink-mid); line-height: 1.7; }
+.q-text em { color: var(--ink-light); font-style: italic; font-size: 0.82rem; display: block; margin-top: 0.3rem; }
+
+/* ── FINAL BUILD ── */
+.final-build {
+  background: var(--bark); color: var(--cream);
+  padding: 2.5rem; margin: 2rem 0;
+  border-left: 4px solid var(--gold-hot);
+  position: relative; overflow: hidden;
+}
+.final-build::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 30%, rgba(200,154,42,0.12), transparent 60%);
+  pointer-events: none;
+}
+.final-build-inner { position: relative; z-index: 1; }
+.final-build-label { font-family: 'Caveat', cursive; font-size: 1rem; color: var(--gold-hot); display: block; margin-bottom: 0.75rem; }
+.final-build h3 { font-family: 'Fraunces', serif; font-size: clamp(1.3rem, 3vw, 1.9rem); font-weight: 900; color: var(--cream); line-height: 1.1; margin-bottom: 1.5rem; }
+.final-build h3 em { font-style: italic; font-weight: 300; color: var(--gold); }
+.final-components { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.fcomp {
+  background: rgba(242,232,213,0.04);
+  border: 1px solid rgba(242,232,213,0.08);
+  padding: 1.25rem;
+  transition: border-color 0.3s;
+}
+.fcomp:hover { border-color: rgba(200,154,42,0.3); }
+.fcomp-icon { font-size: 1.2rem; margin-bottom: 0.5rem; display: block; }
+.fcomp h5 { font-family: 'Fraunces', serif; font-size: 0.95rem; font-weight: 700; color: var(--cream); margin-bottom: 0.35rem; }
+.fcomp p { font-size: 0.8rem; color: var(--dimmed); line-height: 1.65; }
+
+/* ── CLOSING ── */
+.closing {
+  background: var(--stone); color: var(--cream);
+  padding: 3rem; margin-top: 3rem;
+  border-left: 4px solid var(--gold);
+  position: relative; overflow: hidden;
+}
+.closing::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 85% 50%, rgba(200,154,42,0.1), transparent 60%);
+  pointer-events: none;
+}
+.closing-inner { position: relative; z-index: 1; max-width: 620px; }
+.closing h3 { font-family: 'Fraunces', serif; font-size: clamp(1.3rem, 3vw, 1.9rem); font-weight: 900; line-height: 1.1; margin-bottom: 1rem; }
+.closing h3 em { font-style: italic; font-weight: 300; color: var(--gold); }
+.closing p { font-size: 0.95rem; line-height: 1.9; color: var(--dimmed); margin-bottom: 0.9rem; }
+.closing p strong { color: var(--cream); font-weight: 400; }
+.closing p:last-child { margin-bottom: 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .cover-meta { position: static; text-align: left; margin-bottom: 2rem; }
+  .cover { padding: 3rem 1.75rem 2.5rem; }
+  .doc { padding: 2rem 1.25rem 4rem; }
+  .final-components { grid-template-columns: 1fr; }
+  .progress-bar { padding: 1.25rem 1.5rem; }
+  .phase-header { padding: 1.25rem; }
+  .phase-body { padding: 0 1.25rem 1.5rem; }
+  .vision-box { padding: 2rem 1.75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-grain"></div>
+  <div class="cover-meta">
+    <div class="name">Mithu Surendra</div>
+    <div class="sub">Collaboration Roadmap · 2026</div>
+  </div>
+  <div class="cover-tag">Where we are. Where we're going. What we need.</div>
+  <h1 class="cover-title">The Build<br><em>Together.</em></h1>
+  <p class="cover-desc">A transparent, phase-by-phase roadmap of our collaboration — what's happening at each stage, what it produces, and exactly what Mithu needs to contribute so we can build something that actually works.</p>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar">
+  <div class="prog-step">
+    <div class="prog-node active">1</div>
+    <span class="prog-label active">Discovery</span>
+  </div>
+  <div class="prog-line"></div>
+  <div class="prog-step">
+    <div class="prog-node active">2</div>
+    <span class="prog-label active">Collection</span>
+  </div>
+  <div class="prog-line"></div>
+  <div class="prog-step">
+    <div class="prog-node">3</div>
+    <span class="prog-label">Synthesis</span>
+  </div>
+  <div class="prog-line"></div>
+  <div class="prog-step">
+    <div class="prog-node">4</div>
+    <span class="prog-label">Build</span>
+  </div>
+  <div class="prog-line"></div>
+  <div class="prog-step">
+    <div class="prog-node">5</div>
+    <span class="prog-label">Launch</span>
+  </div>
+</div>
+
+<div class="doc">
+
+  <!-- THE VISION -->
+  <div class="sec">
+    <span class="sec-tag">What we're building</span>
+    <h2 class="sec-title">The final vision —<br><em>clearly stated.</em></h2>
+    <hr class="rule">
+    <p class="body-p">Everything in this document is in service of one thing: <strong>a complete client experience that meets people where they are, walks them through Mithu's world, and hands them a clear next step</strong> — whether that's the school, 1-on-1 coaching, or staying in the email community until they're ready.</p>
+    <p class="body-p">Mithu keeps doing what he does — making content, showing up raw, leading with the work. This infrastructure makes sure that when someone is moved by what he puts out, <strong>there is a path waiting for them.</strong></p>
+
+    <div class="vision-box">
+      <div class="vision-inner">
+        <span class="vision-label">Final deliverable —</span>
+        <h3 class="vision-title">A complete ecosystem that turns<br><em>strangers into students.</em></h3>
+        <div class="vision-items">
+          <div class="vision-item">A website that tells Mithu's story, presents his methodology, and gives every visitor a clear next step based on where they are</div>
+          <div class="vision-item">A somatic self-diagnosis that lets clients identify exactly where they are before a call — so Mithu walks in knowing what phase they're at</div>
+          <div class="vision-item">A path to the Self-Love School for those ready to begin the community work at $50/month</div>
+          <div class="vision-item">A path to 1-on-1 coaching for those ready to go deep — self-selected, no hard sell</div>
+          <div class="vision-item">A nurture email sequence that keeps people warm, delivers Mithu's voice and value, and converts over time</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- PHASES -->
+  <div class="sec">
+    <span class="sec-tag">The phases</span>
+    <h2 class="sec-title">How we get<br><em>there.</em></h2>
+    <hr class="rule">
+    <p class="body-p">Five phases. Each one builds on the last. Mithu's only job is to show up for the collection phase — everything else gets handled. Click each phase to see what's happening and what's needed.</p>
+
+    <div class="phases">
+
+      <!-- PHASE 1 -->
+      <div class="phase-card" id="phase1">
+        <div class="phase-header" onclick="togglePhase('phase1')">
+          <div class="phase-num p1">1</div>
+          <div class="phase-head-text">
+            <h3>Discovery & Foundation</h3>
+            <p>Diagnosis · Strategy · Brand Direction · ICP</p>
+          </div>
+          <span class="phase-status done">✓ Complete</span>
+          <span class="phase-toggle" id="phase1-toggle">▾</span>
+        </div>
+        <div class="phase-body open" id="phase1-body">
+          <p class="phase-desc">This phase was about understanding Mithu's world — who he is, who he serves, what he's built, and where the opportunity lives. We built the strategic foundation so that everything that comes next has a clear direction. <strong>This phase is done.</strong></p>
+          <div class="phase-deliverables">
+            <h5>What was produced —</h5>
+            <ul class="deliv-list">
+              <li><span class="ico">✅</span> Full somatic brand analysis — Mithu's psychological operating system and how it shapes his content and coaching style</li>
+              <li><span class="ico">✅</span> Client Growth Strategy document — the "one signup per day" roadmap with churn math, opportunity cost analysis, and revenue projections</li>
+              <li><span class="ico">✅</span> Ideal Client Profile — "The Awakening Seeker" avatar with wounds, voice, objections, and call prep guide</li>
+              <li><span class="ico">✅</span> Website mockup V3 — Bali-roadside aesthetic, his visual identity established</li>
+              <li><span class="ico">✅</span> This document — the full collaboration roadmap</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 2 -->
+      <div class="phase-card" id="phase2">
+        <div class="phase-header" onclick="togglePhase('phase2')">
+          <div class="phase-num p2">2</div>
+          <div class="phase-head-text">
+            <h3>Content Collection</h3>
+            <p>Story · Photos · Testimonials · Methodology Interview</p>
+          </div>
+          <span class="phase-status active">← We are here</span>
+          <span class="phase-toggle" id="phase2-toggle">▾</span>
+        </div>
+        <div class="phase-body open" id="phase2-body">
+          <p class="phase-desc">This is Mithu's phase. Everything he contributes here becomes the raw material that gets shaped into the final experience. <strong>The quality of what we build depends entirely on the richness of what comes in here.</strong> No pressure — just honesty. The rawer, the better.</p>
+
+          <div class="phase-asks">
+            <h5>📋 What we need from Mithu —</h5>
+            <ul class="asks-list">
+
+              <li class="ask-item">
+                <div class="ask-check" onclick="toggleCheck(this)"></div>
+                <div class="ask-text" onclick="toggleCheck(this.previousElementSibling)">
+                  <strong>Your story — written or voice note</strong>
+                  <span class="ask-note">Not polished. Raw is better. What happened, when things broke, when things shifted, what you found on the other side. This becomes the heart of the website.</span>
+                </div>
+              </li>
+
+              <li class="ask-item">
+                <div class="ask-check" onclick="toggleCheck(this)"></div>
+                <div class="ask-text" onclick="toggleCheck(this.previousElementSibling)">
+                  <strong>3–5 photos of yourself</strong>
+                  <span class="ask-note">Candids preferred over studio shots. On the scooter, on the road, in Bali, mid-conversation, mid-laugh. Real moments. We need at least one clear face shot for the hero section.</span>
+                </div>
+              </li>
+
+              <li class="ask-item">
+                <div class="ask-check" onclick="toggleCheck(this)"></div>
+                <div class="ask-text" onclick="toggleCheck(this.previousElementSibling)">
+                  <strong>3–5 client testimonials</strong>
+                  <span class="ask-note">Written, voice note, or video — all work. We need: their name (or initials if they prefer), what they were dealing with when they came to you, and what shifted. Real results, real words.</span>
+                </div>
+              </li>
+
+              <li class="ask-item">
+                <div class="ask-check" onclick="toggleCheck(this)"></div>
+                <div class="ask-text" onclick="toggleCheck(this.previousElementSibling)">
+                  <strong>The methodology interview (guided questions below)</strong>
+                  <span class="ask-note">The most important piece. This is how we extract the method you already know in your body and give it structure the world can understand. See the full question set below.</span>
+                </div>
+              </li>
+
+              <li class="ask-item">
+                <div class="ask-check" onclick="toggleCheck(this)"></div>
+                <div class="ask-text" onclick="toggleCheck(this.previousElementSibling)">
+                  <strong>Any existing content you want to reference</strong>
+                  <span class="ask-note">Links to Instagram posts, reels, or videos that feel most "you." Anything you've made that you look at and think — that's exactly what I'm about.</span>
+                </div>
+              </li>
+
+              <li class="ask-item">
+                <div class="ask-check" onclick="toggleCheck(this)"></div>
+                <div class="ask-text" onclick="toggleCheck(this.previousElementSibling)">
+                  <strong>Your preferred name for the methodology</strong>
+                  <span class="ask-note">You don't need to have this figured out yet — we'll work through it together. But if a name is already living in you, let it out. This becomes the container people sign up to experience.</span>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 3 -->
+      <div class="phase-card" id="phase3">
+        <div class="phase-header" onclick="togglePhase('phase3')">
+          <div class="phase-num p3">3</div>
+          <div class="phase-head-text">
+            <h3>Synthesis & Copy</h3>
+            <p>Story shaped · Method named · Copy written in Mithu's voice</p>
+          </div>
+          <span class="phase-status upcoming">Upcoming</span>
+          <span class="phase-toggle" id="phase3-toggle">▾</span>
+        </div>
+        <div class="phase-body" id="phase3-body">
+          <p class="phase-desc">Once the raw material comes in, this phase is about <strong>turning Mithu's world into words that work</strong>. His story gets shaped into a narrative arc. His methodology gets named, phased, and explained in language anyone can understand. His voice is preserved throughout — nothing gets sanitized or corporatized.</p>
+          <div class="phase-deliverables">
+            <h5>What gets produced —</h5>
+            <ul class="deliv-list">
+              <li><span class="ico">📝</span> Full website copy — every section written in Mithu's voice, built from his story and method</li>
+              <li><span class="ico">🧭</span> Methodology framework document — named phases, clear markers, what shifts at each stage</li>
+              <li><span class="ico">🔬</span> Somatic self-diagnosis questionnaire — 8–12 questions that place clients in a specific phase of the method before the first call</li>
+              <li><span class="ico">📧</span> Welcome email sequence — 5-part automated sequence, written in his voice, delivered over the first two weeks of sign-up</li>
+              <li><span class="ico">📋</span> One-page copy brief for Mithu to review and approve before build begins</li>
+            </ul>
+          </div>
+          <div class="phase-asks">
+            <h5>📋 What we need from Mithu —</h5>
+            <ul class="asks-list">
+              <li class="ask-item">
+                <div class="ask-check" onclick="toggleCheck(this)"></div>
+                <div class="ask-text" onclick="toggleCheck(this.previousElementSibling)">
+                  <strong>Review and approval of copy brief</strong>
+                  <span class="ask-note">One round of feedback on the copy direction before we build. Does it sound like you? Does it feel true? That's all that matters.</span>
+                </div>
+              </li>
+              <li class="ask-item">
+                <div class="ask-check" onclick="toggleCheck(this)"></div>
+                <div class="ask-text" onclick="toggleCheck(this.previousElementSibling)">
+                  <strong>Approval on methodology naming</strong>
+                  <span class="ask-note">We'll propose a name for the method based on his language from the interview. He confirms, adjusts, or renames. This is his IP — it needs to feel like his.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 4 -->
+      <div class="phase-card" id="phase4">
+        <div class="phase-header" onclick="togglePhase('phase4')">
+          <div class="phase-num p4">4</div>
+          <div class="phase-head-text">
+            <h3>Build & Integration</h3>
+            <p>Website · Email automation · Somatic diagnosis · Booking flow</p>
+          </div>
+          <span class="phase-status upcoming">Upcoming</span>
+          <span class="phase-toggle" id="phase4-toggle">▾</span>
+        </div>
+        <div class="phase-body" id="phase4-body">
+          <p class="phase-desc">This is the technical build phase — the part Mithu doesn't need to touch. Everything gets assembled, connected, and tested. <strong>This phase happens almost entirely without Mithu's involvement</strong> — his job was done in Phase 2.</p>
+          <div class="phase-deliverables">
+            <h5>What gets built —</h5>
+            <ul class="deliv-list">
+              <li><span class="ico">🌐</span> Full website — coded, designed, mobile-first, published to GitHub, DNS configured and live</li>
+              <li><span class="ico">🔬</span> Somatic self-diagnosis — interactive questionnaire embedded in the site, results guide clients to school or coaching path</li>
+              <li><span class="ico">📧</span> Email automation — Mailchimp or ConvertKit configured, welcome sequence loaded, lead capture connected to site</li>
+              <li><span class="ico">📅</span> Coaching booking page — discovery call booking integrated (Calendly or equivalent), connected to coaching section</li>
+              <li><span class="ico">🏫</span> School CTA integration — Skool free trial link prominently wired throughout the site with clear conversion triggers</li>
+              <li><span class="ico">🔗</span> All links tested, all flows verified end-to-end</li>
+            </ul>
+          </div>
+          <div class="phase-asks">
+            <h5>📋 What we need from Mithu —</h5>
+            <ul class="asks-list">
+              <li class="ask-item">
+                <div class="ask-check" onclick="toggleCheck(this)"></div>
+                <div class="ask-text" onclick="toggleCheck(this.previousElementSibling)">
+                  <strong>Domain access or domain decision</strong>
+                  <span class="ask-note">Does he have mithusurendra.com or similar? If not, we'll recommend and register one. DNS credentials needed to go live.</span>
+                </div>
+              </li>
+              <li class="ask-item">
+                <div class="ask-check" onclick="toggleCheck(this)"></div>
+                <div class="ask-text" onclick="toggleCheck(this.previousElementSibling)">
+                  <strong>Email platform preference</strong>
+                  <span class="ask-note">Does he already use Mailchimp, ConvertKit, or similar? If not, we'll set one up. Just need access or permission to create.</span>
+                </div>
+              </li>
+              <li class="ask-item">
+                <div class="ask-check" onclick="toggleCheck(this)"></div>
+                <div class="ask-text" onclick="toggleCheck(this.previousElementSibling)">
+                  <strong>Booking tool preference</strong>
+                  <span class="ask-note">Calendly is the simplest. If he has a preference or already has an account, let us know. This is what connects the coaching page to his calendar.</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 5 -->
+      <div class="phase-card" id="phase5">
+        <div class="phase-header" onclick="togglePhase('phase5')">
+          <div class="phase-num p5">5</div>
+          <div class="phase-head-text">
+            <h3>Launch & Handoff</h3>
+            <p>Live · Tested · Mithu takes the wheel</p>
+          </div>
+          <span class="phase-status upcoming">Upcoming</span>
+          <span class="phase-toggle" id="phase5-toggle">▾</span>
+        </div>
+        <div class="phase-body" id="phase5-body">
+          <p class="phase-desc">The site goes live. Mithu gets a walkthrough of everything — what's connected, how it works, and how to use it. From here, <strong>his content does the driving</strong>. He makes videos, points people to the site, and the system handles the rest.</p>
+          <div class="phase-deliverables">
+            <h5>What the launch includes —</h5>
+            <ul class="deliv-list">
+              <li><span class="ico">🚀</span> Site goes live at custom domain — fully tested across mobile and desktop</li>
+              <li><span class="ico">🎓</span> Mithu walkthrough — 30-minute tour of what's live, what's connected, and how to read the data</li>
+              <li><span class="ico">📱</span> Instagram link-in-bio updated to point to website</li>
+              <li><span class="ico">📊</span> Basic analytics set up — Mithu can see traffic, email signups, and where people are dropping off</li>
+              <li><span class="ico">🌱</span> Ongoing: monthly check-in to review what's working, optimize conversion, and plan next phase of growth</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- INTERVIEW QUESTIONS -->
+  <div class="sec">
+    <span class="sec-tag">The methodology interview</span>
+    <h2 class="sec-title">Questions to unlock<br><em>the method.</em></h2>
+    <hr class="rule">
+    <p class="body-p">These questions are designed to draw out what Mithu already knows in his body but hasn't yet put into words. <strong>There are no right answers. The goal is not to construct something — it's to reveal what's already there.</strong> Answer by voice note, video, or written — whatever feels most natural.</p>
+
+    <div class="questions-section">
+
+      <div class="q-group">
+        <div class="q-group-title">Part 1 — The Origin</div>
+        <ul class="q-list">
+          <li class="q-item">
+            <span class="q-num">1</span>
+            <div class="q-text">What was the wound that made you a healer? Not the polished version — the real one. What happened, and what did it feel like in your body?
+              <em>→ This becomes the opening of the website story. The more specific, the more powerful.</em>
+            </div>
+          </li>
+          <li class="q-item">
+            <span class="q-num">2</span>
+            <div class="q-text">When was the exact moment you knew this was your work? Was there a single day, a single conversation, a single realization?
+              <em>→ The turning point in the narrative arc.</em>
+            </div>
+          </li>
+          <li class="q-item">
+            <span class="q-num">3</span>
+            <div class="q-text">Who was the first person you helped? What were they carrying when they came to you, and what did you see shift in them?
+              <em>→ The first proof of concept. Makes the work real and human.</em>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="q-group">
+        <div class="q-group-title">Part 2 — The Method</div>
+        <ul class="q-list">
+          <li class="q-item">
+            <span class="q-num">4</span>
+            <div class="q-text">Walk me through a client you've taken from pain to purpose. What did you do first? Then what? Then what after that?
+              <em>→ This is the skeleton of the methodology. Don't overthink it — just walk through it like you're describing it to a friend.</em>
+            </div>
+          </li>
+          <li class="q-item">
+            <span class="q-num">5</span>
+            <div class="q-text">What does someone need to feel or experience before they can move to the next level of the work? What's the marker that tells you they're ready?
+              <em>→ This defines the phase transitions — the moments of shift in the methodology.</em>
+            </div>
+          </li>
+          <li class="q-item">
+            <span class="q-num">6</span>
+            <div class="q-text">What is the one thing — if a client truly understands and feels it — that changes everything for them?
+              <em>→ The core insight. The thing the whole method is built around.</em>
+            </div>
+          </li>
+          <li class="q-item">
+            <span class="q-num">7</span>
+            <div class="q-text">If you had to give your method three names — one for each phase of the journey — what would they be? Don't think, just feel. What words come?
+              <em>→ The raw naming. We'll refine it together — this is just the first draft from the gut.</em>
+            </div>
+          </li>
+          <li class="q-item">
+            <span class="q-num">8</span>
+            <div class="q-text">What does your method do that therapy alone cannot? What's the difference in the room when you work with someone versus when a therapist does?
+              <em>→ The differentiation. This is what makes the offer unique and clear.</em>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="q-group">
+        <div class="q-group-title">Part 3 — The Transformation</div>
+        <ul class="q-list">
+          <li class="q-item">
+            <span class="q-num">9</span>
+            <div class="q-text">What does someone look like — specifically, in their body and in their life — when they've come through the full method?
+              <em>→ The "after" state. This is what we sell on the website — not the feeling, but the concrete shift.</em>
+            </div>
+          </li>
+          <li class="q-item">
+            <span class="q-num">10</span>
+            <div class="q-text">What's the hardest moment in the process? The point where most people want to stop — and what gets them through it?
+              <em>→ This becomes the most powerful piece of trust-building content. Honesty about the hard part creates more safety than promising it won't be hard.</em>
+            </div>
+          </li>
+          <li class="q-item">
+            <span class="q-num">11</span>
+            <div class="q-text">If someone is watching your videos right now and feeling something but not yet ready to reach out — what do you want them to know?
+              <em>→ This becomes the email sequence opener and the website's "for you if" section.</em>
+            </div>
+          </li>
+          <li class="q-item">
+            <span class="q-num">12</span>
+            <div class="q-text">What do you want your work to mean? Not just for clients — for you. Why does this matter beyond the business?
+              <em>→ The mission statement. The thing that goes on the wall of the website and in his heart before every call.</em>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- FINAL BUILD OVERVIEW -->
+  <div class="sec">
+    <span class="sec-tag">The final product</span>
+    <h2 class="sec-title">What we're building<br><em>together.</em></h2>
+    <hr class="rule">
+
+    <div class="final-build">
+      <div class="final-build-inner">
+        <span class="final-build-label">The complete client experience —</span>
+        <h3>One place. Every path.<br><em>Zero friction.</em></h3>
+        <div class="final-components">
+          <div class="fcomp">
+            <span class="fcomp-icon">🌐</span>
+            <h5>The Website</h5>
+            <p>Mithu's story. His mission. His method explained clearly. The hub that every Instagram video points to — and every visitor understands immediately.</p>
+          </div>
+          <div class="fcomp">
+            <span class="fcomp-icon">🔬</span>
+            <h5>Somatic Self-Diagnosis</h5>
+            <p>An interactive questionnaire that places each visitor in a specific phase of Mithu's method. They arrive to a call already located. He already knows where to meet them.</p>
+          </div>
+          <div class="fcomp">
+            <span class="fcomp-icon">🏫</span>
+            <h5>Path to the School</h5>
+            <p>Clear, warm, frictionless. For people ready to begin the community work. Free trial front and center. $50/month, cancel anytime. One click from the website.</p>
+          </div>
+          <div class="fcomp">
+            <span class="fcomp-icon">🤝</span>
+            <h5>Path to 1-on-1 Coaching</h5>
+            <p>Self-selected. No pitch needed. For people who already know they're ready for the deep work. Book a discovery call directly from the site.</p>
+          </div>
+          <div class="fcomp">
+            <span class="fcomp-icon">📧</span>
+            <h5>Nurture Email Sequence</h5>
+            <p>5-part automated series for people who sign up but aren't ready to commit yet. Mithu's voice, his stories, his method — delivered over two weeks. Converts when they're ready.</p>
+          </div>
+          <div class="fcomp">
+            <span class="fcomp-icon">📊</span>
+            <h5>Analytics & Visibility</h5>
+            <p>For the first time, Mithu can see where people are in the journey, where they drop off, and which content is converting. Data for his intuition to work with.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <div class="closing-inner">
+      <h3>Mithu brings the light.<br><em>We build the container.</em></h3>
+      <p>The transmission is already happening — 17,000 people are already receiving it. <strong>This collaboration is simply about making sure that when someone is ready to go deeper, there is a door to walk through.</strong></p>
+      <p>Every piece of this is built around Mithu's voice, his method, his energy. Nothing gets diluted. Nothing gets corporatized. <strong>The goal is for someone to land on this site and feel like they just stumbled onto something real</strong> — because they did.</p>
+      <p>One person per day. Every day. Let's build the road.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function togglePhase(id) {
+  const body = document.getElementById(id + '-body');
+  const toggle = document.getElementById(id + '-toggle');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  body.style.display = isOpen ? 'none' : 'block';
+  toggle.classList.toggle('open', !isOpen);
+}
+
+// Init — phase 1 and 2 open by default, others closed
+document.querySelectorAll('.phase-body').forEach(b => {
+  if (!b.classList.contains('open')) b.style.display = 'none';
+});
+
+function toggleCheck(el) {
+  const isChecked = el.classList.contains('checked');
+  el.classList.toggle('checked', !isChecked);
+  // find sibling text
+  const parent = el.closest('.ask-item');
+  const text = parent.querySelector('.ask-text');
+  if (text) text.classList.toggle('checked', !isChecked);
+}
+</script>
+</body>
+</html>
