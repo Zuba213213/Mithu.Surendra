@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mithu Surendra — Ideal Client Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=Caveat:wght@500;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --stone:     #1a1610;
+  --earth:     #241e15;
+  --bark:      #2e2518;
+  --clay:      #6b4c2a;
+  --terra:     #b05c2a;
+  --rust:      #c4622a;
+  --dust:      #e8c89a;
+  --cream:     #f2e8d5;
+  --warm:      #faf4ea;
+  --gold:      #c89a2a;
+  --gold-hot:  #e8b830;
+  --leaf:      #3d6b35;
+  --moss:      #4a5530;
+  --red-soft:  #c04040;
+  --ink:       #1a1610;
+  --ink-mid:   #3a3025;
+  --ink-light: #6b5a42;
+  --border:    rgba(26,22,16,0.1);
+  --muted:     rgba(242,232,213,0.4);
+  --dimmed:    rgba(242,232,213,0.72);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--warm);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* grain */
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 1000;
+  pointer-events: none; opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px; mix-blend-mode: multiply;
+}
+
+/* ── COVER ── */
+.cover {
+  background: var(--stone);
+  color: var(--cream);
+  padding: 5rem 3rem 4rem;
+  position: relative; overflow: hidden;
+  min-height: 380px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.cover::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 90%, rgba(200,154,42,0.2), transparent 55%),
+    radial-gradient(ellipse at 10% 10%, rgba(61,74,37,0.15), transparent 50%);
+  pointer-events: none;
+}
+.cover-grain {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px; mix-blend-mode: overlay;
+}
+.cover-meta {
+  position: absolute; top: 3rem; right: 3rem;
+  text-align: right; z-index: 1;
+}
+.cover-meta .name { font-family: 'Caveat', cursive; font-size: 1.3rem; font-weight: 700; color: var(--gold); }
+.cover-meta .sub { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 0.25rem; }
+.cover-tag { font-family: 'Caveat', cursive; font-size: 1rem; color: var(--terra); margin-bottom: 0.75rem; position: relative; z-index: 1; }
+.cover-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900; line-height: 0.92;
+  position: relative; z-index: 1; margin-bottom: 1.25rem;
+}
+.cover-title em { font-style: italic; font-weight: 300; color: var(--gold); }
+.cover-desc {
+  font-size: 0.92rem; color: var(--dimmed); line-height: 1.75;
+  max-width: 520px; position: relative; z-index: 1;
+}
+
+/* ── DOC ── */
+.doc { max-width: 900px; margin: 0 auto; padding: 3.5rem 2rem 6rem; }
+
+/* ── AVATAR CARD ── */
+.avatar-card {
+  background: var(--stone);
+  color: var(--cream);
+  padding: 2.5rem 3rem;
+  margin-bottom: 3rem;
+  position: relative; overflow: hidden;
+  border-left: 4px solid var(--gold);
+}
+.avatar-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 90% 50%, rgba(200,154,42,0.1), transparent 60%);
+  pointer-events: none;
+}
+.avatar-inner { position: relative; z-index: 1; }
+.avatar-label { font-family: 'Caveat', cursive; font-size: 1rem; color: var(--gold); display: block; margin-bottom: 0.5rem; }
+.avatar-name {
+  font-family: 'Fraunces', serif; font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900; line-height: 1; color: var(--cream); margin-bottom: 0.4rem;
+}
+.avatar-name em { font-style: italic; font-weight: 300; color: var(--gold); }
+.avatar-tagline {
+  font-family: 'DM Sans', sans-serif; font-style: italic;
+  font-size: 1rem; color: var(--dimmed); line-height: 1.6;
+  max-width: 540px; margin-bottom: 2rem;
+}
+.avatar-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(242,232,213,0.1);
+}
+.astat { text-align: left; }
+.astat-value { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; color: var(--gold-hot); line-height: 1; }
+.astat-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.25rem; line-height: 1.4; }
+
+/* ── SECTION SHARED ── */
+.sec { margin-bottom: 3.5rem; }
+.sec-tag { font-family: 'Caveat', cursive; font-size: 1rem; color: var(--terra); display: block; margin-bottom: 0.4rem; }
+.sec-title { font-family: 'Fraunces', serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 900; line-height: 1.05; color: var(--ink); margin-bottom: 0.75rem; }
+.sec-title em { font-style: italic; font-weight: 300; color: var(--terra); }
+.rule { width: 36px; height: 2px; background: var(--terra); border: none; margin-bottom: 1.5rem; }
+.intro-text { font-size: 0.97rem; line-height: 1.9; color: var(--ink-mid); margin-bottom: 1.5rem; }
+.intro-text strong { color: var(--ink); font-weight: 500; }
+hr.div { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+
+/* ── PAIN GRID ── */
+.pain-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+  background: var(--border); margin: 1.5rem 0;
+}
+.pain-item {
+  background: var(--warm); padding: 1.75rem;
+  position: relative; transition: background 0.3s;
+}
+.pain-item:hover { background: #fff; }
+.pain-num {
+  font-family: 'Fraunces', serif; font-size: 3.5rem; font-weight: 900;
+  font-style: italic; color: rgba(176,92,42,0.1); line-height: 0.85;
+  margin-bottom: 0.75rem; display: block;
+}
+.pain-item h4 { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+.pain-item p { font-size: 0.85rem; line-height: 1.75; color: var(--ink-mid); }
+.pain-accent { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, var(--terra), transparent); opacity: 0; transition: opacity 0.3s; }
+.pain-item:hover .pain-accent { opacity: 1; }
+
+/* ── VOICE SECTION ── */
+.voice-section {
+  background: var(--earth); color: var(--cream);
+  padding: 2.5rem; margin: 1.5rem 0;
+  border-left: 3px solid var(--terra);
+}
+.voice-label { font-family: 'Caveat', cursive; font-size: 1rem; color: var(--terra); display: block; margin-bottom: 1.25rem; }
+.voice-quotes { display: flex; flex-direction: column; gap: 1.25rem; }
+.vquote {
+  padding: 1.25rem 1.5rem;
+  background: rgba(242,232,213,0.04);
+  border-left: 2px solid rgba(200,154,42,0.3);
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-size: 1rem; font-weight: 300; color: var(--cream); line-height: 1.65;
+}
+.vquote span { display: block; font-family: 'DM Sans', sans-serif; font-style: normal; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.6rem; }
+
+/* ── WHAT MOVES THEM ── */
+.moves-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 1.5rem 0;
+}
+.move-card {
+  padding: 1.5rem; border: 1px solid var(--border);
+  background: #fff; transition: border-color 0.3s;
+}
+.move-card:hover { border-color: rgba(176,92,42,0.3); }
+.move-icon { font-size: 1.5rem; margin-bottom: 0.75rem; display: block; }
+.move-card h4 { font-family: 'Fraunces', serif; font-size: 0.97rem; font-weight: 700; color: var(--ink); margin-bottom: 0.35rem; }
+.move-card p { font-size: 0.82rem; line-height: 1.7; color: var(--ink-light); }
+
+/* ── WHERE TO FIND ── */
+.find-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0;
+}
+.find-item {
+  padding: 1.5rem; border: 1px solid var(--border); background: #fff;
+  display: flex; gap: 1rem; align-items: flex-start;
+}
+.find-icon { font-size: 1.4rem; flex-shrink: 0; }
+.find-text h5 { font-family: 'Fraunces', serif; font-size: 0.97rem; font-weight: 700; color: var(--ink); margin-bottom: 0.3rem; }
+.find-text p { font-size: 0.82rem; line-height: 1.65; color: var(--ink-light); }
+
+/* ── OBJECTIONS ── */
+.obj-list { display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0; }
+.obj-item {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  border: 1px solid var(--border); overflow: hidden;
+}
+.obj-fear {
+  padding: 1.25rem 1.5rem; background: #fff8f5;
+  border-right: 1px solid var(--border);
+}
+.obj-fear .tag { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red-soft); display: block; margin-bottom: 0.4rem; }
+.obj-fear p { font-size: 0.85rem; line-height: 1.65; color: var(--ink-mid); font-style: italic; }
+.obj-bridge { padding: 1.25rem 1.5rem; background: #f4f9f3; }
+.obj-bridge .tag { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--leaf); display: block; margin-bottom: 0.4rem; }
+.obj-bridge p { font-size: 0.85rem; line-height: 1.65; color: var(--ink-mid); }
+
+/* ── TRANSFORMATION ── */
+.transform-row {
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 1.5rem;
+  align-items: center; margin: 1.5rem 0;
+}
+.transform-box {
+  padding: 2rem; border: 1px solid var(--border);
+}
+.transform-box.before { background: #fff8f5; border-color: rgba(192,64,64,0.15); }
+.transform-box.after { background: #f4f9f3; border-color: rgba(61,107,53,0.2); }
+.transform-box h4 { font-family: 'Fraunces', serif; font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; }
+.transform-box.before h4 { color: var(--red-soft); }
+.transform-box.after h4 { color: var(--leaf); }
+.transform-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.transform-list li { font-size: 0.85rem; line-height: 1.6; color: var(--ink-mid); display: flex; gap: 0.6rem; align-items: flex-start; }
+.transform-list li .i { flex-shrink: 0; font-size: 0.8rem; }
+.transform-arrow { text-align: center; }
+.transform-arrow-inner {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--terra); color: var(--cream);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; margin: 0 auto;
+}
+
+/* ── CALL PREP BOX ── */
+.call-prep {
+  background: var(--bark); color: var(--cream);
+  padding: 2.5rem; margin: 1.5rem 0;
+  border-left: 4px solid var(--gold-hot);
+}
+.call-prep-label { font-family: 'Caveat', cursive; font-size: 1rem; color: var(--gold-hot); display: block; margin-bottom: 1rem; }
+.call-prep h3 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 700; color: var(--cream); margin-bottom: 1.25rem; line-height: 1.2; }
+.call-prep-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.cpc h5 { font-family: 'Caveat', cursive; font-size: 1rem; color: var(--gold); margin-bottom: 0.75rem; }
+.cpc ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.cpc ul li { font-size: 0.85rem; color: var(--dimmed); line-height: 1.6; display: flex; gap: 0.6rem; align-items: flex-start; }
+.cpc ul li::before { content: '→'; color: var(--terra); flex-shrink: 0; }
+
+/* ── CLOSING ── */
+.closing {
+  background: var(--stone); color: var(--cream);
+  padding: 3rem; margin-top: 3rem;
+  border-left: 4px solid var(--gold);
+  position: relative; overflow: hidden;
+}
+.closing::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 85% 50%, rgba(200,154,42,0.1), transparent 60%);
+  pointer-events: none;
+}
+.closing-inner { position: relative; z-index: 1; max-width: 620px; }
+.closing h3 { font-family: 'Fraunces', serif; font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 900; line-height: 1.15; margin-bottom: 1rem; }
+.closing h3 em { font-style: italic; font-weight: 300; color: var(--gold); }
+.closing p { font-size: 0.95rem; line-height: 1.9; color: var(--dimmed); margin-bottom: 0.9rem; }
+.closing p strong { color: var(--cream); font-weight: 400; }
+.closing p:last-child { margin-bottom: 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .avatar-stats { grid-template-columns: repeat(2, 1fr); }
+  .pain-grid { grid-template-columns: 1fr; }
+  .moves-grid { grid-template-columns: 1fr; }
+  .find-grid { grid-template-columns: 1fr; }
+  .obj-item { grid-template-columns: 1fr; }
+  .obj-fear { border-right: none; border-bottom: 1px solid var(--border); }
+  .transform-row { grid-template-columns: 1fr; }
+  .transform-arrow { display: none; }
+  .call-prep-cols { grid-template-columns: 1fr; gap: 1.5rem; }
+  .cover-meta { position: static; text-align: left; margin-bottom: 2rem; }
+  .cover { padding: 3rem 1.75rem 2.5rem; }
+  .doc { padding: 2rem 1.25rem 4rem; }
+  .avatar-card { padding: 2rem 1.75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-grain"></div>
+  <div class="cover-meta">
+    <div class="name">Mithu Surendra</div>
+    <div class="sub">Internal Reference · 2026</div>
+  </div>
+  <div class="cover-tag">Know who you're talking to.</div>
+  <h1 class="cover-title">Ideal Client<br><em>Profile.</em></h1>
+  <p class="cover-desc">A clear picture of the person already walking toward you — their wound, their world, what moves them, and exactly what they need to hear to take the next step.</p>
+</div>
+
+<div class="doc">
+
+  <!-- AVATAR CARD -->
+  <div class="avatar-card">
+    <div class="avatar-inner">
+      <span class="avatar-label">Primary Avatar</span>
+      <h2 class="avatar-name">The <em>Awakening</em> Seeker</h2>
+      <p class="avatar-tagline">"I know something's wrong. I just don't know how to get out of it. I've tried thinking my way through — it's not working. I need someone who's actually been there."</p>
+      <div class="avatar-stats">
+        <div class="astat">
+          <div class="astat-value">22–45</div>
+          <div class="astat-label">Age range<br>core sweet spot</div>
+        </div>
+        <div class="astat">
+          <div class="astat-value">M/F</div>
+          <div class="astat-label">Predominantly male<br>both genders present</div>
+        </div>
+        <div class="astat">
+          <div class="astat-value">Global</div>
+          <div class="astat-label">Location<br>digitally native</div>
+        </div>
+        <div class="astat">
+          <div class="astat-value">Seeker</div>
+          <div class="astat-label">Identity<br>already looking</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHO THEY ARE -->
+  <div class="sec">
+    <span class="sec-tag">Who they are</span>
+    <h2 class="sec-title">A real person<br><em>in real pain.</em></h2>
+    <hr class="rule">
+    <p class="intro-text">This person is not broken. They are <strong>awake enough to know something is off</strong> — and brave enough to be looking for a way through. They've probably tried therapy, read the books, done the journaling. They're not naive. They're just stuck at the level of *thinking* when what they need is to *feel*.</p>
+    <p class="intro-text">They found Mithu because his rawness cuts through. He doesn't sound like a coach. He sounds like someone who <strong>actually walked through it</strong> — and they recognize that. They're already 80% sold before they ever reach out. They just need to know there's a path.</p>
+  </div>
+
+  <hr class="div">
+
+  <!-- THE WOUND -->
+  <div class="sec">
+    <span class="sec-tag">The wound they're carrying</span>
+    <h2 class="sec-title">What keeps them<br><em>stuck.</em></h2>
+    <hr class="rule">
+    <p class="intro-text">Before you get on a call, understand this: <strong>every client carries a version of one of these wounds.</strong> The surface story will be different. The underlying pattern almost never is.</p>
+
+    <div class="pain-grid">
+      <div class="pain-item">
+        <div class="pain-accent"></div>
+        <span class="pain-num">01</span>
+        <h4>The Not Enough Story</h4>
+        <p>Deep-seated belief that they are fundamentally flawed — too broken, too emotional, too damaged to be worthy of love, success, or purpose. Usually installed in childhood. Reinforced by every rejection since.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-accent"></div>
+        <span class="pain-num">02</span>
+        <h4>Success Without Feeling</h4>
+        <p>Achieving things — career, relationships, money — but feeling nothing. Going through the motions. Performing life instead of living it. High functioning on the outside, hollow on the inside.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-accent"></div>
+        <span class="pain-num">03</span>
+        <h4>The Self-Sabotage Loop</h4>
+        <p>Gets close to something real — a relationship, an opportunity, a moment of joy — and unconsciously destroys it. Does this repeatedly. Knows it's happening. Cannot stop it. This is the wound in action.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-accent"></div>
+        <span class="pain-num">04</span>
+        <h4>Disconnected from Body</h4>
+        <p>Lives entirely in the head. Intellectualizes everything. Can describe the problem perfectly but can't feel their way to the solution. The body has been carrying the wound for years — unheard.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-accent"></div>
+        <span class="pain-num">05</span>
+        <h4>Shame Isolation</h4>
+        <p>Believes they are the only one who feels this way. The shame of struggling while others seem fine keeps them silent, disconnected, performing. Deeply lonely in a way they can't articulate.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-accent"></div>
+        <span class="pain-num">06</span>
+        <h4>Purpose Vacuum</h4>
+        <p>A haunting sense that life should mean more than this. That they are meant for something — but can't find it. The pain isn't always dramatic. Sometimes it's just a persistent, quiet emptiness.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- IN THEIR OWN WORDS -->
+  <div class="sec">
+    <span class="sec-tag">In their own words</span>
+    <h2 class="sec-title">What they actually<br><em>say.</em></h2>
+    <hr class="rule">
+    <p class="intro-text">These are the real phrases — the things they type into search bars at 2am, the things they say in a first message, the things they say on a first call. <strong>When you hear these, you know who you're talking to.</strong></p>
+
+    <div class="voice-section">
+      <span class="voice-label">Direct from the client's mouth —</span>
+      <div class="voice-quotes">
+        <div class="vquote">
+          "I know what I need to do. I just can't seem to actually do it."
+          <span>→ Self-sabotage loop · fear of success · body-mind disconnect</span>
+        </div>
+        <div class="vquote">
+          "I've been to therapy. It helped a bit, but I still feel like something's missing."
+          <span>→ Ready for embodied work · cognitive approaches have ceiling</span>
+        </div>
+        <div class="vquote">
+          "I look fine from the outside. Nobody knows how I actually feel."
+          <span>→ Shame isolation · performing life · deep hunger for being truly seen</span>
+        </div>
+        <div class="vquote">
+          "I don't even know what I want anymore. I just feel numb."
+          <span>→ Purpose vacuum · disconnected from body · emotional shutdown</span>
+        </div>
+        <div class="vquote">
+          "Every time things start going well, I find a way to mess it up."
+          <span>→ Unworthiness wound · self-sabotage pattern · needs body-level rewiring</span>
+        </div>
+        <div class="vquote">
+          "I just want to feel like myself again. Actually — I want to feel like myself for the first time."
+          <span>→ The arrival statement · this person is ready · this is who Mithu is made for</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- WHAT MOVES THEM -->
+  <div class="sec">
+    <span class="sec-tag">What converts them</span>
+    <h2 class="sec-title">What actually<br><em>moves them.</em></h2>
+    <hr class="rule">
+    <p class="intro-text">This person has seen coaches before. They can smell inauthenticity from a mile away. What converts them isn't a polished pitch — it's <strong>recognition. They need to see themselves in what you say.</strong></p>
+
+    <div class="moves-grid">
+      <div class="move-card">
+        <span class="move-icon">🔥</span>
+        <h4>Raw Testimony</h4>
+        <p>Mithu sharing his own wound without polishing it. They need to hear: "I've been exactly where you are." Not aspirationally. Specifically.</p>
+      </div>
+      <div class="move-card">
+        <span class="move-icon">🤲</span>
+        <h4>Permission to Feel</h4>
+        <p>Someone giving them explicit permission to stop performing, stop fixing, and just feel what's there. This is rare. It's deeply moving when it happens.</p>
+      </div>
+      <div class="move-card">
+        <span class="move-icon">👁</span>
+        <h4>Being Truly Seen</h4>
+        <p>When Mithu names something they've never told anyone — and gets it right. That somatic recognition is the moment trust is born. It's felt in the body, not processed in the mind.</p>
+      </div>
+      <div class="move-card">
+        <span class="move-icon">🗺</span>
+        <h4>A Clear Path</h4>
+        <p>Not vague transformation promises. A method. Phases. Markers. "This is what we do, in this order, and here's what shifts at each stage." Structure gives them permission to trust.</p>
+      </div>
+      <div class="move-card">
+        <span class="move-icon">🏘</span>
+        <h4>Proof of Community</h4>
+        <p>Seeing others going through the same thing without shame. The school is powerful because it normalizes the struggle and breaks isolation — the most paralyzing part of the wound.</p>
+      </div>
+      <div class="move-card">
+        <span class="move-icon">⏳</span>
+        <h4>No Rush</h4>
+        <p>Mithu's willingness to hold space without forcing resolution. This person has been pressured to "get over it" their whole life. A coach who waits is revolutionary.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- WHERE TO FIND THEM -->
+  <div class="sec">
+    <span class="sec-tag">Where they live</span>
+    <h2 class="sec-title">Where to find<br><em>them.</em></h2>
+    <hr class="rule">
+
+    <div class="find-grid">
+      <div class="find-item">
+        <div class="find-icon">📱</div>
+        <div class="find-text">
+          <h5>Instagram — Late Night</h5>
+          <p>Scrolling alone, 10pm–2am. Watching raw, emotional content. Pausing on things that feel uncomfortably true. Mithu's videos catch them mid-scroll and say what they haven't been able to.</p>
+        </div>
+      </div>
+      <div class="find-item">
+        <div class="find-icon">🔍</div>
+        <div class="find-text">
+          <h5>Search — The 2am Query</h5>
+          <p>"Why do I self-sabotage," "how to find purpose," "somatic healing," "trauma coaching," "why can't I feel anything," "how to love yourself." These are real searches at real moments of crisis.</p>
+        </div>
+      </div>
+      <div class="find-item">
+        <div class="find-icon">💬</div>
+        <div class="find-text">
+          <h5>Word of Mouth</h5>
+          <p>Referred by someone in the school who said "you need to hear this guy." Transformation results create advocates. This is the most powerful channel — and it compounds over time.</p>
+        </div>
+      </div>
+      <div class="find-item">
+        <div class="find-icon">🌐</div>
+        <div class="find-text">
+          <h5>Website — Intention Stage</h5>
+          <p>Someone who's seen the videos, done some research, and now wants to understand who Mithu is before they commit. The website is where curiosity becomes decision.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- OBJECTIONS -->
+  <div class="sec">
+    <span class="sec-tag">What stops them</span>
+    <h2 class="sec-title">Their objections —<br><em>and the bridge.</em></h2>
+    <hr class="rule">
+    <p class="intro-text">These aren't objections to Mithu specifically. They're the defenses the wound has built up over years. <strong>Don't argue with the objection — speak to the wound underneath it.</strong></p>
+
+    <div class="obj-list">
+      <div class="obj-item">
+        <div class="obj-fear">
+          <span class="tag">What they say</span>
+          <p>"I'm not sure I'm ready yet."</p>
+        </div>
+        <div class="obj-bridge">
+          <span class="tag">What they mean</span>
+          <p>They're afraid the pain is too big. Afraid of what they'll find if they actually look. "Whenever you're ready" is the most disarming thing they can hear — because it removes the pressure that's been there their whole life.</p>
+        </div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-fear">
+          <span class="tag">What they say</span>
+          <p>"I've tried coaching before and it didn't work."</p>
+        </div>
+        <div class="obj-bridge">
+          <span class="tag">What they mean</span>
+          <p>They got the mindset work, not the body work. They were given tools for the mind when the wound lives in the body. The difference is somatic — and that's where Mithu's method is different.</p>
+        </div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-fear">
+          <span class="tag">What they say</span>
+          <p>"I can't afford it right now."</p>
+        </div>
+        <div class="obj-bridge">
+          <span class="tag">What they mean</span>
+          <p>They don't yet believe the investment will work. This is an evidence problem, not a money problem. Testimonials, the free trial, and a clear method are the answer — not a lower price.</p>
+        </div>
+      </div>
+      <div class="obj-item">
+        <div class="obj-fear">
+          <span class="tag">What they say</span>
+          <p>"I don't know if this is for me."</p>
+        </div>
+        <div class="obj-bridge">
+          <span class="tag">What they mean</span>
+          <p>They feel shame about needing help. They're not sure they deserve it. The answer is: "This is for people exactly like you — who have been carrying something they were never supposed to carry alone."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- TRANSFORMATION -->
+  <div class="sec">
+    <span class="sec-tag">The journey</span>
+    <h2 class="sec-title">Where they start —<br><em>where they land.</em></h2>
+    <hr class="rule">
+    <p class="intro-text">This is what Mithu is selling — not a feeling, not a promise, but a <strong>concrete shift from one state of being to another.</strong> This is the transformation map.</p>
+
+    <div class="transform-row">
+      <div class="transform-box before">
+        <h4>⬤ Before — The Stuck State</h4>
+        <ul class="transform-list">
+          <li><span class="i">→</span> Trapped in the pain narrative — it defines them</li>
+          <li><span class="i">→</span> Performing life, not living it</li>
+          <li><span class="i">→</span> Disconnected from body and feeling</li>
+          <li><span class="i">→</span> Self-sabotaging when success appears</li>
+          <li><span class="i">→</span> Isolated in shame — nobody knows</li>
+          <li><span class="i">→</span> No sense of purpose, direction, or meaning</li>
+          <li><span class="i">→</span> Love feels conditional — or absent entirely</li>
+        </ul>
+      </div>
+      <div class="transform-arrow">
+        <div class="transform-arrow-inner">→</div>
+      </div>
+      <div class="transform-box after">
+        <h4>⬤ After — The Alive State</h4>
+        <ul class="transform-list">
+          <li><span class="i">→</span> Pain is understood — no longer in control</li>
+          <li><span class="i">→</span> Present, embodied, actually feeling their life</li>
+          <li><span class="i">→</span> Body and mind working together, not against each other</li>
+          <li><span class="i">→</span> Owning wins without collapsing under them</li>
+          <li><span class="i">→</span> Vulnerability without shame — real connection</li>
+          <li><span class="i">→</span> Purpose is clear and actively pursued</li>
+          <li><span class="i">→</span> Self-love as a lived practice, not a concept</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <!-- CALL PREP -->
+  <div class="sec">
+    <span class="sec-tag">Before every call</span>
+    <h2 class="sec-title">What to hold<br><em>going in.</em></h2>
+    <hr class="rule">
+    <p class="intro-text">Use this as a quick reference before any discovery call or coaching session. <strong>Know the archetype. Feel their wound. Meet them there first.</strong></p>
+
+    <div class="call-prep">
+      <span class="call-prep-label">Call preparation checklist —</span>
+      <h3>They are not their problem.<br>They are a person who needs to be seen.</h3>
+      <div class="call-prep-cols">
+        <div class="cpc">
+          <h5>Ask early —</h5>
+          <ul>
+            <li>Where do you feel this in your body right now?</li>
+            <li>When did this start — what was happening?</li>
+            <li>What have you already tried?</li>
+            <li>What would it feel like to be on the other side of this?</li>
+            <li>What are you most afraid of finding if you actually look?</li>
+          </ul>
+        </div>
+        <div class="cpc">
+          <h5>Remember —</h5>
+          <ul>
+            <li>Silence is not a problem — let it breathe</li>
+            <li>The surface story is not the wound</li>
+            <li>Resistance means you're close to something real</li>
+            <li>You don't need to fix it today — just hold it</li>
+            <li>They chose to show up — that took more courage than they know</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <div class="closing-inner">
+      <h3>You already know this person.<br><em>You've been this person.</em></h3>
+      <p>Everything in this document is just making conscious what you already carry in your body. <strong>Your wound is your credential.</strong> The reason these people find you — and stay — is because they feel that you've walked where they're walking.</p>
+      <p>Now they need a path. That's what you're building. And the more clearly you can see <strong>who is walking toward you</strong>, the more powerfully your content, your school, and your coaching can meet them exactly where they are.</p>
+      <p>One person at a time. Every single day.</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
