@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mithu Surendra — Trinity Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1208;
+    --parchment: #f2e8d0;
+    --aged: #c8b48a;
+    --rust: #8b3a1a;
+    --moss: #3d5229;
+    --gold: #b8891e;
+    --terracotta: #a04820;
+    --smoke: #6b5c48;
+    --cream: #faf3e2;
+    --deep-blue: #1a2640;
+    --indigo: #2c3a6b;
+    --violet: #5c3d7a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.75;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  /* ── TORN EDGES ── */
+  .torn-top {
+    width: 100%;
+    height: 32px;
+    background: var(--deep-blue);
+    clip-path: polygon(0 0,100% 0,100% 35%,98% 95%,96% 40%,94% 85%,92% 20%,90% 70%,88% 45%,86% 88%,84% 30%,82% 75%,80% 15%,78% 65%,76% 40%,74% 90%,72% 25%,70% 72%,68% 38%,66% 82%,64% 18%,62% 68%,60% 42%,58% 88%,56% 22%,54% 70%,52% 35%,50% 80%,48% 12%,46% 62%,44% 38%,42% 85%,40% 20%,38% 72%,36% 45%,34% 90%,32% 28%,30% 75%,28% 15%,26% 65%,24% 40%,22% 88%,20% 22%,18% 70%,16% 42%,14% 88%,12% 18%,10% 68%,8% 35%,6% 80%,4% 20%,2% 65%,0 30%);
+  }
+
+  .torn-bottom {
+    width: 100%;
+    height: 32px;
+    background: var(--deep-blue);
+    clip-path: polygon(0 100%,100% 100%,100% 65%,98% 10%,96% 60%,94% 18%,92% 75%,90% 38%,88% 82%,86% 22%,84% 68%,82% 38%,80% 85%,78% 18%,76% 65%,74% 28%,72% 78%,70% 42%,68% 88%,66% 22%,64% 72%,62% 32%,60% 82%,58% 15%,56% 62%,54% 35%,52% 80%,50% 18%,48% 68%,46% 30%,44% 78%,42% 15%,40% 65%,38% 28%,36% 72%,34% 15%,32% 62%,30% 32%,28% 82%,26% 18%,24% 65%,22% 28%,20% 78%,18% 20%,16% 68%,14% 32%,12% 78%,10% 22%,8% 68%,6% 30%,4% 78%,2% 20%,0 55%);
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--deep-blue);
+    padding: 3rem 4rem 3.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-55deg,transparent,transparent 3px,rgba(184,137,30,0.04) 3px,rgba(184,137,30,0.04) 6px);
+  }
+
+  .pontifex-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 400;
+    color: var(--parchment);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+  }
+
+  .header h1 em { font-style: italic; color: var(--gold); }
+
+  .header-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--aged);
+    letter-spacing: 0.18em;
+    opacity: 0.65;
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+    line-height: 2;
+  }
+
+  /* ── DATA BANDS ── */
+  .data-band {
+    background: var(--ink);
+    padding: 2rem 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem 3rem;
+    align-items: flex-start;
+  }
+
+  .data-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .data-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+
+  .data-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--parchment);
+    font-style: italic;
+  }
+
+  .data-value.mono {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    font-style: normal;
+    color: var(--aged);
+  }
+
+  /* ── ASTRO BAND ── */
+  .astro-band {
+    background: var(--indigo);
+    padding: 1.5rem 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 2.5rem;
+  }
+
+  .astro-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .astro-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.48rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(200,180,138,0.5);
+  }
+
+  .astro-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: var(--parchment);
+    font-style: italic;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2.5rem 6rem;
+  }
+
+  /* ── PART HEADERS ── */
+  .part-header {
+    margin-top: 5rem;
+    padding: 2.5rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .part-header.mind { background: rgba(28,18,8,0.06); border-left: 4px solid var(--ink); }
+  .part-header.spirit { background: rgba(61,82,41,0.06); border-left: 4px solid var(--moss); }
+  .part-header.soul { background: rgba(44,58,107,0.06); border-left: 4px solid var(--indigo); }
+
+  .part-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .part-header.mind .part-tag { color: var(--ink); }
+  .part-header.spirit .part-tag { color: var(--moss); }
+  .part-header.soul .part-tag { color: var(--indigo); }
+
+  .part-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  .part-header.mind h2 { color: var(--ink); }
+  .part-header.spirit h2 { color: var(--moss); }
+  .part-header.soul h2 { color: var(--indigo); }
+
+  .part-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--smoke);
+    margin-top: 0.5rem;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    margin-top: 4rem;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--aged), transparent);
+    opacity: 0.35;
+  }
+
+  .section-label.mind { color: var(--rust); }
+  .section-label.spirit { color: var(--moss); }
+  .section-label.soul { color: var(--indigo); }
+
+  .section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    line-height: 1.25;
+  }
+
+  .section.mind h3 { color: var(--rust); }
+  .section.spirit h3 { color: var(--moss); }
+  .section.soul h3 { color: var(--indigo); }
+
+  .section p {
+    font-size: 0.97rem;
+    color: var(--smoke);
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+    line-height: 1.78;
+  }
+
+  /* ── PULL QUOTES ── */
+  .pull {
+    padding: 1.3rem 2rem;
+    margin: 2.5rem 0;
+  }
+
+  .pull.mind { border-left: 3px solid var(--rust); background: rgba(139,58,26,0.04); }
+  .pull.spirit { border-left: 3px solid var(--moss); background: rgba(61,82,41,0.04); }
+  .pull.soul { border-left: 3px solid var(--indigo); background: rgba(44,58,107,0.04); }
+
+  .pull p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.65;
+  }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 2rem 2.5rem;
+    margin: 2.5rem 0;
+  }
+
+  .callout-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+
+  .callout h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .callout p {
+    font-size: 0.9rem;
+    color: rgba(242,232,208,0.8);
+    line-height: 1.72;
+    margin-bottom: 0.8rem;
+  }
+
+  .callout p:last-child { margin-bottom: 0; }
+
+  /* ── NUMEROLOGY TABLE ── */
+  .num-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--aged);
+    border: 1px solid var(--aged);
+    margin: 2rem 0;
+  }
+
+  .num-cell {
+    background: var(--cream);
+    padding: 1.4rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .num-cell.master { background: rgba(44,58,107,0.07); }
+
+  .num-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .num-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--indigo);
+    line-height: 1;
+  }
+
+  .num-number .star { color: var(--gold); font-size: 1.2rem; }
+
+  .num-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--rust);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .num-desc {
+    font-size: 0.85rem;
+    color: var(--smoke);
+    line-height: 1.55;
+    margin-top: 0.3rem;
+  }
+
+  /* ── ASTROLOGY DETAIL ── */
+  .astro-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.2rem;
+    margin: 2rem 0;
+  }
+
+  .astro-card {
+    border: 1px solid var(--aged);
+    padding: 1.5rem 1.4rem;
+    background: rgba(44,58,107,0.03);
+    position: relative;
+  }
+
+  .astro-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--indigo);
+    opacity: 0.4;
+  }
+
+  .astro-card-planet {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .astro-card-sign {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--indigo);
+    margin-bottom: 0.6rem;
+  }
+
+  .astro-card p {
+    font-size: 0.86rem;
+    color: var(--smoke);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── FUNCTION STACK ── */
+  .function-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+  }
+
+  .function-row {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    padding: 1rem 1.2rem;
+    border: 1px solid rgba(200,180,138,0.3);
+    background: rgba(250,243,226,0.5);
+  }
+
+  .function-rank {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    min-width: 80px;
+    padding-top: 0.15rem;
+    text-transform: uppercase;
+  }
+
+  .function-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--ink);
+    min-width: 120px;
+  }
+
+  .function-desc {
+    font-size: 0.88rem;
+    color: var(--smoke);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  /* ── ASSIGNMENTS ── */
+  .assignments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+
+  .assignment-card {
+    padding: 1.8rem 1.6rem;
+    border: 1px solid var(--aged);
+    position: relative;
+    background: rgba(242,232,208,0.3);
+  }
+
+  .assignment-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--terracotta);
+  }
+
+  .assignment-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 0.4rem;
+  }
+
+  .assignment-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.7rem;
+  }
+
+  .assignment-card p {
+    font-size: 0.88rem;
+    color: var(--smoke);
+    line-height: 1.62;
+    margin: 0;
+  }
+
+  /* ── INTEGRATION SECTION ── */
+  .integration {
+    margin-top: 5rem;
+    padding: 3rem;
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .integration::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-45deg,transparent,transparent 2px,rgba(184,137,30,0.03) 2px,rgba(184,137,30,0.03) 4px);
+  }
+
+  .integration-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 1.2rem;
+  }
+
+  .integration h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--parchment);
+    margin-bottom: 1.8rem;
+    line-height: 1.2;
+    position: relative;
+  }
+
+  .integration p {
+    font-size: 0.97rem;
+    color: rgba(242,232,208,0.8);
+    line-height: 1.8;
+    margin-bottom: 1.4rem;
+    position: relative;
+  }
+
+  .integration p:last-child { margin-bottom: 0; }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(200,180,138,0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .doc-footer-left {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: var(--aged);
+    text-transform: uppercase;
+    line-height: 2;
+  }
+
+  .doc-footer-right {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--aged);
+  }
+
+  @media (max-width: 640px) {
+    .header, .data-band, .astro-band { padding: 2rem 1.5rem; }
+    main { padding: 0 1.2rem 4rem; }
+    .part-header { padding: 2rem 1.5rem; }
+    .integration { padding: 2rem 1.5rem; }
+    .doc-footer { flex-direction: column; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="torn-top"></div>
+
+<!-- ── HEADER ── -->
+<header class="header">
+  <span class="pontifex-tag">Pontifex · The Trinity Profile · Version 1.0</span>
+  <h1>Mithu Surendra<br><em>Trinity Profile</em></h1>
+  <div class="header-meta">
+    INFJ · Life Path 1 · Expression 9 · Soul Urge 3<br>
+    Sun: Scorpio · Moon: Taurus · Rising: Scorpio<br>
+    Born: 20 November 1995 · 6:34am · Harrow, Greater London<br>
+    Personal Year: 5 · Assembled: April 2026 · Phase 3 Synthesis
+  </div>
+</header>
+
+<!-- ── NUMEROLOGY BAND ── -->
+<div class="data-band">
+  <div class="data-item">
+    <span class="data-label">Life Path</span>
+    <span class="data-value">1 — The Pioneer</span>
+  </div>
+  <div class="data-item">
+    <span class="data-label">Expression</span>
+    <span class="data-value">9 — The Humanitarian</span>
+  </div>
+  <div class="data-item">
+    <span class="data-label">Soul Urge</span>
+    <span class="data-value">3 — The Creator</span>
+  </div>
+  <div class="data-item">
+    <span class="data-label">Personality</span>
+    <span class="data-value">6 — The Nurturer</span>
+  </div>
+  <div class="data-item">
+    <span class="data-label">Birthday</span>
+    <span class="data-value">2 — The Empath</span>
+  </div>
+  <div class="data-item">
+    <span class="data-label">Maturity</span>
+    <span class="data-value">1 — The Self-Actualiser</span>
+  </div>
+  <div class="data-item">
+    <span class="data-label">Personal Year</span>
+    <span class="data-value">5 — Liberation</span>
+  </div>
+</div>
+
+<!-- ── ASTROLOGY BAND ── -->
+<div class="astro-band">
+  <div class="astro-item">
+    <span class="astro-label">☉ Sun</span>
+    <span class="astro-value">Scorpio</span>
+  </div>
+  <div class="astro-item">
+    <span class="astro-label">☽ Moon</span>
+    <span class="astro-value">Taurus</span>
+  </div>
+  <div class="astro-item">
+    <span class="astro-label">↑ Rising</span>
+    <span class="astro-value">Scorpio</span>
+  </div>
+  <div class="astro-item">
+    <span class="astro-label">♀ Venus</span>
+    <span class="astro-value">Sagittarius</span>
+  </div>
+  <div class="astro-item">
+    <span class="astro-label">☿ Mercury</span>
+    <span class="astro-value">Scorpio</span>
+  </div>
+  <div class="astro-item">
+    <span class="astro-label">♂ Mars</span>
+    <span class="astro-value">Virgo</span>
+  </div>
+  <div class="astro-item">
+    <span class="astro-label">♄ Saturn</span>
+    <span class="astro-value">Pisces</span>
+  </div>
+</div>
+
+<div class="torn-bottom"></div>
+
+<main>
+
+  <!-- ════════════════════════════════ PART ONE: MIND ════════════════════════════════ -->
+  <div class="part-header mind">
+    <span class="part-tag">Part One</span>
+    <h2>Mind</h2>
+    <p class="part-desc">How He Thinks</p>
+  </div>
+
+  <!-- Cognitive Signature -->
+  <section class="section mind">
+    <p class="section-label mind">Cognitive Signature</p>
+    <h3>The Operating Sequence</h3>
+
+    <p>Mithu's mind moves in a sequence that begins below the level of thought. Before analysis arrives, he registers a felt sense — a somatic-intuitive read of the situation, the person, the room. This is not emotional reactivity; it is a highly calibrated signal system that processes faster than language. He describes this as "following my desire" or "just knowing" — the 33/NDL synchronicity, the feeling before entering a workshop, the sense that a friend group would betray. These are not accidents or wishful thinking. They are the dominant function at work.</p>
+
+    <p>From that initial felt-intuitive read, Mithu moves into pattern recognition at remarkable speed. He connects what he is experiencing now to what he has experienced before — not chronologically but thematically. He sees the through-line across seemingly unrelated events: the hand shame, the performance trap, the women who mirror his unavailability wound. He names these connections in real-time, often mid-sentence. This is Introverted Intuition (Ni) doing what it does: compressing time, identifying structure beneath apparent chaos, arriving at conclusions that feel suddenly obvious once named.</p>
+
+    <p>The third movement is outward — toward people, toward transmission, toward making the interior insight available. He is not a private thinker. Insight crystallises for him when it leaves the body — through speech, through writing (the book channeled in five days), through direct emotional contact with another person. His charity fundraising revelation — "give value, stop trying to get the sign-up" — arrived through lived practice, not theory. He learns by doing and by saying. This is the Extraverted Feeling (Fe) function completing the loop: the internal insight becomes real when it lands in another person.</p>
+
+    <div class="pull mind">
+      <p>"You may find it weird because I'm very emotionally in tune, gifted and feeling-sensed as well. But I'm also very logical. I love maths."</p>
+    </div>
+
+    <p>The logical-analytical layer is genuine and strong, but it functions as a verification system, not an entry point. He does not think his way into knowing; he knows, then thinks. This sequence — sense → pattern → transmission → verification — is consistent across every domain he describes: real estate research, healing work, spiritual navigation, romantic decision-making.</p>
+  </section>
+
+  <!-- MBTI -->
+  <section class="section mind">
+    <p class="section-label mind">MBTI</p>
+    <h3>INFJ · The Four Functions</h3>
+
+    <div class="function-stack">
+      <div class="function-row">
+        <span class="function-rank">Dominant</span>
+        <span class="function-name">Ni — Introverted Intuition</span>
+        <span class="function-desc">The prophetic function. He sees through surfaces to the underlying pattern — and then trusts that perception completely. The 33/NDL synchronicity, the sense that he "will see her," the knowing that his friend group would betray before it happened. This function gives him his quality of being a step ahead spiritually. The danger: Ni certainty can become rigidity disguised as vision.</span>
+      </div>
+      <div class="function-row">
+        <span class="function-rank">Auxiliary</span>
+        <span class="function-name">Fe — Extraverted Feeling</span>
+        <span class="function-desc">The relational function. He is wired to read the emotional field of the room and calibrate his transmission accordingly. His coaching effectiveness, his charity fundraising mastery, his ability to "soften people very easily" — all Fe. He gives before he receives, almost reflexively. The risk: Fe can collapse into caretaking at the expense of his own needs. "I need to save a woman complex — it's like huge."</span>
+      </div>
+      <div class="function-row">
+        <span class="function-rank">Tertiary</span>
+        <span class="function-name">Ti — Introverted Thinking</span>
+        <span class="function-desc">The analytical function. Less accessible than Ni and Fe, but genuinely present — visible in his love of maths, his ability to construct rigorous frameworks from lived experience, his careful distinctions between manipulation (as extraction) and influence (as love). When Ti is online, his thinking is precise and memorable. When it is not, he can speak in generalizations that feel true but resist examination.</span>
+      </div>
+      <div class="function-row">
+        <span class="function-rank">Inferior</span>
+        <span class="function-name">Se — Extraverted Sensing</span>
+        <span class="function-desc">The embodied-present function. Under stress, Se goes AWOL — he loses track of time, of money, of material consequences. The self-sabotage around the deposit money, the quad bike crash, the tendency to be "addicted to performance" rather than present — these are the inferior function's shadow. When Se is integrated, it is magnificent: the street fundraiser fully in the body, fully present, women attracted, sign-ups flowing. This is the developmental edge.</span>
+      </div>
+    </div>
+
+    <div class="callout">
+      <span class="callout-tag">Critical Blind Spot — Shadow of Dominant Ni</span>
+      <h4>The Certainty That Forecloses</h4>
+      <p>The shadow of dominant Ni is its own conviction. When Ni fires strongly, it feels like direct perception of truth — and often it is. But the times it is wrong, it is very wrong. Mithu has described multiple situations where he read a woman's attraction as a sign, followed his intuition all in, and the outcome was the opposite of what he perceived. The question is not whether his intuition is reliable — it is. The question is: what happens to his inner world when it isn't? The answer appears to be: extended suffering. The blind spot is not the perception itself but the difficulty tolerating the gap between what he sensed and what materialised.</p>
+    </div>
+  </section>
+
+  <!-- Execution & Self-Knowledge -->
+  <section class="section mind">
+    <p class="section-label mind">Execution &amp; Self-Knowledge</p>
+    <h3>The Gap Between Conception and Completion</h3>
+
+    <p>Mithu generates at a rate that exceeds his capacity to execute. The coaching business was attempted multiple times from different angles before it took root. The pickup content period was a detour from his actual work. The self-sabotage pattern with the deposit money is the clearest single example — money that could have become an asset, drained in a fog of unconscious spending. He names this clearly: self-sabotage.</p>
+
+    <p>The primary failure mode is threshold collapse — the closer he gets to a genuine breakthrough, the more an unconscious counterforce activates. This is not laziness or lack of capability. It is an inherited belief about who belongs in prosperity, stability, and sustained success. His parents were in perpetual scarcity even when they had resources. That nervous system pattern runs in him too, and it activates precisely at the moments of greatest potential.</p>
+
+    <div class="pull mind">
+      <p>"I wasted all this money, self-sabotaged. I was like, fuck what now?"</p>
+    </div>
+
+    <p>His self-knowledge is exceptional in the domain of character, pattern, and wound. It is less reliable in the domain of execution timelines, financial sequencing, and the gap between what he says he will do and what happens in the body under pressure. He can name the pattern with precision without yet having consistently interrupted it. The Sophistication Trap is present here: describing self-sabotage in the language of spiritual growth does not yet equal having structurally changed the behaviour.</p>
+
+    <div class="callout">
+      <span class="callout-tag">Sophistication Trap</span>
+      <h4>Named But Not Yet Changed</h4>
+      <p>Mithu has developed exceptional language for his patterns. He can name the self-sabotage, the threshold collapse, the wound under the wound. What the transcript does not yet show is the systematic structural change in the domain of money and completion. High conceptual intelligence used to describe patterns without changing them is the Sophistication Trap. The profile names this not as a failure but as the next developmental threshold: moving from describing the pattern to designing the system that interrupts it, even when the nervous system is screaming to repeat it.</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════ PART TWO: SPIRIT ════════════════════════════════ -->
+  <div class="part-header spirit">
+    <span class="part-tag">Part Two</span>
+    <h2>Spirit</h2>
+    <p class="part-desc">How He Feels &amp; Moves Through the World</p>
+  </div>
+
+  <!-- Emotional Baseline -->
+  <section class="section spirit">
+    <p class="section-label spirit">Emotional Baseline</p>
+    <h3>The Default Weather</h3>
+
+    <p>His baseline emotional state has shifted dramatically across his life. Before the Tulum dark night, the default was chronic anxiety overlaid with performance — a gray cloud, as he calls it, that tracked him from childhood (the hand shame) through his twenties (financial chaos, suicidality, loneliness). The anxiety was not occasional; it was structural, atmospheric, the water he swam in.</p>
+
+    <p>Since the dark night, and particularly since arriving in Bali, the default has recalibrated. His descriptions of walking slowly through Ubud — present, unhurried, radiating — are not hyperbole. They represent a genuine shift in baseline: from anxious performance to grounded presence. But this new baseline is still vulnerable to regression under specific triggers: family re-immersion (the immediate crash back into the family system when he visited London), women who activate the unavailability wound, and financial pressure.</p>
+
+    <p>The emotional weather is variable and responsive — highly sensitive to environment, to the quality of human contact around him, to nature, and to his own inner alignment. He is not a stable-baseline person by constitution. He is a high-range person: at peak alignment, he is extraordinary; at low, he is in genuine distress. The work is not to flatten this range but to raise the floor.</p>
+  </section>
+
+  <!-- Grief & Unfinished Cycles -->
+  <section class="section spirit">
+    <p class="section-label spirit">Grief &amp; Unfinished Cycles</p>
+    <h3>What Has Not Been Completed</h3>
+
+    <p>The primary unfinished cycle is his parents. He describes forgiving his mother "massively recently in the last month" — which places this forgiveness at approximately the time of this recording. It is new, tender, and incomplete in the way that all genuinely new emotional territory is incomplete. The intellectual forgiveness is present. The somatic forgiveness — the body releasing the grief of the love that came in the form of pain — is in process.</p>
+
+    <p>His father carries a separate grief: the failure to protect the family during the financial collapse, the creditors at the door, the 19-year-old boy handling adult consequences while his father hid. Mithu has intellectually made peace with this — "he tried his best" — but he also names clearly that a part of him hasn't accepted it. This is the unfinished grief of the son who became the man before the man had arrived.</p>
+
+    <div class="pull spirit">
+      <p>"Part of loving him is to accept the truth and lovingly hold him responsible for that. I've never really accepted that."</p>
+    </div>
+
+    <p>There is also the cumulative grief of rejection — from women, from friend groups, from belonging structures that arrived and then dissolved. Each individual instance has been processed. The cumulative weight has not. This is the grief underneath the wound: not any single abandonment but the pattern of abandonment that has repeated from childhood through adulthood, until Bali.</p>
+  </section>
+
+  <!-- Relational History -->
+  <section class="section spirit">
+    <p class="section-label spirit">Relational History</p>
+    <h3>The Pattern Across Every Relationship</h3>
+
+    <p>The relational pattern is consistent and visible across every relationship in the transcript: he gives abundantly, loves freely, moves toward full emotional contact — and repeatedly finds himself in connection with people who cannot fully receive what he offers. The women are unavailable. The friends betray. The community leaders mistreat. The mentor manipulates. This is not bad luck. It is the wound seeking itself out, looking for the familiar experience of giving love and not having it received, because that is the primary wound — the love given to parents who could not fully receive it either.</p>
+
+    <div class="pull spirit">
+      <p>"It's the core theme of my life — rejection from everything and everyone. Again and again and again and again. And it's made me, I feel like it's made me into a God."</p>
+    </div>
+
+    <p>What he brings that helps: everything. He is the warmest person in the room, the most loving, the most attuned, the one who sees people most clearly. He makes people feel witnessed in a way they often have not experienced before. This is his Fe at full power, combined with the depth of his own healing work. What he brings that damages: the need to be the one who saves, who gives, who protects — and the resentment that accumulates when that giving is not seen or reciprocated at the level he experiences his giving.</p>
+
+    <p>The central relational truth: he is still learning to receive. He can give love without reservation. He cannot yet receive it without some part of him disbelieving it, testing it, or grieving the gap between what he's offering and what arrives back. The Marta relationship — the one where she kissed his hand while they made love — is the closest he has come to mutual reception. It was also the most destabilising when it ended. Receiving is the developmental edge.</p>
+  </section>
+
+  <!-- Sacred Framework -->
+  <section class="section spirit">
+    <p class="section-label spirit">The Sacred Framework</p>
+    <h3>Relationship to the Larger Field</h3>
+
+    <p>His relationship with God is direct, personal, and tested. This is not inherited religion or borrowed spirituality — he arrived at it through the dark nights, through the mushroom journeys, through lying naked on a concrete floor and making a decision to love himself. God is not abstract for him. God is the intelligence that placed the 33/NDL number plate in his path. God is what spoke clearly in Ubud: "Write a book." God is the felt presence in the room when he is in full alignment.</p>
+
+    <p>His meaning-making framework is consistently alchemical: suffering is not punishment, it is fuel; rejection is not the end, it is expansion of the heart; the dark night is not failure, it is the portal to the next level. This is not spiritual bypass — he does not use the framework to skip the pain. He uses it to metabolise the pain after he has fully entered it. The sequence matters: feel it first, then transmute.</p>
+
+    <p>He has also developed the ability to sense what he calls spirits — presences he encounters in emotionally loaded places (Sri Lanka, the Tulum flat, etc.). He no longer fears these experiences. He approaches them with the same attuned love he brings to human encounters. This is not a metaphor for something else. It is a genuine extension of his sensory and spiritual range.</p>
+  </section>
+
+  <!-- Shadow -->
+  <section class="section spirit">
+    <p class="section-label spirit">Shadow Work</p>
+    <h3>What Lives Underneath the Map</h3>
+
+    <div class="callout">
+      <span class="callout-tag">Primary Shadow</span>
+      <h4>The Performance Underneath the Presence</h4>
+      <p>He has named the performance trap himself — the period of pickup content, the riz videos, the Instagram growth for its own sake. But the shadow is deeper than that chapter. Even now, in his most genuine transmission, there is a layer that watches how it lands, that tracks the attention, that needs the woman to be attracted or the room to be responding. He is aware of this — "I'm hooked on the validation, still am now to an extent." The shadow work is not eliminating this need (that would be suppression, not integration). It is distinguishing between the transmission that comes from love and the performance that comes from the wound, so he can choose which one is speaking at any given moment.</p>
+    </div>
+
+    <div class="callout">
+      <span class="callout-tag">Secondary Shadow</span>
+      <h4>The Saviour Who Also Needs Saving</h4>
+      <p>The "I need to save a woman complex" is his own phrase. It is enormous. It runs through every significant female relationship in the transcript. It is the wound of the boy who watched his mother suffer and could not help her, converted into the adult compulsion to protect women even at the cost of his own boundaries, presence, and needs. The shadow is not the love for women — that is genuine and beautiful. The shadow is the inability to let a woman struggle without feeling responsible for her pain. This dynamic ensures he will continue attracting women who are in some form of distress, because they are the ones who activate his purpose-feeling most reliably.</p>
+    </div>
+
+    <div class="callout">
+      <span class="callout-tag">Tertiary Shadow</span>
+      <h4>The Rage Under the Love</h4>
+      <p>He speaks of "the rage of a thousand lions" when he feels ignored by a woman after believing she was interested. He describes moments of genuine fury — the punchline of the woman tapping his shoulder after ignoring his DM, "now I'm enraged." He manages this well — he does not act it out harmfully. But the rage is present, and it is proportionate to the depth of the wound: every woman who ignores him is, at some level, his mother not seeing him. The shadow is not the rage itself. It is the way the rage, when not acknowledged, converts into the gracious withdrawal — the "I'm fine, I've processed this" — that can bypass the actual grief underneath.</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════ PART THREE: SOUL ════════════════════════════════ -->
+  <div class="part-header soul">
+    <span class="part-tag">Part Three</span>
+    <h2>Soul</h2>
+    <p class="part-desc">What He Came In With</p>
+  </div>
+
+  <!-- Numerology -->
+  <section class="section soul">
+    <p class="section-label soul">Numerology</p>
+    <h3>The Verified Chart — Pythagorean System</h3>
+
+    <p style="font-size: 0.85rem; color: var(--smoke); margin-bottom: 1.5rem;">Calculated from: Mithu Surendra · 20 / 11 / 1995. Note: full legal birth name required for definitive Expression/Soul Urge/Personality numbers. Calculations below use the name as provided in discovery session.</p>
+
+    <div class="num-grid">
+      <div class="num-cell">
+        <span class="num-tag">Life Path</span>
+        <span class="num-number">1</span>
+        <span class="num-title">The Pioneer</span>
+        <p class="num-desc">Day 20→2 + Month 11→2 + Year 1995→24→6 = 10→1. The number of the original, self-starting soul. He came here to initiate, not to follow. Every time he has acted from his own authority — walking away from the friend group, writing the book, declaring himself a spiritual healer — the Life Path has been honoured. Every time he has deferred to another's framework (the pickup world, the appointment setting job, his mother's definitions of success) the energy has gone flat. Life Path 1 must create from self, or it atrophies.</p>
+      </div>
+      <div class="num-cell">
+        <span class="num-tag">Expression</span>
+        <span class="num-number">9</span>
+        <span class="num-title">The Humanitarian</span>
+        <p class="num-desc">M4+I9+T2+H8+U3+S1+U3+R9+E5+N5+D4+R9+A1 = 63→9. The Expression number names how the soul delivers its gifts. Nine is the number of completion, wisdom through suffering, and service at scale. He is not here to help one person at a time. Nine expression means the work moves in waves — it touches many, it releases attachment to outcomes, it gives and keeps moving. The 9 explains his generosity to people who hadn't yet given anything in return (the free business value to Boat Boy, the PlayStation to the shop children).</p>
+      </div>
+      <div class="num-cell">
+        <span class="num-tag">Soul Urge</span>
+        <span class="num-number">3</span>
+        <span class="num-title">The Creator</span>
+        <p class="num-desc">Vowels I9+U3+U3+E5+A1 = 21→3. The Soul Urge is what the innermost self is hungry for. Three is creative expression, joy, play, visibility, making things that delight. This explains what others might see as vanity: his love of attention, his need to perform, his delight in making people laugh. These are not ego attachments. They are the Soul's actual hunger. When the 3 Soul Urge is fed — on stage, in sessions, on the street fundraising, walking slowly through Ubud — he comes fully alive. When it is starved, the anxiety follows.</p>
+      </div>
+      <div class="num-cell">
+        <span class="num-tag">Personality</span>
+        <span class="num-number">6</span>
+        <span class="num-title">The Nurturer</span>
+        <p class="num-desc">Consonants M4+T2+H8+S1+R9+N5+D4+R9 = 42→6. The Personality number is how others experience him before they know him. Six is warmth, care, responsibility, beauty. People feel safe with him immediately. They sense he will not abandon them, that he sees them. This is the energy his charity fundraising manager felt, the workshop women who became famous for knowing him, the clients who ask him for help spontaneously. The 6 also carries the shadow of over-responsibility and saviour energy — giving until it hurts.</p>
+      </div>
+      <div class="num-cell">
+        <span class="num-tag">Birthday</span>
+        <span class="num-number">2</span>
+        <span class="num-title">The Empath</span>
+        <p class="num-desc">Day 20→2. The Birthday number is a secondary talent. Two is sensitivity, cooperation, attunement to others, the ability to feel what is in the room. This amplifies the Fe function and the Scorpio placements — he is wired at a cellular level to read other people's emotional states. The 2 birthday also brings the wound of the peacemaker: the deep discomfort with conflict, the tendency to feel responsible for others' pain, the difficulty holding his own needs as equally important.</p>
+      </div>
+      <div class="num-cell">
+        <span class="num-tag">Maturity</span>
+        <span class="num-number">1</span>
+        <span class="num-title">The Self-Actualiser</span>
+        <p class="num-desc">Life Path 1 + Expression 9 = 10→1. The Maturity number activates around age 35-45. It names who he is becoming. A second 1 in the Maturity position confirms the trajectory: the deepening into authentic self-authority, the building of something original and self-generated, the shedding of borrowed frameworks and others' definitions of him. He is approaching this threshold now. The dark night was the clearing. What comes next is the construction.</p>
+      </div>
+      <div class="num-cell">
+        <span class="num-tag">Personal Year</span>
+        <span class="num-number">5</span>
+        <span class="num-title">Liberation</span>
+        <p class="num-desc">20+11+2026 = 5. The Personal Year 5 is a year of freedom, change, movement, and breaking from the structures that have contained you. He has lost his job, left his apartment, crossed continents, and declared himself a spiritual healer — all Personal Year 5 moves. This is not instability; it is exactly correct for the cycle. The 5 year does not ask for consolidation. It asks for willingness to be remade. The 6 year (2027) will ask for the building.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Astrology -->
+  <section class="section soul">
+    <p class="section-label soul">Astrology</p>
+    <h3>The Chart Signature</h3>
+
+    <div class="astro-detail-grid">
+      <div class="astro-card">
+        <p class="astro-card-planet">☉ Sun · Core Identity</p>
+        <p class="astro-card-sign">Scorpio</p>
+        <p>Sun in Scorpio at 28° — deep in the sign, nearly at its threshold with Sagittarius. This is the soul that transforms through intensity rather than avoiding it. Scorpio does not heal by staying on the surface; it heals by going all the way to the bottom and returning changed. Every descent in the transcript — suicidality, the dark night, the concrete floor in Tulum — is the Scorpio Sun doing its fundamental work. The lion tattoo on the hand is quintessentially Scorpio: turning the wound into the emblem of power.</p>
+      </div>
+      <div class="astro-card">
+        <p class="astro-card-planet">☽ Moon · Emotional Interior</p>
+        <p class="astro-card-sign">Taurus</p>
+        <p>Moon in Taurus is the counterweight to the Scorpio intensity. The emotional interior craves stability, sensory pleasure, beauty, rootedness — things that last. This is why the chaos of the family home was so costly (no emotional stability), why belonging matters so deeply (the Taurus Moon needs to feel held), and why Bali — lush, tropical, grounded in earth and beauty — has been the most healing environment. The Moon in Taurus also explains his profound capacity for physical love: touch, presence, warmth given and received. He grieves its absence sharply.</p>
+      </div>
+      <div class="astro-card">
+        <p class="astro-card-planet">↑ Rising · How He Meets the World</p>
+        <p class="astro-card-sign">Scorpio</p>
+        <p>Scorpio Rising born approximately one hour before sunrise, with the Sun close to the Ascendant. He meets the world with the same energy he carries at his core — there is no social mask, no persona distinct from the self. What you see is what he is. Scorpio Rising generates a magnetic, slightly unsettling quality — people feel seen by him before they've said anything. It is why women stare in Ubud. It is why Julian Blanc respected him from that second. Scorpio Rising does not seduce; it reveals. And people cannot look away.</p>
+      </div>
+      <div class="astro-card">
+        <p class="astro-card-planet">♀ Venus · Love Nature</p>
+        <p class="astro-card-sign">Sagittarius</p>
+        <p>Venus in Sagittarius loves freely, loves philosophically, loves across cultures and borders. This is the placement of the person who falls in love with a woman from Spain met in a Teal Swan community, or who feels drawn to Colombian women, Sri Lankan ancestors, Balinese spiritual practitioners. Love for him is not local or conventional. It is a search for something that expands his world. The shadow of Venus Sagittarius: commitment can feel like a cage before it feels like a home. The freedom-versus-depth tension in his romantic life is partly this placement.</p>
+      </div>
+      <div class="astro-card">
+        <p class="astro-card-planet">☿ Mercury · Communication</p>
+        <p class="astro-card-sign">Scorpio</p>
+        <p>Mercury in Scorpio speaks to go to the bone. He does not do small talk; he does depth. Every conversation is an investigation. He listens for what is not being said as much as what is. His communication style — raw, specific, unfiltered, direct — is Mercury Scorpio operating at full capacity. The dark voice memos recorded by the sea. The way he names his shadow mid-sentence. The precision with which he identifies other people's wounds. Mercury Scorpio is the truth-teller's placement.</p>
+      </div>
+      <div class="astro-card">
+        <p class="astro-card-planet">♂ Mars · Drive &amp; Action</p>
+        <p class="astro-card-sign">Virgo</p>
+        <p>Mars in Virgo is meticulous in service. This is the placement that drives him toward precision in the healing work, toward giving every person in front of him the most useful thing rather than the flashiest. It also explains the gap between the scale of his vision (Scorpio/9 Expression) and his execution style (Mars Virgo works best in close, detailed service rather than broad strokes). Mars Virgo needs systems and process to perform consistently. Without them, the drive can scatter or collapse into perfectionism and self-criticism.</p>
+      </div>
+      <div class="astro-card">
+        <p class="astro-card-planet">♄ Saturn · Discipline &amp; Karma</p>
+        <p class="astro-card-sign">Pisces</p>
+        <p>Saturn in Pisces is the karmic teacher of boundaries in the spiritual and emotional realms. The lesson: to love without dissolving. Pisces Saturn asks him to develop structure around his empathy — not to harden it, but to give it form so it can sustain rather than exhaust him. The women who drain him, the communities he gives to without reciprocity, the dark nights of boundaryless pain — all Saturn in Pisces curriculum. He is in the middle of this lesson, not past it. His greatest spiritual growth will come from learning when to stop the transmission and receive.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Soul Origin -->
+  <section class="section soul">
+    <p class="section-label soul">Soul Origin</p>
+    <h3>What Was Always There</h3>
+
+    <p>Before the wound, before the private school, before the hand shame, before the generational grief — there was a boy who loved making people laugh, who was fought over on the playground because he was undeniably gifted, who was lit up by attention not from vanity but from genuine delight in connection. That original state — joyful, magnetic, giving, fully himself — never left. It was suppressed under years of shame and anxiety and performance, but it was never extinguished. The entire arc of his life is a return to that original frequency.</p>
+
+    <div class="pull soul">
+      <p>"I was born into this family. I grew up like constantly around family. So there was a lot of enmeshment, but also the positivity of like, just constant attention on me all the time — and so I love having attention on me all the fucking time."</p>
+    </div>
+
+    <p>What was always there: the lion. The fire. The refusal to be small, even when the world was telling him to be. He peed his pants at four years old rather than interrupt the class — and then still found a way to survive it. He was failing at university and handling creditors at nineteen and still found the courage to go to a networking event and cry at the London Eye and tell himself he would overcome this. The soul origin is not the wound. The soul origin is the thing that kept going through the wound.</p>
+  </section>
+
+  <!-- The Transmission -->
+  <section class="section soul">
+    <p class="section-label soul">The Transmission</p>
+    <h3>What Is His to Pass Forward</h3>
+
+    <p>He named it himself in a single phrase: <em>What's Your Biggest Pain?</em> — the title of the book he channeled in Ubud in five days. That is the transmission. He is here to help people find, face, and convert their most significant wound into their most significant gift. Not by fixing it. Not by explaining it away. By sitting with them in it, in unconditional love, and then walking with them through the alchemy.</p>
+
+    <div class="pull soul">
+      <p>"Now it's like: sit with unconditional love, getting to the best of my abilities. Whereas back then it was: let's try and fix this."</p>
+    </div>
+
+    <p>The transmission is specifically for people who have been carrying something they cannot show — the equivalent of the hand. The thing that marks them as different, broken, less-than. He knows this territory from the inside. He spent years hiding. He now walks through the world with a lion tattooed on the wound. That is the proof of concept. That is the product. That is the gift.</p>
+
+    <p>The gap between the encoded mission and his current daily practice is narrowing. He has declared himself a spiritual healer. He is in Bali. He is writing. He is transmitting. What remains is the structural and financial architecture that allows this work to scale without requiring him to sacrifice his own wellbeing to give it. The mission is clear. The vehicle needs refinement.</p>
+  </section>
+
+  <!-- Somatic / Body -->
+  <section class="section soul">
+    <p class="section-label soul">The Body &amp; Biological Clock</p>
+    <h3>The Fourth Instrument</h3>
+
+    <p>His body has been the last to be attended to. For most of his life, it was the container for unprocessed emotion — the anxious stomach, the hiding hand, the sweating and smell of an unkempt adolescence that no one taught him to manage. The Tulum dark night was the first time his body was given nothing to do but feel. The mushroom journeys moved the body as instrument — crying, shaking, lying on the floor, physically metabolising what could not be thought away.</p>
+
+    <p>The quad bike crash in Tulum is a somatic event worth studying. He describes being "addicted to performance" immediately before it, and interprets the crash as the universe forcing him to stop and sit in his pain. This is accurate. His body will enforce stillness when his mind will not accept it. The injury — wrist, knee, torso — held him in physical limitation at precisely the moment spiritual surrender was required. Saturn in Pisces at work: the body as the teacher.</p>
+
+    <p><strong>Biological cycle:</strong> Born November 20. His 28-day cycle initiates on the 20th of each month. At the time of this recording (April 2026), his current cycle began approximately April 20. He is currently in the first third of the cycle — the phase of initiation and orientation. This aligns with the recording's tone: a comprehensive accounting of the full arc of his life, as if setting coordinates before the next move.</p>
+
+    <p><strong>Mineral alignment — missing signs:</strong> Born in November (Scorpio), his birth season runs from late October through late November. The three signs absent from his birth season — and therefore representing elemental deficiencies — are Aries, Taurus (interestingly, his Moon sign), and Gemini. The body consistently lacks the fire-mineral vitality of Aries (iron, red foods, heat), the earth-grounding of Taurus (copper, green minerals, physical stability), and the air-communication of Gemini (silica, breath). His chronic anxiety, the difficulty with physical grounding, and the exhaustion cycles are consistent with these deficiencies. The corrective practice is direct sunlight and barefoot earth contact, specifically with red (garnet/ruby for Aries), green (malachite/emerald for Taurus), and yellow (citrine/tiger's eye for Gemini) stones worn or held while grounding.</p>
+
+    <p><strong>Somatic shadow:</strong> The grief and rage he carries for his mother live in the chest and throat. The hand wound lives in the right hand — both in the physical deformity and in the emotional charge still present around the tattoo. The abandonment wound lives in the solar plexus, activated every time a woman pulls away. These are not metaphors. They are the locations where unmetabolised experience is stored. Movement practices, breathwork, and physical touch in safe relational contexts are what begin to move this material — not more thinking about it.</p>
+  </section>
+
+  <!-- ════════════════════════════════ INTEGRATION ════════════════════════════════ -->
+  <div class="integration">
+    <span class="integration-tag">The Integration Question</span>
+    <h2>Where Mind, Spirit, Soul &amp; Body Meet — and Where They Don't</h2>
+
+    <p>The gap in Mithu's life is not between who he believes himself to be and who he actually is. He knows himself with unusual accuracy. The gap is between the man he has become spiritually and emotionally, and the structural material reality in which that man is operating. His Soul is fully arrived. His Spirit has been through the fire and is emerging. His Mind sees everything clearly. His Body is learning to receive instead of just endure. But the outer architecture — the financial stability, the consistent business, the material container for the work — has not yet been built to match the internal development.</p>
+
+    <p>He is a cathedral soul living in a temporary shelter. The shelter has been intentional — the nomadic years, the dark nights, the poverty of Tulum — and they were necessary. The Tulum poverty was the curriculum. But the Personal Year 5 of liberation must give way to the Year 6 of structure, and then the Year 7 of depth, and the architecture must be built. Not because money is the goal, but because the transmission at scale that is his to give requires stability as its foundation. He cannot hold space for others' deepest wounds from a place of chronic financial anxiety. The body knows this. The anxiety that tracks him is partly the soul's signal that the outer container does not yet match the inner development.</p>
+
+    <p>The developmental work of this specific chapter: building the material architecture without sacrificing the spiritual integrity that was earned in the dark. The failure mode to watch is the one where the performance shadow re-enters in the disguise of business growth — where he builds something that looks successful from outside but requires him to perform rather than transmit. The success condition is a practice and a business that asks him to be more himself, not less. He has already demonstrated he knows the difference. The next threshold is proving it structurally, not just philosophically.</p>
+  </div>
+
+  <!-- ════════════════════════════════ ASSIGNMENTS ════════════════════════════════ -->
+  <section class="section soul" style="margin-top: 5rem;">
+    <p class="section-label soul">Current Assignments</p>
+    <h3>Six Named Directives</h3>
+
+    <div class="assignments-grid">
+      <div class="assignment-card">
+        <p class="assignment-num">Primary Focus</p>
+        <h4>Build the Container</h4>
+        <p>The inner work is done to a level that now requires external structure to match it. The assignment is the creation of a sustainable business architecture: clear offer, clear client path, financial systems, recurring income. Not for wealth as an end — for the stability that allows unconditional love to be the primary instrument without anxiety distorting the frequency.</p>
+      </div>
+      <div class="assignment-card">
+        <p class="assignment-num">Shadow Work Priority</p>
+        <h4>Separate Transmission from Performance</h4>
+        <p>The ongoing practice: before each session, piece of content, or public act — pause and ask: is this coming from love or from the need to be seen? Both will produce output. Only one will produce transformation. The distinction is detectable in the body. Transmission feels open. Performance feels effortful. Learn the difference in real-time.</p>
+      </div>
+      <div class="assignment-card">
+        <p class="assignment-num">Embodiment Practice</p>
+        <h4>Receive Without Deflecting</h4>
+        <p>The specific practice: when someone offers genuine love, appreciation, or care — stop, breathe, and let it land before responding. The reflex is to deflect with humour, redirect with giving, or immediately match with reciprocal care. The assignment is the pause. Let the love in. Count to five. Then respond. This is the relational edge and the somatic healing simultaneously.</p>
+      </div>
+      <div class="assignment-card">
+        <p class="assignment-num">Somatic Alignment Practice</p>
+        <h4>Sun · Earth · Stone</h4>
+        <p>Daily barefoot contact with earth, minimum 20 minutes, in direct sunlight. Wear or hold stones aligned with missing birth-season signs: garnet or red jasper (Aries — iron/heat), malachite or green aventurine (Taurus — copper/ground), citrine or tiger's eye (Gemini — silica/air). Allow sunlight to pass through the stones toward the body. This is the specific somatic corrective for the mineral deficiencies underlying chronic anxiety and physical depletion.</p>
+      </div>
+      <div class="assignment-card">
+        <p class="assignment-num">Relational Awareness</p>
+        <h4>Notice the Pull to Save</h4>
+        <p>When a woman is in distress — or when he perceives a woman as in distress — pause before moving to protect or fix. Ask: is my care being invited, or am I projecting my mother's suffering onto her? The assignment is not to stop caring. It is to care from choice rather than compulsion. The distinction will save him from the next Marta pattern.</p>
+      </div>
+      <div class="assignment-card">
+        <p class="assignment-num">Next Review</p>
+        <h4>November 20, 2026</h4>
+        <p>His 31st birthday. Personal Year 6 begins. The key question: what has been built since the declaration? Not what has been felt, understood, or transmitted — what has been built? The review question is material: does the outer architecture now match the inner development? If not — what is still in the way?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <div class="doc-footer-left">
+      Pontifex · The Trinity Profile<br>
+      Mithu Surendra · Version 1.0<br>
+      April 2026 · Phase 3 Synthesis
+    </div>
+    <div class="doc-footer-right">Assembled from discovery transcripts &amp; birth data</div>
+  </div>
+
+</main>
+
+</body>
+</html>
