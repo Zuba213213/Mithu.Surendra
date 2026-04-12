@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mithu Surendra — Story &amp; Process Extraction</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1208;
+    --parchment: #f2e8d0;
+    --aged: #c8b48a;
+    --rust: #8b3a1a;
+    --moss: #3d5229;
+    --gold: #b8891e;
+    --terracotta: #a04820;
+    --smoke: #6b5c48;
+    --cream: #faf3e2;
+    --deep: #0f0b06;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.75;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  /* ── TORN TOP ── */
+  .torn {
+    width: 100%;
+    height: 32px;
+    background: var(--moss);
+    clip-path: polygon(
+      0 0, 100% 0, 100% 35%,
+      98% 95%, 96% 40%, 94% 85%, 92% 20%, 90% 70%,
+      88% 45%, 86% 88%, 84% 30%, 82% 75%, 80% 15%,
+      78% 65%, 76% 40%, 74% 90%, 72% 25%, 70% 72%,
+      68% 38%, 66% 82%, 64% 18%, 62% 68%, 60% 42%,
+      58% 88%, 56% 22%, 54% 70%, 52% 35%, 50% 80%,
+      48% 12%, 46% 62%, 44% 38%, 42% 85%, 40% 20%,
+      38% 72%, 36% 45%, 34% 90%, 32% 28%, 30% 75%,
+      28% 15%, 26% 65%, 24% 40%, 22% 88%, 20% 22%,
+      18% 70%, 16% 42%, 14% 88%, 12% 18%, 10% 68%,
+      8% 35%, 6% 80%, 4% 20%, 2% 65%, 0 30%
+    );
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--moss);
+    padding: 3rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -55deg, transparent, transparent 3px,
+      rgba(242,232,208,0.03) 3px, rgba(242,232,208,0.03) 6px
+    );
+  }
+
+  .doc-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    color: var(--aged);
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 1.4rem;
+    display: block;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 400;
+    color: var(--parchment);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin-bottom: 0.6rem;
+  }
+
+  .header h1 em {
+    font-style: italic;
+    color: #a8c480;
+  }
+
+  .header-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--aged);
+    letter-spacing: 0.2em;
+    opacity: 0.6;
+    margin-top: 1.8rem;
+    text-transform: uppercase;
+  }
+
+  .torn-bottom {
+    width: 100%;
+    height: 32px;
+    background: var(--moss);
+    clip-path: polygon(
+      0 100%, 100% 100%, 100% 65%,
+      98% 10%, 96% 60%, 94% 18%, 92% 75%, 90% 38%,
+      88% 82%, 86% 22%, 84% 68%, 82% 38%, 80% 85%,
+      78% 18%, 76% 65%, 74% 28%, 72% 78%, 70% 42%,
+      68% 88%, 66% 22%, 64% 72%, 62% 32%, 60% 82%,
+      58% 15%, 56% 62%, 54% 35%, 52% 80%, 50% 18%,
+      48% 68%, 46% 30%, 44% 78%, 42% 15%, 40% 65%,
+      38% 28%, 36% 72%, 34% 15%, 32% 62%, 30% 32%,
+      28% 82%, 26% 18%, 24% 65%, 22% 28%, 20% 78%,
+      18% 20%, 16% 68%, 14% 32%, 12% 78%, 10% 22%,
+      8% 68%, 6% 30%, 4% 78%, 2% 20%, 0 55%
+    );
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 2.5rem 6rem;
+  }
+
+  .section {
+    margin-top: 5rem;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--aged), transparent);
+    opacity: 0.4;
+  }
+
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--moss);
+    margin-bottom: 1.8rem;
+    line-height: 1.2;
+  }
+
+  .section p {
+    color: var(--smoke);
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+  }
+
+  .pull {
+    border-left: 3px solid var(--moss);
+    padding: 1.2rem 2rem;
+    margin: 2.5rem 0;
+    background: rgba(61,82,41,0.04);
+  }
+
+  .pull p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.65;
+  }
+
+  /* ── NARRATIVE ARC ── */
+  .arc-timeline {
+    position: relative;
+    margin-top: 2.5rem;
+  }
+
+  .arc-timeline::before {
+    content: '';
+    position: absolute;
+    left: 22px;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--moss), var(--gold), var(--terracotta));
+    opacity: 0.5;
+  }
+
+  .arc-node {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding-left: 0;
+    position: relative;
+  }
+
+  .arc-dot {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 2px solid var(--moss);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--moss);
+    position: relative;
+    z-index: 2;
+    font-weight: 700;
+  }
+
+  .arc-node.pivot .arc-dot {
+    background: var(--ink);
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .arc-content {
+    padding-top: 0.5rem;
+    flex: 1;
+  }
+
+  .arc-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 0.4rem;
+  }
+
+  .arc-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.7rem;
+  }
+
+  .arc-content p {
+    font-size: 0.93rem;
+    color: var(--smoke);
+    line-height: 1.72;
+    margin-bottom: 0.7rem;
+  }
+
+  .arc-content p:last-child { margin-bottom: 0; }
+
+  /* ── PHASE CARDS ── */
+  .phase-block {
+    border: 1px solid var(--aged);
+    padding: 2.2rem 2rem;
+    margin-bottom: 1.8rem;
+    position: relative;
+    background: rgba(250,243,226,0.5);
+  }
+
+  .phase-block::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--moss);
+  }
+
+  .phase-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-bottom: 0.4rem;
+  }
+
+  .phase-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .phase-subtitle {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .phase-block p {
+    font-size: 0.93rem;
+    color: var(--smoke);
+    line-height: 1.72;
+    margin-bottom: 0.8rem;
+  }
+
+  .phase-block p:last-child { margin-bottom: 0; }
+
+  .marker-list {
+    margin-top: 1rem;
+    border-top: 1px solid rgba(200,180,138,0.3);
+    padding-top: 1rem;
+  }
+
+  .marker-list-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--aged);
+    margin-bottom: 0.7rem;
+  }
+
+  .marker-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.6rem;
+    align-items: flex-start;
+  }
+
+  .marker-item::before {
+    content: '→';
+    color: var(--moss);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+  }
+
+  .marker-item span {
+    font-size: 0.9rem;
+    color: var(--smoke);
+    line-height: 1.6;
+  }
+
+  /* ── TRANSFORMATION TABLE ── */
+  .transform-grid {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 0;
+    margin: 2rem 0;
+    border: 1px solid var(--aged);
+  }
+
+  .transform-col {
+    padding: 2rem 1.8rem;
+  }
+
+  .transform-col.before {
+    background: rgba(139,58,26,0.04);
+    border-right: 1px solid var(--aged);
+  }
+
+  .transform-col.after {
+    background: rgba(61,82,41,0.04);
+    border-left: 1px solid var(--aged);
+  }
+
+  .transform-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--aged);
+  }
+
+  .transform-col-head {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .transform-col.before .transform-col-head { color: var(--terracotta); }
+  .transform-col.after .transform-col-head { color: var(--moss); }
+
+  .transform-item {
+    display: flex;
+    gap: 0.7rem;
+    margin-bottom: 0.8rem;
+    align-items: flex-start;
+    font-size: 0.9rem;
+    color: var(--smoke);
+    line-height: 1.5;
+  }
+
+  .transform-item::before {
+    content: '·';
+    font-family: 'Space Mono', monospace;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .transform-col.before .transform-item::before { color: var(--terracotta); }
+  .transform-col.after .transform-item::before { color: var(--moss); }
+
+  /* ── VOICE LEXICON ── */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+
+  .voice-card {
+    padding: 1.5rem 1.4rem;
+    border: 1px solid var(--aged);
+    background: rgba(242,232,208,0.3);
+  }
+
+  .voice-card-type {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.56rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.7rem;
+  }
+
+  .voice-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.7rem;
+  }
+
+  .phrase-list {
+    list-style: none;
+  }
+
+  .phrase-list li {
+    font-size: 0.88rem;
+    color: var(--smoke);
+    padding: 0.35rem 0;
+    border-bottom: 1px solid rgba(200,180,138,0.2);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .phrase-list li:last-child { border-bottom: none; }
+
+  /* ── VOICE PRINCIPLES ── */
+  .voice-rule {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid rgba(200,180,138,0.25);
+    align-items: flex-start;
+  }
+
+  .voice-rule:last-child { border-bottom: none; }
+
+  .rule-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--moss);
+    min-width: 130px;
+    padding-top: 0.2rem;
+  }
+
+  .rule-content {
+    font-size: 0.93rem;
+    color: var(--smoke);
+    line-height: 1.7;
+  }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    margin-top: 6rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(200,180,138,0.35);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .doc-footer-left {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    color: var(--aged);
+    text-transform: uppercase;
+    line-height: 2;
+  }
+
+  .doc-footer-right {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--aged);
+  }
+
+  @media (max-width: 640px) {
+    .header { padding: 2rem 1.5rem 3rem; }
+    main { padding: 0 1.2rem 4rem; }
+    .transform-grid { grid-template-columns: 1fr; }
+    .transform-arrow { padding: 1rem; transform: rotate(90deg); }
+    .arc-timeline::before { display: none; }
+    .doc-footer { flex-direction: column; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="torn"></div>
+
+<header class="header">
+  <span class="doc-tag">Internal Document — Phase 3: Synthesis / Story &amp; Process Extraction</span>
+  <h1>Mithu Surendra<br><em>Story &amp; Process Extraction</em></h1>
+  <p class="header-sub">Origin narrative arc · Intuitive methodology · Transformation map · Voice lexicon</p>
+</header>
+
+<div class="torn-bottom"></div>
+
+<main>
+
+  <!-- ── 01 ORIGIN STORY ARC ── -->
+  <section class="section">
+    <p class="section-label">01</p>
+    <h2>Origin Story Narrative Arc</h2>
+    <p>The arc follows the classic hero structure but arrives through a distinctly Tamil-London-spiritual path. It moves in three clean phases: the accumulated wound, the breaking point that became a portal, and the work that emerged from the other side.</p>
+
+    <div class="arc-timeline">
+
+      <div class="arc-node">
+        <div class="arc-dot">W1</div>
+        <div class="arc-content">
+          <p class="arc-title">The Inherited Wound</p>
+          <h3>Born into Generational Grief</h3>
+          <p>Sri Lankan Tamil parents — genocide refugees — arrive in London carrying unspeakable pain with no language to process it. They love the best way they know: through education, status, achievement. Mithu enters the world already inheriting a lineage of anxiety, shame, and survival mode.</p>
+          <p>The deformed hand arrives not as a problem, but as the thing onto which all existing shame gets projected. A gray cloud. He hides it for years — in cricket, at dinner tables, at networking events.</p>
+        </div>
+      </div>
+
+      <div class="arc-node">
+        <div class="arc-dot">W2</div>
+        <div class="arc-content">
+          <p class="arc-title">The Private School Exile</p>
+          <h3>Inferior in Both Worlds</h3>
+          <p>Moved to a private school on a bursary — too poor to belong there, too educated to belong back. Inferiority becomes the operating system. Forced studying until 1am. No one teaching him to do laundry, get haircuts, take care of himself. His wellbeing was not part of the curriculum.</p>
+        </div>
+      </div>
+
+      <div class="arc-node">
+        <div class="arc-dot">W3</div>
+        <div class="arc-content">
+          <p class="arc-title">The Substitute Family</p>
+          <h3>Belonging Found, Then Lost</h3>
+          <p>The Noah Hill friend group becomes everything — "more than friends, they were family." The first real belonging. Then systematically dismantled by betrayal. Kavan with Hannah. The Tuna-Ajit situation. Each time he walks away intact, morally, but with another wound in his chest where belonging used to be.</p>
+        </div>
+      </div>
+
+      <div class="arc-node pivot">
+        <div class="arc-dot">★</div>
+        <div class="arc-content">
+          <p class="arc-title">The Breaking Point — January 2020</p>
+          <h3>Suicidality as a Portal</h3>
+          <p>Rock bottom. Suicidal. Alone in it. Teal Swan releases a video titled <em>How to Overcome the Desire to Kill Yourself</em> at the exact moment he needs it. This is his first encounter with the idea that the universe responds — that someone or something is paying attention to his pain.</p>
+          <p>He does not die. He decides to live. And from that decision, the real work begins.</p>
+          <p><em>"Only when you want to kill yourself can you decide that you want to live."</em></p>
+        </div>
+      </div>
+
+      <div class="arc-node">
+        <div class="arc-dot">A1</div>
+        <div class="arc-content">
+          <p class="arc-title">First Awakening</p>
+          <h3>Berlin, 2018 — The Hand in Public</h3>
+          <p>At Julian Blanc's workshop in Berlin, in front of 200 people and cameras, he raises his hand and says: <em>I am insecure about my hand.</em> He describes it like King Arthur pulling the sword from the stone. Slow, painful, and once done — a massive, irreversible release.</p>
+          <p>This is the first time he chooses visibility over shame. It becomes the foundational act of everything that follows.</p>
+        </div>
+      </div>
+
+      <div class="arc-node">
+        <div class="arc-dot">A2</div>
+        <div class="arc-content">
+          <p class="arc-title">The Dark Night — Tulum, 2024</p>
+          <h3>Everything Gone, Everything Found</h3>
+          <p>He is broke, alone, injured (quad bike crash), in daily anxiety spirals, unable to work. Naked on a concrete floor in a puddle of his own tears, snot, and saliva. In this moment, he decides to love himself. Not as a concept. As a declaration.</p>
+          <p>Two mushroom journeys process what years of coaching and therapy couldn't. He connects with God as a direct, living relationship. The dark night ends not with rescue but with surrender — and surrender, he finds, gives peace.</p>
+        </div>
+      </div>
+
+      <div class="arc-node">
+        <div class="arc-dot">A3</div>
+        <div class="arc-content">
+          <p class="arc-title">The Emergence</p>
+          <h3>Bali — Sri Lanka — The Book — The Work</h3>
+          <p>A synchronicity (the 33/NDL car plate) leads him to Bali by way of Sri Lanka — ancestral home — where he feels, for the first time, a sense of belonging encoded in his DNA. He writes a channeled book in five days (<em>What's Your Biggest Pain?</em>). He becomes a spiritual healer. He walks slowly through Ubud, present, gorgeous, radiating.</p>
+          <p>The wound did not disappear. It became the offer.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── 02 INTUITIVE METHODOLOGY ── -->
+  <section class="section">
+    <p class="section-label">02</p>
+    <h2>The Intuitive Methodology — Named Phases</h2>
+    <p>Mithu does not run a fixed protocol. He runs an attunement process — but across the transcript, clear phases emerge with observable markers at each transition. These are the bones of his methodology.</p>
+
+    <div class="phase-block">
+      <p class="phase-num">Phase One</p>
+      <h3>The Welcome</h3>
+      <p class="phase-subtitle">Warmth Before Depth</p>
+      <p>He enters through humour, presence, and genuine delight in the other person. No agenda. This is not a technique — it is his natural warmth. The purpose is nervous system safety. The client needs to feel that they are not being assessed or fixed. They are being met.</p>
+      <div class="marker-list">
+        <p class="marker-list-title">Observable Transition Markers</p>
+        <div class="marker-item"><span>Laughter appears — the client's guard begins to lower</span></div>
+        <div class="marker-item"><span>The client starts talking about themselves without being asked directly</span></div>
+        <div class="marker-item"><span>Mithu becomes quieter — he moves from initiating to receiving</span></div>
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <p class="phase-num">Phase Two</p>
+      <h3>The Attunement</h3>
+      <p class="phase-subtitle">Reading What Is Actually Present</p>
+      <p>He reads the room at a felt-sense level — what is the person hiding, what is the real pain beneath the presenting issue, where is the energy contracted. This is the same skill he used on the street (give value to what's actually in front of you, not what you want to sell) and in his sessions with trauma survivors. He does not map the client onto a model. He reads <em>them</em>.</p>
+      <div class="marker-list">
+        <p class="marker-list-title">Observable Transition Markers</p>
+        <div class="marker-item"><span>He names something the client hasn't said out loud yet</span></div>
+        <div class="marker-item"><span>The client's eyes change — recognition without words</span></div>
+        <div class="marker-item"><span>A pause enters the conversation that wasn't there before</span></div>
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <p class="phase-num">Phase Three</p>
+      <h3>The Mirror</h3>
+      <p class="phase-subtitle">Naming the Hidden Thing With Love</p>
+      <p>This is the core move. He names what is true — the wound, the pattern, the thing they are hiding — not as a diagnosis but as a loving recognition. His Berlin moment is the model: slow, public, painful, and releasing. He holds space for the person to do their Berlin moment. The mirror only works because it is unconditional. He is not trying to fix them. He is seeing them.</p>
+      <p><em>"Now it's like: sit with unconditional love. Whereas back then it was: let's try and fix this."</em></p>
+      <div class="marker-list">
+        <p class="marker-list-title">Observable Transition Markers</p>
+        <div class="marker-item"><span>The client says "no one has ever said that to me before" or similar</span></div>
+        <div class="marker-item"><span>Emotion arrives — often suddenly, as if a valve opened</span></div>
+        <div class="marker-item"><span>The client stops performing and starts being</span></div>
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <p class="phase-num">Phase Four</p>
+      <h3>The Alchemy</h3>
+      <p class="phase-subtitle">From Wound to Resource</p>
+      <p>He does not leave the client in the wound. He walks with them through the conversion — the same alchemy he has performed on himself repeatedly. The hand becomes the lion tattoo. The shame becomes the offer. He does this through questions, through story, through direct transmission of his own lived experience of making the same turn. This is where the work becomes theirs, not just his.</p>
+      <div class="marker-list">
+        <p class="marker-list-title">Observable Transition Markers</p>
+        <div class="marker-item"><span>The client starts reframing their own story — spontaneously, without prompting</span></div>
+        <div class="marker-item"><span>Energy in the room (or call) shifts — from heavy to something lighter</span></div>
+        <div class="marker-item"><span>The client begins asking different questions: "what if" rather than "why"</span></div>
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <p class="phase-num">Phase Five</p>
+      <h3>The Expansion</h3>
+      <p class="phase-subtitle">Leaving Bigger Than They Arrived</p>
+      <p>The end of a Mithu session is not a summary. It is a send-off. He sends people back into their lives with more of themselves than they had when they walked in. His marker of success is not whether they feel good — it is whether they feel <em>more real</em>. More capable of being seen. More willing to take up space.</p>
+      <div class="marker-list">
+        <p class="marker-list-title">Observable Transition Markers</p>
+        <div class="marker-item"><span>The client says something they couldn't have said at the start</span></div>
+        <div class="marker-item"><span>There is a specific decision, intention, or action they name before leaving</span></div>
+        <div class="marker-item"><span>Something about the way they carry themselves changes — posture, breath, pace of speech</span></div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── 03 TRANSFORMATION MAP ── -->
+  <section class="section">
+    <p class="section-label">03</p>
+    <h2>The Transformation He Delivers</h2>
+    <p>This is the before-and-after state his clients move through. Mapped from what Mithu describes about his own journey and what he names as the work he does with others.</p>
+
+    <div class="transform-grid">
+      <div class="transform-col before">
+        <span class="transform-col-head">Before State</span>
+        <div class="transform-item">Hiding the thing they're most ashamed of</div>
+        <div class="transform-item">Living to be seen by others; dying when they're not</div>
+        <div class="transform-item">Performing love, connection, and belonging</div>
+        <div class="transform-item">Running from pain at a billion miles an hour</div>
+        <div class="transform-item">Trying to fix, control, and escape emotion</div>
+        <div class="transform-item">Sense of worth tied to external achievement</div>
+        <div class="transform-item">Waiting for someone to finally witness them</div>
+        <div class="transform-item">Believing the wound makes them less</div>
+      </div>
+      <div class="transform-arrow">→</div>
+      <div class="transform-col after">
+        <span class="transform-col-head">After State</span>
+        <div class="transform-item">Able to show the hidden thing — in public, with love</div>
+        <div class="transform-item">Internally sourced; validation is welcome but not required</div>
+        <div class="transform-item">Dropping into genuine love, presence, and belonging</div>
+        <div class="transform-item">Staying with pain long enough to let it move through</div>
+        <div class="transform-item">Accepting and feeling fully — "giving up" as a practice of peace</div>
+        <div class="transform-item">Sense of worth rooted in self-decided identity</div>
+        <div class="transform-item">Witnessing themselves — and being witnessed by God</div>
+        <div class="transform-item">Knowing the wound is exactly the fuel they needed</div>
+      </div>
+    </div>
+
+    <div class="pull">
+      <p>"It was all energy. It was all potential. It's like fuel. It's fuel that made me who I am now. I fucking love it."</p>
+    </div>
+  </section>
+
+  <!-- ── 04 VOICE LEXICON ── -->
+  <section class="section">
+    <p class="section-label">04</p>
+    <h2>His Natural Language — The Voice Lexicon</h2>
+    <p>All copy, content, and brand language should stay inside this register. These are not crafted phrases — they are the actual words and syntax patterns he uses when speaking from his truest self. Any copy that sounds too polished, too corporate, or too soft has drifted out of voice.</p>
+
+    <div class="voice-grid">
+
+      <div class="voice-card">
+        <p class="voice-card-type">Power Words</p>
+        <h4>His Signature Vocabulary</h4>
+        <ul class="phrase-list">
+          <li>Alchemy / alchemize</li>
+          <li>Fuel / fire in the soul</li>
+          <li>God / God-given</li>
+          <li>Transmission</li>
+          <li>Unconditional love</li>
+          <li>Dark night of the soul</li>
+          <li>Healing journey</li>
+          <li>Bit by bit</li>
+          <li>Divinty / divine</li>
+          <li>The real man / true grounded masculinity</li>
+        </ul>
+      </div>
+
+      <div class="voice-card">
+        <p class="voice-card-type">Frame Phrases</p>
+        <h4>How He Contextualises Pain</h4>
+        <ul class="phrase-list">
+          <li>"It's all fuel."</li>
+          <li>"The wound is the offer."</li>
+          <li>"Bit by bit pulled myself out."</li>
+          <li>"Giving up gave me peace."</li>
+          <li>"The beauty of suicidality is..."</li>
+          <li>"It was like King Arthur pulling the sword."</li>
+          <li>"That's what it gave me — this fight."</li>
+          <li>"God will put you in situations to give you life lessons."</li>
+        </ul>
+      </div>
+
+      <div class="voice-card">
+        <p class="voice-card-type">Self-Description</p>
+        <h4>How He Names Himself</h4>
+        <ul class="phrase-list">
+          <li>"I'm a spiritual healer."</li>
+          <li>"I'm like a big mirror for people."</li>
+          <li>"I'm very emotionally in tune."</li>
+          <li>"I love people deeply."</li>
+          <li>"I'm very logical AND very feeling."</li>
+          <li>"I'm realising I'm God."</li>
+          <li>"I have a fire in my soul."</li>
+          <li>"I love having attention on me."</li>
+        </ul>
+      </div>
+
+      <div class="voice-card">
+        <p class="voice-card-type">Lived Examples</p>
+        <h4>Stories He Returns To</h4>
+        <ul class="phrase-list">
+          <li>The hand in Berlin</li>
+          <li>The London Eye and the tears</li>
+          <li>The concrete floor in Tulum</li>
+          <li>The lion tattoo on the hand</li>
+          <li>Sri Lanka and the feeling of home</li>
+          <li>The street charity fundraising revelation</li>
+          <li>The 33/NDL synchronicity</li>
+          <li>Writing the book in five days in Ubud</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <p style="margin-top: 2rem; font-weight: 300; font-size: 1rem; color: var(--smoke);">Note on register: Mithu code-switches naturally. With close friends and in his own head, he speaks raw — profanity, abbreviation, South London cadence. In his work context, he speaks with precision and care but never loses the directness or the warmth. Copy should not sanitise either mode. The rawness is part of the authority.</p>
+
+    <!-- Voice Principles -->
+    <div style="margin-top: 3rem;">
+      <p class="section-label">Copy Rules Derived from Voice</p>
+
+      <div class="voice-rule">
+        <span class="rule-tag">Never Passive</span>
+        <span class="rule-content">He uses active, declarative language. "I decided." "I chose." "I went." "I walked away." Copy should follow this — active verbs, direct address, no hedging.</span>
+      </div>
+      <div class="voice-rule">
+        <span class="rule-tag">Pain First</span>
+        <span class="rule-content">He always opens with the real, including the dark parts. Copy that leads with aspiration without acknowledging the pain will feel hollow to his clients. Lead with the truth of the wound before the offer of the transformation.</span>
+      </div>
+      <div class="voice-rule">
+        <span class="rule-tag">God Is Present</span>
+        <span class="rule-content">He speaks about God as a direct relationship, not a concept. This is not religious language — it is experiential. Copy should not scrub this out to be more "universal." It is specific and that specificity is the trust signal.</span>
+      </div>
+      <div class="voice-rule">
+        <span class="rule-tag">No Faking</span>
+        <span class="rule-content">"You can't lie. You can't fake this shit." Any brand language that sounds like it's performing wellness, masculinity, or spirituality will read as exactly what he rejects. The voice must carry the weight of having actually been through it.</span>
+      </div>
+      <div class="voice-rule">
+        <span class="rule-tag">Warmth Before Wisdom</span>
+        <span class="rule-content">He is funny before he is profound. Copy should not open with a teaching — it should open with presence, warmth, something human. The depth lands harder when it's arrived at, not announced.</span>
+      </div>
+      <div class="voice-rule">
+        <span class="rule-tag">Specificity Wins</span>
+        <span class="rule-content">The red lights on the London Eye. The number 33. The concrete floor. The lion tattoo. Specific images carry more emotional weight than general statements. Copy should use the real, particular details of his life — not abstracted summaries.</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <div class="doc-footer-left">
+      Mithu Surendra Collaboration Project<br>
+      Phase 3 — Synthesis<br>
+      Story &amp; Process Extraction · Step Two
+    </div>
+    <div class="doc-footer-right">Derived from discovery transcripts only</div>
+  </div>
+
+</main>
+
+</body>
+</html>
