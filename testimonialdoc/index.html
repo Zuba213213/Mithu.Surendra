@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mithu Surendra — Client Testimonials</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1208;
+    --parchment: #f2e8d0;
+    --aged: #c8b48a;
+    --rust: #8b3a1a;
+    --moss: #3d5229;
+    --gold: #b8891e;
+    --terracotta: #a04820;
+    --smoke: #6b5c48;
+    --cream: #faf3e2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.75;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  .torn-top {
+    width: 100%;
+    height: 32px;
+    background: var(--rust);
+    clip-path: polygon(0 0,100% 0,100% 35%,98% 95%,96% 40%,94% 85%,92% 20%,90% 70%,88% 45%,86% 88%,84% 30%,82% 75%,80% 15%,78% 65%,76% 40%,74% 90%,72% 25%,70% 72%,68% 38%,66% 82%,64% 18%,62% 68%,60% 42%,58% 88%,56% 22%,54% 70%,52% 35%,50% 80%,48% 12%,46% 62%,44% 38%,42% 85%,40% 20%,38% 72%,36% 45%,34% 90%,32% 28%,30% 75%,28% 15%,26% 65%,24% 40%,22% 88%,20% 22%,18% 70%,16% 42%,14% 88%,12% 18%,10% 68%,8% 35%,6% 80%,4% 20%,2% 65%,0 30%);
+  }
+
+  .torn-bottom {
+    width: 100%;
+    height: 32px;
+    background: var(--rust);
+    clip-path: polygon(0 100%,100% 100%,100% 65%,98% 10%,96% 60%,94% 18%,92% 75%,90% 38%,88% 82%,86% 22%,84% 68%,82% 38%,80% 85%,78% 18%,76% 65%,74% 28%,72% 78%,70% 42%,68% 88%,66% 22%,64% 72%,62% 32%,60% 82%,58% 15%,56% 62%,54% 35%,52% 80%,50% 18%,48% 68%,46% 30%,44% 78%,42% 15%,40% 65%,38% 28%,36% 72%,34% 15%,32% 62%,30% 32%,28% 82%,26% 18%,24% 65%,22% 28%,20% 78%,18% 20%,16% 68%,14% 32%,12% 78%,10% 22%,8% 68%,6% 30%,4% 78%,2% 20%,0 55%);
+  }
+
+  .header {
+    background: var(--rust);
+    padding: 3rem 4rem 3.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-55deg,transparent,transparent 3px,rgba(242,232,208,0.03) 3px,rgba(242,232,208,0.03) 6px);
+  }
+
+  .doc-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.4em;
+    color: var(--parchment);
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin-bottom: 1.4rem;
+    display: block;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 400;
+    color: var(--parchment);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+  }
+
+  .header h1 em {
+    font-style: italic;
+    color: var(--aged);
+  }
+
+  .header-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--parchment);
+    letter-spacing: 0.2em;
+    opacity: 0.55;
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  /* ── FILTER BAR ── */
+  .filter-bar {
+    background: var(--ink);
+    padding: 1.2rem 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    align-items: center;
+  }
+
+  .filter-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--aged);
+    opacity: 0.6;
+    margin-right: 0.5rem;
+  }
+
+  .filter-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border: 1px solid rgba(200,180,138,0.3);
+    background: transparent;
+    color: var(--aged);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink);
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: rgba(28,18,8,0.04);
+    border-bottom: 1px solid rgba(200,180,138,0.2);
+    padding: 1.2rem 4rem;
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-style: italic;
+    color: var(--rust);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--smoke);
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 4rem 2.5rem 6rem;
+  }
+
+  /* ── FEATURED ── */
+  .featured-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .featured-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--aged), transparent);
+    opacity: 0.35;
+  }
+
+  /* ── FEATURED CARD ── */
+  .featured-card {
+    background: var(--ink);
+    padding: 3rem 3.5rem;
+    margin-bottom: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .featured-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-45deg,transparent,transparent 2px,rgba(184,137,30,0.03) 2px,rgba(184,137,30,0.03) 4px);
+  }
+
+  .featured-card .client-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .featured-card .client-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--parchment);
+    margin-bottom: 0.3rem;
+    position: relative;
+  }
+
+  .featured-card .client-context {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--aged);
+    letter-spacing: 0.15em;
+    opacity: 0.6;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .featured-card blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    color: var(--parchment);
+    line-height: 1.65;
+    border-left: 3px solid var(--gold);
+    padding-left: 1.8rem;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .featured-card .body-text {
+    font-size: 0.93rem;
+    color: rgba(242,232,208,0.72);
+    line-height: 1.78;
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  /* ── GRID SECTION ── */
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--smoke);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--aged), transparent);
+    opacity: 0.3;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  /* ── TESTIMONIAL CARD ── */
+  .t-card {
+    border: 1px solid rgba(200,180,138,0.35);
+    padding: 2rem 1.8rem;
+    background: rgba(250,243,226,0.5);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    transition: box-shadow 0.25s;
+  }
+
+  .t-card:hover {
+    box-shadow: 5px 5px 0 rgba(139,58,26,0.07);
+  }
+
+  .t-card .accent-bar {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--terracotta);
+  }
+
+  .t-card.long-term .accent-bar { background: var(--moss); }
+  .t-card.peer .accent-bar { background: var(--gold); }
+
+  .t-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .t-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.48rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    display: inline-block;
+    width: fit-content;
+    margin-bottom: 0.4rem;
+  }
+
+  .t-badge.trial { background: rgba(139,58,26,0.1); color: var(--terracotta); }
+  .t-badge.ongoing { background: rgba(61,82,41,0.1); color: var(--moss); }
+  .t-badge.peer { background: rgba(184,137,30,0.1); color: var(--gold); }
+
+  .t-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  .t-context {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.52rem;
+    color: var(--smoke);
+    letter-spacing: 0.12em;
+    opacity: 0.7;
+  }
+
+  /* ── BEFORE / AFTER ── */
+  .before-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+
+  .ba-block {
+    padding: 0.8rem 1rem;
+  }
+
+  .ba-block.before { background: rgba(139,58,26,0.05); border-left: 2px solid var(--terracotta); }
+  .ba-block.after { background: rgba(61,82,41,0.05); border-left: 2px solid var(--moss); }
+
+  .ba-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.46rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .ba-block.before .ba-label { color: var(--terracotta); }
+  .ba-block.after .ba-label { color: var(--moss); }
+
+  .ba-text {
+    font-size: 0.85rem;
+    color: var(--smoke);
+    line-height: 1.6;
+  }
+
+  /* ── QUOTE ── */
+  .t-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.98rem;
+    color: var(--ink);
+    line-height: 1.65;
+    border-left: 2px solid var(--aged);
+    padding-left: 1rem;
+  }
+
+  /* ── RECOMMENDATION ── */
+  .t-rec {
+    border-top: 1px solid rgba(200,180,138,0.25);
+    padding-top: 1rem;
+    margin-top: auto;
+  }
+
+  .t-rec-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.46rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+
+  .t-rec p {
+    font-size: 0.85rem;
+    color: var(--smoke);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ── LONG CARD (full width) ── */
+  .t-card.full-width {
+    grid-column: 1 / -1;
+  }
+
+  .t-card.full-width .before-after {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  /* ── COPY NOTES ── */
+  .copy-note {
+    background: rgba(184,137,30,0.08);
+    border: 1px dashed rgba(184,137,30,0.4);
+    padding: 1rem 1.4rem;
+    margin-top: 0.8rem;
+    border-radius: 2px;
+  }
+
+  .copy-note-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.46rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .copy-note p {
+    font-size: 0.8rem;
+    color: var(--smoke);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(200,180,138,0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .doc-footer-left {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: var(--aged);
+    text-transform: uppercase;
+    line-height: 2;
+  }
+
+  .doc-footer-right {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--aged);
+  }
+
+  @media (max-width: 640px) {
+    .header, .filter-bar, .stats-bar { padding: 2rem 1.5rem; }
+    main { padding: 2.5rem 1.2rem 4rem; }
+    .before-after { grid-template-columns: 1fr; }
+    .t-card.full-width .before-after { grid-template-columns: 1fr; }
+    .doc-footer { flex-direction: column; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="torn-top"></div>
+
+<header class="header">
+  <span class="doc-tag">Internal Reference · Phase 3 Synthesis · Client Testimonials</span>
+  <h1>Client <em>Testimonials</em></h1>
+  <div class="header-meta">14 clients · Trial sessions, ongoing work &amp; peer reviews · Extracted April 2026</div>
+</header>
+
+<div class="torn-bottom"></div>
+
+<!-- ── STATS ── -->
+<div class="stats-bar">
+  <div class="stat">
+    <span class="stat-num">14</span>
+    <span class="stat-label">Total Clients</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">12</span>
+    <span class="stat-label">Trial Sessions</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">1</span>
+    <span class="stat-label">Long-Term (3 months)</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">1</span>
+    <span class="stat-label">Peer Practitioner</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">10/10</span>
+    <span class="stat-label">Explicit Rating Given</span>
+  </div>
+</div>
+
+<main>
+
+  <!-- ══════════════════════════════════════════
+       FEATURED TESTIMONIALS
+  ══════════════════════════════════════════ -->
+  <p class="featured-label">Featured — Strongest for Website Use</p>
+
+  <!-- EMANUELE — peer practitioner -->
+  <div class="featured-card">
+    <p class="client-tag">Peer Practitioner Review · Shadow Work &amp; Inner Work Professional</p>
+    <h2 class="client-name">Emanuele</h2>
+    <p class="client-context">Practitioner of shadow work, inner work &amp; hypnosis · Reviewed Mithu as a peer</p>
+
+    <blockquote>"He's attuned — and that is a very precious gift to have as a healer. The questions came from a place of asking: what is the highest question I can ask right now?"</blockquote>
+
+    <p class="body-text">Emanuele came as a practitioner himself — someone who knows the territory professionally. He experienced Mithu's work as both firm and gentle simultaneously. During the session he connected to his father — things unsaid and unfelt for a long time. His heart expanded. He left lighter and brighter.</p>
+
+    <p class="body-text">His description of what the work does — in his own words — is the clearest articulation of the methodology in the entire testimonial set:</p>
+
+    <blockquote>"We have loops in ourselves — I'm not good enough, I won't be able to do this. Through this work you find the original person who told you that. You realise it's just a belief — not reality. And the moment you see it, you can shift it, love it, heal it. It becomes a powerful part of your personality. Instead of having the pain playing in the background, you face it. By facing it, you embrace it. And it becomes a source of power."</blockquote>
+
+    <p class="body-text"><em>To anyone considering it:</em> "Go for it. Face your shadows, face your fears. You will come out even more empowered, more joyful, more free."</p>
+
+    <div class="copy-note">
+      <p class="copy-note-label">Copy Note</p>
+      <p>Emanuele's description of the loops and the "original person who told you that" is website-ready methodology copy. Use verbatim or near-verbatim in the method section. His peer status makes this the highest-authority testimonial in the set.</p>
+    </div>
+  </div>
+
+  <!-- FATIMA -->
+  <div class="featured-card">
+    <p class="client-tag">Trial Session → Joined Lions</p>
+    <h2 class="client-name">Fatima</h2>
+    <p class="client-context">Enrolled in Lions coaching programme after first session</p>
+
+    <blockquote>"It feels like I already achieved it. I needed a masculine container to allow things to flow — and you can see this is what I'm lacking and this is what I can offer. It really fits."</blockquote>
+
+    <p class="body-text">Fatima arrived triggered — a client had just cancelled, activating deep worthiness and completion wounds. She needed to feel safe before anything else could happen. Mithu held the structure when she got lost in her story and found the thread again. By the end of one session, she felt like someone had her back for the first time.</p>
+
+    <p class="body-text"><em>On Mithu:</em> "You have the tools, the heart for this work. You're highly sensitive, able to attune to people and feel into them. At the same time you have a critical mind and know what tangible steps are needed. You can see through things. What can you wish more?"</p>
+
+    <div class="copy-note">
+      <p class="copy-note-label">Copy Note</p>
+      <p>"It feels like I already achieved it" is a hero-section-worthy line. The masculine container framing speaks directly to the ICP's need for structure with warmth.</p>
+    </div>
+  </div>
+
+  <!-- TIM MATHIAS — long term -->
+  <div class="featured-card">
+    <p class="client-tag">Mid-Journey · 3 Months · Group + 1-on-1</p>
+    <h2 class="client-name">Tim Mathias</h2>
+    <p class="client-context">Ongoing client — group programme January, 1-on-1 sessions since</p>
+
+    <blockquote>"I trust you wholeheartedly with whatever comes up. I'm not ashamed to tell you anything — and that's a very good sign."</blockquote>
+
+    <p class="body-text">Three months in, Tim describes a working relationship built on genuine trust. He can bring whatever is present week to week — nothing is too small, nothing is too much — and Mithu holds the thread of the bigger journey without losing focus on what's alive right now.</p>
+
+    <p class="body-text"><em>On what Mithu does:</em> "You have a talent for tuning in with virtually anybody. When you really tune in, they feel loved, they feel understood. It gives a lot of energy. It feels like I have a big backup waiting for me — someone taking my hand on this journey. And that's really encouraging."</p>
+
+    <div class="copy-note">
+      <p class="copy-note-label">Copy Note</p>
+      <p>This is the only long-term testimonial in the set — essential for showing sustained transformation, not just first-session relief. "A big backup waiting for me" is strong ongoing-support copy.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       ALL TESTIMONIALS GRID
+  ══════════════════════════════════════════ -->
+  <p class="section-label" style="margin-top: 3rem;">All 14 Testimonials — Full Reference</p>
+
+  <div class="testimonials-grid">
+
+    <!-- 1. DYLAN -->
+    <div class="t-card">
+      <div class="accent-bar"></div>
+      <div class="t-card-header">
+        <span class="t-badge trial">Trial Session</span>
+        <p class="t-name">Dylan</p>
+        <p class="t-context">Childhood friend · reconnected after 13 years</p>
+      </div>
+      <div class="before-after">
+        <div class="ba-block before">
+          <p class="ba-label">Before</p>
+          <p class="ba-text">Anxiety, low feelings, no plan of action, dealing with it completely alone.</p>
+        </div>
+        <div class="ba-block after">
+          <p class="ba-label">After</p>
+          <p class="ba-text">Lighter, less stressed, less anxious. Clear plan. More optimistic.</p>
+        </div>
+      </div>
+      <p class="t-quote">"Going deeper into the why — not looking at surface level facts, but understanding what's further down — gave me a massive sense of relief."</p>
+      <div class="t-rec">
+        <p class="t-rec-label">Recommendation</p>
+        <p>"Well versed in this area. I would definitely recommend anyone who's even slightly considering it."</p>
+      </div>
+    </div>
+
+    <!-- 2. FATIMA (condensed card) -->
+    <div class="t-card">
+      <div class="accent-bar"></div>
+      <div class="t-card-header">
+        <span class="t-badge trial">Trial → Joined Lions</span>
+        <p class="t-name">Fatima</p>
+        <p class="t-context">Enrolled in Lions after first session</p>
+      </div>
+      <div class="before-after">
+        <div class="ba-block before">
+          <p class="ba-label">Before</p>
+          <p class="ba-text">Triggered, guilt issues, worthiness wounds activated, goals feeling impossible.</p>
+        </div>
+        <div class="ba-block after">
+          <p class="ba-label">After</p>
+          <p class="ba-text">"It feels like I already achieved it." Feels someone has her back.</p>
+        </div>
+      </div>
+      <p class="t-quote">"I needed a masculine container to allow things to flow. You can see exactly what I need — and it really fits."</p>
+      <div class="t-rec">
+        <p class="t-rec-label">Recommendation</p>
+        <p>"You have the tools, the heart. You're highly sensitive, able to attune and feel into people. And you can see through things."</p>
+      </div>
+    </div>
+
+    <!-- 3. BEACH SESSION (anonymous) -->
+    <div class="t-card">
+      <div class="accent-bar"></div>
+      <div class="t-card-header">
+        <span class="t-badge trial">Trial Session</span>
+        <p class="t-name">Anonymous</p>
+        <p class="t-context">Beach session · nature-based healing</p>
+      </div>
+      <div class="before-after">
+        <div class="ba-block before">
+          <p class="ba-label">Before</p>
+          <p class="ba-text">Issues from the past still affecting the present. Things never talked about with anyone.</p>
+        </div>
+        <div class="ba-block after">
+          <p class="ba-label">After</p>
+          <p class="ba-text">"Very healing. Very powerful." Led into the sea to release and let go.</p>
+        </div>
+      </div>
+      <p class="t-quote">"He has his own particular methods which are very powerful. A lot of life experience which he brings into his practice."</p>
+      <div class="t-rec">
+        <p class="t-rec-label">Rating</p>
+        <p>"10 out of 10."</p>
+      </div>
+    </div>
+
+    <!-- 4. SAM -->
+    <div class="t-card">
+      <div class="accent-bar"></div>
+      <div class="t-card-header">
+        <span class="t-badge trial">Trial Session</span>
+        <p class="t-name">Sam</p>
+        <p class="t-context">Career blocks · personalized meditation</p>
+      </div>
+      <div class="before-after">
+        <div class="ba-block before">
+          <p class="ba-label">Before</p>
+          <p class="ba-text">Knew something was blocking him but couldn't identify it clearly.</p>
+        </div>
+        <div class="ba-block after">
+          <p class="ba-label">After</p>
+          <p class="ba-text">Nervous system settled. Weight lifted. Clear on the real steps to take.</p>
+        </div>
+      </div>
+      <p class="t-quote">"The meditation was incredibly special — the most personal one I've ever done. Not generic, not cliché. It was specifically about my blocks and my goals."</p>
+      <div class="t-rec">
+        <p class="t-rec-label">Recommendation</p>
+        <p>"Great presence, great calming energy. A big repertoire of tools. Anyone would benefit."</p>
+      </div>
+    </div>
+
+    <!-- 5. SIMONA -->
+    <div class="t-card">
+      <div class="accent-bar"></div>
+      <div class="t-card-header">
+        <span class="t-badge trial">Shadow Work Trial</span>
+        <p class="t-name">Simona</p>
+        <p class="t-context">Anger, isolation, unmet needs</p>
+      </div>
+      <div class="before-after">
+        <div class="ba-block before">
+          <p class="ba-label">Before</p>
+          <p class="ba-text">Emotionally loaded with anger. Feeling deprived of needs. Overwhelmed by being alone.</p>
+        </div>
+        <div class="ba-block after">
+          <p class="ba-label">After</p>
+          <p class="ba-text">Supported and hopeful. "It's definitely doable to get where I want to be."</p>
+        </div>
+      </div>
+      <p class="t-quote">"He gave me so much space — patient, present — which helped me explore what was going on inside of me."</p>
+      <div class="t-rec">
+        <p class="t-rec-label">Recommendation</p>
+        <p>"If you feel alone and overwhelmed and need someone to take you by the hand — he's the right coach for that."</p>
+      </div>
+    </div>
+
+    <!-- 6. TIM MATHIAS (trial) -->
+    <div class="t-card">
+      <div class="accent-bar"></div>
+      <div class="t-card-header">
+        <span class="t-badge trial">Trial → Joined Lions</span>
+        <p class="t-name">Tim Mathias</p>
+        <p class="t-context">Purpose, life crisis, direction · Trial session</p>
+      </div>
+      <div class="before-after">
+        <div class="ba-block before">
+          <p class="ba-label">Before</p>
+          <p class="ba-text">Feeling stuck, in a major life crisis. Everything coming up at once. No direction or actionable plan.</p>
+        </div>
+        <div class="ba-block after">
+          <p class="ba-label">After</p>
+          <p class="ba-text">"You helped me find that doing the stuff I was lacking is actually the way of healing it." Felt at ease signing up.</p>
+        </div>
+      </div>
+      <p class="t-quote">"You connected with me emotionally first. That's the most important thing. I don't know how you did it — but it just came out of me."</p>
+      <div class="t-rec">
+        <p class="t-rec-label">Recommendation</p>
+        <p>"Just book a call — he's gonna get to you anyway. When they feel your energy, they're like: okay, let's do this."</p>
+      </div>
+    </div>
+
+    <!-- 7. YOSSI -->
+    <div class="t-card">
+      <div class="accent-bar"></div>
+      <div class="t-card-header">
+        <span class="t-badge trial">Trial Session</span>
+        <p class="t-name">Yossi</p>
+        <p class="t-context">Inner child work · root cause discovery</p>
+      </div>
+      <div class="before-after">
+        <div class="ba-block before">
+          <p class="ba-label">Before</p>
+          <p class="ba-text">Weight of the world feeling. Heavy and carrying something he couldn't name.</p>
+        </div>
+        <div class="ba-block after">
+          <p class="ba-label">After</p>
+          <p class="ba-text">Relief. Looking forward to life again. The thing weighing him down feels less total.</p>
+        </div>
+      </div>
+      <p class="t-quote">"I discovered an inner child trapped in a room — I would never have found that without going deep into it."</p>
+      <div class="t-rec">
+        <p class="t-rec-label">Recommendation</p>
+        <p>"It's free. If you don't have an hour to invest in yourself, you probably really need it. You're worth being seen that way."</p>
+      </div>
+    </div>
+
+    <!-- 8. ANA -->
+    <div class="t-card">
+      <div class="accent-bar"></div>
+      <div class="t-card-header">
+        <span class="t-badge trial">Trial Session</span>
+        <p class="t-name">Ana</p>
+        <p class="t-context">Apathy, lost, inner child parts work</p>
+      </div>
+      <div class="before-after">
+        <div class="ba-block before">
+          <p class="ba-label">Before</p>
+          <p class="ba-text">Apathy, feeling lost, low-key despair in life and relationships.</p>
+        </div>
+        <div class="ba-block after">
+          <p class="ba-label">After</p>
+          <p class="ba-text">Connected to inner child. Realized she felt guilt she didn't know she carried. Clarity about what she'd been avoiding.</p>
+        </div>
+      </div>
+      <p class="t-quote">"I gained a lot of information about my inner world — which is a game changer. I felt like you truly connected to my emotional experience. Like you truly wanted to help me."</p>
+      <div class="t-rec">
+        <p class="t-rec-label">Recommendation</p>
+        <p>"I would encourage them to do it. You truly care about people — you're very empathetic and very insightful."</p>
+      </div>
+    </div>
+
+    <!-- 9. TIMOTHEUS -->
+    <div class="t-card">
+      <div class="accent-bar"></div>
+      <div class="t-card-header">
+        <span class="t-badge trial">Trial Session</span>
+        <p class="t-name">Timotheus</p>
+        <p class="t-context">Emotional safety, performance patterns</p>
+      </div>
+      <div class="before-after">
+        <div class="ba-block before">
+          <p class="ba-label">Before</p>
+          <p class="ba-text">Nervous, anxious. Had a part of himself that always needed to push and perform.</p>
+        </div>
+        <div class="ba-block after">
+          <p class="ba-label">After</p>
+          <p class="ba-text">Relaxed, hopeful, optimistic. Feels heard. Big realization: effort doesn't always equal outcome.</p>
+        </div>
+      </div>
+      <p class="t-quote">"Sometimes finding new ways of not needing to perform actually gives you the performance you want in the rest of life."</p>
+      <div class="t-rec">
+        <p class="t-rec-label">Recommendation</p>
+        <p>"He's a very good space holder. He lets the process unfold — he doesn't insert himself into it. I would definitely trust him."</p>
+      </div>
+    </div>
+
+    <!-- 10. ANONYMOUS WOMAN (mental fog) -->
+    <div class="t-card">
+      <div class="accent-bar"></div>
+      <div class="t-card-header">
+        <span class="t-badge trial">Trial Session</span>
+        <p class="t-name">Anonymous</p>
+        <p class="t-context">Mental fog, connection needs, self-understanding</p>
+      </div>
+      <div class="before-after">
+        <div class="ba-block before">
+          <p class="ba-label">Before</p>
+          <p class="ba-text">Mental fog. Confused. Feeling misunderstood. Had paused her feelings for a long time.</p>
+        </div>
+        <div class="ba-block after">
+          <p class="ba-label">After</p>
+          <p class="ba-text">Realized she needs to stop doing and start feeling. Understood her connection needs and her human nature.</p>
+        </div>
+      </div>
+      <p class="t-quote">"Someone listening to me and seeing more about who I am met a need I didn't even know I had — and just reminded me how it feels to be accepted."</p>
+      <div class="t-rec">
+        <p class="t-rec-label">Key Takeaway</p>
+        <p>"If I keep busying myself all the time, I won't have any chance of figuring out what I want and who I am."</p>
+      </div>
+    </div>
+
+    <!-- 11. EMANUELE (condensed card) -->
+    <div class="t-card peer">
+      <div class="accent-bar"></div>
+      <div class="t-card-header">
+        <span class="t-badge peer">Peer Practitioner</span>
+        <p class="t-name">Emanuele</p>
+        <p class="t-context">Shadow work, inner work &amp; hypnosis practitioner</p>
+      </div>
+      <div class="before-after">
+        <div class="ba-block before">
+          <p class="ba-label">Before</p>
+          <p class="ba-text">Things with father — unsaid, unfelt for a long time.</p>
+        </div>
+        <div class="ba-block after">
+          <p class="ba-label">After</p>
+          <p class="ba-text">Connected to father. Heart expanded. Lighter, brighter. "A good sign of a good session."</p>
+        </div>
+      </div>
+      <p class="t-quote">"Firm but sweet and gentle. His questions were on point and aligned. He connected with himself to ask: what is the highest question I can ask? That's a very precious gift."</p>
+      <div class="t-rec">
+        <p class="t-rec-label">Recommendation</p>
+        <p>"Go for it. Face your shadows. You will come out even more empowered, more joyful, more free."</p>
+      </div>
+    </div>
+
+    <!-- 12. ANONYMOUS (sadness/hopelessness) -->
+    <div class="t-card">
+      <div class="accent-bar"></div>
+      <div class="t-card-header">
+        <span class="t-badge trial">Trial Session</span>
+        <p class="t-name">Anonymous</p>
+        <p class="t-context">Carried sadness for most of adult life · parts work</p>
+      </div>
+      <div class="before-after">
+        <div class="ba-block before">
+          <p class="ba-label">Before</p>
+          <p class="ba-text">Sad, hopeless, frustrated. Carrying something for many years — most of adult life.</p>
+        </div>
+        <div class="ba-block after">
+          <p class="ba-label">After</p>
+          <p class="ba-text">Relief. Accessed deeper emotions he had trouble reaching alone. Knows how to move forward.</p>
+        </div>
+      </div>
+      <p class="t-quote">"I feel different than before the session. I know better how to process this and move forward."</p>
+      <div class="t-rec">
+        <p class="t-rec-label">Recommendation</p>
+        <p>"It can be difficult sitting with your emotions — but you do a good job. I recommend you."</p>
+      </div>
+    </div>
+
+    <!-- 13. ANONYMOUS WOMAN (connection/plan) -->
+    <div class="t-card">
+      <div class="accent-bar"></div>
+      <div class="t-card-header">
+        <span class="t-badge trial">Trial Session</span>
+        <p class="t-name">Anonymous</p>
+        <p class="t-context">Wanting connection · life mastery coaching</p>
+      </div>
+      <div class="before-after">
+        <div class="ba-block before">
+          <p class="ba-label">Before</p>
+          <p class="ba-text">Hopeless about attracting the connection she needed. Couldn't articulate what she actually wanted.</p>
+        </div>
+        <div class="ba-block after">
+          <p class="ba-label">After</p>
+          <p class="ba-text">Hopeful. Ready to take steps. Resistance honored — not bulldozed — so she could move forward with ease.</p>
+        </div>
+      </div>
+      <p class="t-quote">"You gave me permission — and helped me advertise what I want by becoming aware of the details. The mirroring was so helpful."</p>
+      <div class="t-rec">
+        <p class="t-rec-label">Recommendation</p>
+        <p>"You have a gift for planning and guiding people toward what they actually need. You're really, really, really good. Exceptional."</p>
+      </div>
+    </div>
+
+    <!-- 14. MATT -->
+    <div class="t-card">
+      <div class="accent-bar"></div>
+      <div class="t-card-header">
+        <span class="t-badge trial">Trial Session</span>
+        <p class="t-name">Matt</p>
+        <p class="t-context">Higher self work · channeled inner child session</p>
+      </div>
+      <div class="before-after">
+        <div class="ba-block before">
+          <p class="ba-label">Before</p>
+          <p class="ba-text">Came with zero expectations. Didn't know what to expect.</p>
+        </div>
+        <div class="ba-block after">
+          <p class="ba-label">After</p>
+          <p class="ba-text">Much lighter. Made peace with an unconscious part of himself he didn't know was still there. "Adds up."</p>
+        </div>
+      </div>
+      <p class="t-quote">"He channeled something that was super accurate — and I was not expecting that at all. Unconscious wounds got brought back to me and I made peace with them."</p>
+      <div class="t-rec">
+        <p class="t-rec-label">Recommendation</p>
+        <p>"See for yourself. I feel it's super legit. If you feel drawn to this kind of thing, just try it out. You'll like it."</p>
+      </div>
+    </div>
+
+    <!-- TIM MATHIAS — long term (condensed) -->
+    <div class="t-card long-term full-width">
+      <div class="accent-bar"></div>
+      <div class="t-card-header">
+        <span class="t-badge ongoing">3 Months Ongoing · Group + 1-on-1</span>
+        <p class="t-name">Tim Mathias</p>
+        <p class="t-context">Longest-term client in the set · group January 2026, 1-on-1 since</p>
+      </div>
+      <p class="t-quote" style="font-size: 1.05rem; margin-top: 0.5rem;">"I can come with whatever is present from week to week and we address all of it without losing focus on the overall progress. I trust you wholeheartedly with whatever comes up. I'm not ashamed to tell you anything — and that's a very good sign."</p>
+      <div class="t-rec" style="margin-top: 1rem;">
+        <p class="t-rec-label">On what Mithu does</p>
+        <p>"You have a talent for tuning in with virtually anybody. When you really tune in, they feel loved, they feel understood. It feels like I have a big backup waiting for me — someone taking my hand on this journey. And that's really encouraging."</p>
+      </div>
+      <div class="copy-note">
+        <p class="copy-note-label">Copy Note</p>
+        <p>Only long-term testimonial in the set. Essential for showing sustained results, not just first-session relief. Use in the ongoing coaching / Lions section of the website.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <div class="doc-footer-left">
+      Mithu Surendra Collaboration Project<br>
+      Phase 3 — Synthesis<br>
+      Client Testimonials · 14 Total · April 2026
+    </div>
+    <div class="doc-footer-right">For internal reference &amp; website copy use</div>
+  </div>
+
+</main>
+
+</body>
+</html>
