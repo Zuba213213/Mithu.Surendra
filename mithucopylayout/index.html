@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mithu Surendra — Website Copy & Layout Document</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0e0c09;
+  --page: #f5f0e8;
+  --gold: #c49a2a;
+  --terra: #b85a2a;
+  --moss: #3d5229;
+  --smoke: #5a4f3f;
+  --aged: #c8b48a;
+  --rule: rgba(200,180,138,0.4);
+  --highlight: rgba(196,154,42,0.1);
+  --note-bg: rgba(61,82,41,0.07);
+  --note-border: #3d5229;
+  --warn-bg: rgba(184,90,42,0.08);
+  --warn-border: #b85a2a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--page);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.page-header {
+  background: var(--ink);
+  color: var(--page);
+  padding: 3rem 4rem;
+  border-bottom: 3px solid var(--gold);
+}
+
+.page-header .eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.8;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.page-header h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.page-header p {
+  font-size: 0.9rem;
+  color: rgba(245,240,232,0.6);
+  margin-top: 1rem;
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+.toc {
+  background: white;
+  border: 1px solid var(--rule);
+  padding: 2rem 3rem;
+  margin: 2rem 4rem;
+}
+
+.toc h3 {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.toc ol {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem 2rem;
+}
+
+.toc li {
+  font-size: 0.85rem;
+  color: var(--smoke);
+  counter-increment: toc;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.toc li::before {
+  content: "0" counter(toc);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--gold);
+  margin-top: 0.2rem;
+}
+
+ol { counter-reset: toc; }
+
+.doc-body {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 4rem 6rem;
+}
+
+.section-block {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+
+.section-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.section-num::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+
+.section-subtitle {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  opacity: 0.7;
+  margin-bottom: 2rem;
+}
+
+.layout-note {
+  background: var(--note-bg);
+  border-left: 3px solid var(--note-border);
+  padding: 0.9rem 1.2rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.82rem;
+  color: var(--smoke);
+  line-height: 1.65;
+}
+
+.layout-note strong {
+  font-weight: 500;
+  color: var(--moss);
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.copy-warning {
+  background: var(--warn-bg);
+  border-left: 3px solid var(--warn-border);
+  padding: 0.9rem 1.2rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.82rem;
+  color: var(--smoke);
+  line-height: 1.65;
+}
+
+.copy-warning strong {
+  font-weight: 500;
+  color: var(--terra);
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.copy-block {
+  background: white;
+  border: 1px solid var(--rule);
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+}
+
+.copy-block-label {
+  background: var(--ink);
+  padding: 0.5rem 1.2rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--aged);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copy-block-label .tag {
+  background: var(--gold);
+  color: var(--ink);
+  padding: 0.15rem 0.5rem;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+}
+
+.copy-block-body {
+  padding: 1.2rem 1.5rem;
+}
+
+.eyebrow-copy {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.headline-copy {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.headline-copy em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--terra);
+}
+
+.body-copy {
+  font-size: 0.9rem;
+  color: var(--smoke);
+  line-height: 1.8;
+  margin-bottom: 0.8rem;
+}
+
+.body-copy:last-child { margin-bottom: 0; }
+
+.quote-copy {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--ink);
+  border-left: 2px solid var(--gold);
+  padding: 0.6rem 1.2rem;
+  margin: 0.8rem 0;
+  background: var(--highlight);
+  line-height: 1.6;
+}
+
+.cta-copy {
+  display: inline-block;
+  background: var(--terra);
+  color: white;
+  padding: 0.6rem 1.4rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.8rem;
+  margin-right: 0.6rem;
+}
+
+.cta-ghost-copy {
+  display: inline-block;
+  border: 1px solid var(--smoke);
+  color: var(--smoke);
+  padding: 0.6rem 1.4rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.8rem;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.col-block {
+  background: white;
+  border: 1px solid var(--rule);
+  padding: 1.2rem 1.4rem;
+}
+
+.col-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.item-list {
+  list-style: none;
+}
+
+.item-list li {
+  font-size: 0.85rem;
+  color: var(--smoke);
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(200,180,138,0.2);
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  line-height: 1.55;
+}
+
+.item-list li::before {
+  content: '→';
+  color: var(--gold);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.item-list li:last-child { border-bottom: none; }
+
+.photo-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(196,154,42,0.12);
+  border: 1px solid rgba(196,154,42,0.3);
+  padding: 0.3rem 0.7rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+  margin-right: 0.4rem;
+}
+
+.placeholder-slot {
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(196,154,42,0.04),
+    rgba(196,154,42,0.04) 5px,
+    transparent 5px,
+    transparent 15px
+  );
+  border: 2px dashed rgba(196,154,42,0.3);
+  padding: 1.5rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.placeholder-slot p {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.testi-block {
+  border: 1px solid var(--rule);
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1rem;
+  background: white;
+  position: relative;
+}
+
+.testi-block::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--gold);
+}
+
+.testi-name {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  margin-bottom: 0.6rem;
+}
+
+.testi-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--ink);
+  line-height: 1.65;
+}
+
+.phase-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 1.2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+
+.phase-row:last-child { border-bottom: none; }
+
+.phase-num-big {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  font-style: italic;
+  color: rgba(196,154,42,0.2);
+  line-height: 1;
+  text-align: center;
+}
+
+.phase-content h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+
+.phase-content p {
+  font-size: 0.85rem;
+  color: var(--smoke);
+  line-height: 1.7;
+}
+
+.status-pill {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-left: 0.5rem;
+}
+
+.status-pill.confirmed { background: rgba(61,82,41,0.12); color: var(--moss); }
+.status-pill.placeholder { background: rgba(196,154,42,0.12); color: var(--gold); }
+.status-pill.external { background: rgba(184,90,42,0.1); color: var(--terra); }
+
+.section-divider {
+  text-align: center;
+  padding: 1.5rem 0;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--aged);
+}
+
+hr.thin { border: none; border-top: 1px solid var(--rule); margin: 1.5rem 0; }
+
+@media (max-width: 768px) {
+  .doc-body { padding: 1rem 1.5rem 4rem; }
+  .toc { margin: 1.5rem; }
+  .page-header { padding: 2rem 1.5rem; }
+  .two-col { grid-template-columns: 1fr; }
+  .phase-row { grid-template-columns: 50px 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <span class="eyebrow">Phase 4 · Pre-Build · Copy & Layout Specification</span>
+  <h1>Mithu Surendra — Website<br><em>Copy & Layout Document</em></h1>
+  <p>Every section defined. All copy sourced from transcripts. Photo assignments, structure notes, and the somatic diagnosis placeholder included. Approve this before the HTML build begins.</p>
+</div>
+
+<div class="toc">
+  <h3>Sections</h3>
+  <ol>
+    <li>Navigation</li>
+    <li>Hero</li>
+    <li>Story</li>
+    <li>The Lion Work — Method</li>
+    <li>Transformation</li>
+    <li>Testimonials</li>
+    <li>Somatic Diagnosis</li>
+    <li>Self-Love School</li>
+    <li>Coaching</li>
+    <li>The Book</li>
+    <li>Email Capture</li>
+    <li>Footer</li>
+  </ol>
+</div>
+
+<div class="doc-body">
+
+  <!-- ═══════════════════════════════════════ 01 NAV ═══ -->
+  <div class="section-block">
+    <p class="section-num">Section 01</p>
+    <h2 class="section-title">Navigation</h2>
+    <p class="section-subtitle">Fixed · Transparent → Solid on scroll · Logo left · Links right</p>
+
+    <div class="layout-note">
+      <strong>Layout Note</strong>
+      Fixed to top. Background transparent on load, transitions to solid near-black with bottom border on scroll. Logo left = "Mithu Surendra" in Playfair italic. Right side: on-page anchor links + one outlined CTA. All links are on-page anchors — no external links in nav (keeps people in the page before any conversion action).
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Nav Links
+        <span class="tag">On-page anchors</span>
+      </div>
+      <div class="copy-block-body">
+        <p class="body-copy">
+          <strong>Logo:</strong> Mithu Surendra<br>
+          <strong>Link 1:</strong> Story → <code>#story</code><br>
+          <strong>Link 2:</strong> The Work → <code>#method</code><br>
+          <strong>Link 3:</strong> School → <code>#school</code><br>
+          <strong>Link 4:</strong> Coaching → <code>#coaching</code><br>
+          <strong>CTA Button (outlined):</strong> Book a Call → <code>#coaching</code> (scrolls to coaching section, not direct booking link)
+        </p>
+      </div>
+    </div>
+
+    <div class="copy-warning">
+      <strong>Mobile</strong>
+      Hamburger menu. Full-screen overlay on open. Same links. CTA button visible and prominent in the overlay.
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ 02 HERO ═══ -->
+  <div class="section-block">
+    <p class="section-num">Section 02</p>
+    <h2 class="section-title">Hero</h2>
+    <p class="section-subtitle">Full viewport · Two-column split · Photo left · Headline + CTAs right · Gold vertical divider</p>
+
+    <div class="layout-note">
+      <strong>Layout Note</strong>
+      Full viewport height. Left column: <strong>Profile_Pic.jpg</strong> — full bleed, covers the left half, subtle parallax on scroll. Thin vertical gold line divider between columns. Right column: eyebrow label, headline stack, sub-text, two CTAs stacked. The headline is the first thing that must earn the scroll.
+    </div>
+
+    <span class="photo-tag">📷 Profile_Pic.jpg — Hero image, left column, full bleed</span>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Eyebrow Label
+        <span class="tag">Space Mono · All caps · Gold</span>
+      </div>
+      <div class="copy-block-body">
+        <span class="eyebrow-copy">Spiritual Healer · Author · Guide</span>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Headline
+        <span class="tag">Playfair Display · Display size</span>
+      </div>
+      <div class="copy-block-body">
+        <h2 class="headline-copy">
+          The wound<br>
+          <em>was always</em><br>
+          the fuel.
+        </h2>
+        <p class="body-copy" style="margin-top: 0.8rem; font-size: 0.78rem; color: var(--aged);">Source: "It was all energy. It was all potential. It's like fuel. It's fuel that made me who I am now."</p>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Sub-text
+        <span class="tag">DM Sans · Body · Off-white</span>
+      </div>
+      <div class="copy-block-body">
+        <p class="body-copy">I spent years hiding the part of me I was most ashamed of. The hand. The grief. The feeling of never quite belonging anywhere. Then I chose to love myself so completely — so unconditionally — that the hiding stopped mattering. That choice became this work. And this work is yours now, if you want it.</p>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        CTAs
+        <span class="tag">Two options stacked</span>
+      </div>
+      <div class="copy-block-body">
+        <span class="cta-copy">Explore the Work ↓</span>
+        <span class="cta-ghost-copy">Work with Mithu</span>
+        <p class="body-copy" style="margin-top: 1rem; font-size: 0.78rem; color: var(--aged);">Primary CTA scrolls to #method. Secondary CTA scrolls to #coaching. Neither goes external — keeps people in the page.</p>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Scroll Indicator
+        <span class="tag">Vertical text · Bottom right</span>
+      </div>
+      <div class="copy-block-body">
+        <p class="body-copy">Vertical "Scroll" text with a thin gold line extending downward. Bottom-right corner.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ 03 STORY ═══ -->
+  <div class="section-block">
+    <p class="section-num">Section 03</p>
+    <h2 class="section-title">Story</h2>
+    <p class="section-subtitle">Two-column · Photo stack left (sticky) · Copy + pull quote right · Stat row at bottom</p>
+
+    <div class="layout-note">
+      <strong>Layout Note</strong>
+      Left column: stacked photo pair — <strong>Profile_Pic_-_Professional.jpg</strong> top, <strong>IMG_1897.jpg</strong> (scooter/Bali) below. Sticky on scroll as the right column scrolls past. Right column: section eyebrow, headline, body copy with one pull quote mid-column, stat row at bottom. Section id: <code>#story</code>
+    </div>
+
+    <span class="photo-tag">📷 Profile_Pic_-_Professional.jpg — Top of left stack</span>
+    <span class="photo-tag">📷 IMG_1897.jpg — Bottom of left stack (Bali scooter)</span>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Eyebrow
+        <span class="tag">Space Mono</span>
+      </div>
+      <div class="copy-block-body">
+        <span class="eyebrow-copy">The Story</span>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Headline
+        <span class="tag">Playfair Display</span>
+      </div>
+      <div class="copy-block-body">
+        <h2 class="headline-copy">Born into grief.<br><em>Built into love.</em></h2>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Body Copy — Paragraph 1 (Origin)
+        <span class="tag">Sourced: transcript arc</span>
+      </div>
+      <div class="copy-block-body">
+        <p class="body-copy">My parents fled genocide. Sri Lankan Tamil, carrying a country's worth of grief in their bodies with no language to put it down. They arrived in London and loved the way survivors love — through safety, achievement, and the silence of everything that couldn't be said. I was born into that. I inherited the anxiety before I had words for it.</p>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Body Copy — Paragraph 2 (The Hand)
+        <span class="tag">Sourced: transcript + direct quote</span>
+      </div>
+      <div class="copy-block-body">
+        <p class="body-copy">I was also born with a hand the world decided was something to stare at. Something to pity. I hid it for years — at cricket, at dinner tables, in meetings, on dates. Every time I hid it, I was agreeing with the world's verdict. Until I stopped.</p>
+        <div class="quote-copy">"It is not actually deformed. It is exactly the way God wanted it to be. It's beautiful."</div>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Body Copy — Paragraph 3 (The Breaking)
+        <span class="tag">Sourced: transcript arc</span>
+      </div>
+      <div class="copy-block-body">
+        <p class="body-copy">At 24, I hit the floor. Not metaphorically. I was suicidal, alone, and I made a choice — the only choice that actually matters. I chose to live. And then, bit by bit, I pulled myself out.</p>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Pull Quote (mid-column)
+        <span class="tag">Playfair italic · Large · Gold border</span>
+      </div>
+      <div class="copy-block-body">
+        <div class="quote-copy" style="font-size: 1.15rem;">"Giving up gave me peace. Giving up gave me hope. Giving up helped me connect with God."</div>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Body Copy — Paragraph 4 (Emergence)
+        <span class="tag">Sourced: transcript arc</span>
+      </div>
+      <div class="copy-block-body">
+        <p class="body-copy">I stood in front of 200 people in Berlin and raised my hand. I told them the truth about it. Something that had been sealed for thirty years cracked open in that room. That moment — I know now — was the first act of the work I was born to do.</p>
+        <p class="body-copy">I wrote a book in five days in Ubud. I walked into Sri Lanka and felt home in my DNA for the first time. I am a spiritual healer. That's what felt right. That is what this is.</p>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Stat Row (3 stats, bottom of section)
+        <span class="tag">Number large · Label small · Space Mono</span>
+      </div>
+      <div class="copy-block-body">
+        <div class="two-col" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="col-block" style="text-align: center;">
+            <div style="font-family: 'Playfair Display', serif; font-size: 2rem; font-style: italic; color: var(--gold);">14+</div>
+            <div style="font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--smoke); margin-top: 0.3rem;">Clients & counting</div>
+          </div>
+          <div class="col-block" style="text-align: center;">
+            <div style="font-family: 'Playfair Display', serif; font-size: 2rem; font-style: italic; color: var(--gold);">3</div>
+            <div style="font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--smoke); margin-top: 0.3rem;">Continents of work</div>
+          </div>
+          <div class="col-block" style="text-align: center;">
+            <div style="font-family: 'Playfair Display', serif; font-size: 2rem; font-style: italic; color: var(--gold);">1</div>
+            <div style="font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--smoke); margin-top: 0.3rem;">Choice that changes everything</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ 04 METHOD ═══ -->
+  <div class="section-block">
+    <p class="section-num">Section 04</p>
+    <h2 class="section-title">The Lion Work — Method</h2>
+    <p class="section-subtitle">Named section · Photo with badge overlay left · Intro copy right · Phase rows below full-width</p>
+
+    <div class="layout-note">
+      <strong>Layout Note</strong>
+      Top: two-column. Left = <strong>Workshop.PNG</strong> with overlaid badge showing the methodology name. Right = intro copy explaining the method and its name. Below (full width): 4 phase rows. Each row: large faded phase number left, phase name + description right. Section id: <code>#method</code>
+    </div>
+
+    <div class="copy-warning">
+      <strong>Name Note</strong>
+      "The Lion Work" — drawn from the lion tattooed on his hand, the hand he spent years hiding in shame, the hand that became his symbol of turning wound into power. He already runs a programme called Lions. This name is personal, already his, non-negotiable.
+    </div>
+
+    <span class="photo-tag">📷 Workshop.PNG — Left column, method badge overlaid</span>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Eyebrow
+      </div>
+      <div class="copy-block-body">
+        <span class="eyebrow-copy">The Method</span>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Method Name Badge (overlaid on photo)
+        <span class="tag">Dark card · Gold text</span>
+      </div>
+      <div class="copy-block-body">
+        <p class="body-copy"><strong>Large display text:</strong> The Lion Work</p>
+        <p class="body-copy"><strong>Sub-label:</strong> A methodology for turning the wound into power</p>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Intro Copy (right column)
+        <span class="tag">Sourced: transcript + name origin</span>
+      </div>
+      <div class="copy-block-body">
+        <h2 class="headline-copy" style="font-size: 1.3rem;">This work has a name.<br><em>It was always yours.</em></h2>
+        <p class="body-copy" style="margin-top: 0.8rem;">The lion was tattooed on his hand — the hand he spent years hiding. The hand that became, when he finally stopped hiding it, his most visible symbol of power. That's what this work does. It takes the thing you've been most ashamed of and walks you toward it, not away from it.</p>
+        <p class="body-copy">There are four phases. They don't rush. They don't fix. They move through.</p>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Phase Rows — Full Width Below Header
+        <span class="tag">4 phases · Large faded number · Title + description</span>
+      </div>
+      <div class="copy-block-body">
+
+        <div class="phase-row">
+          <div class="phase-num-big">01</div>
+          <div class="phase-content">
+            <h4>Name the Pain</h4>
+            <p>Radical honesty about where you actually are. Not the version you tell people. The thing underneath that. The wound beneath the wound. You cannot move through what you won't face — and most people are running so fast they haven't stopped to look.</p>
+          </div>
+        </div>
+
+        <div class="phase-row">
+          <div class="phase-num-big">02</div>
+          <div class="phase-content">
+            <h4>Go Into It</h4>
+            <p>Not around it. Not above it. Through it. This is where unconditional love enters — not the fixing kind, not the improving kind. The sitting-with kind. The staying kind. The kind that doesn't flinch.</p>
+          </div>
+        </div>
+
+        <div class="phase-row">
+          <div class="phase-num-big">03</div>
+          <div class="phase-content">
+            <h4>Find the Fuel</h4>
+            <p>The shame becomes the offering. The wound was always the material. This is the alchemy — where what broke you becomes what makes you. It doesn't disappear. It converts.</p>
+          </div>
+        </div>
+
+        <div class="phase-row">
+          <div class="phase-num-big">04</div>
+          <div class="phase-content">
+            <h4>Arrive in Love</h4>
+            <p>A self you don't need to perform. A life that feels like yours. Not a destination you reach and park at — a practice you live. Self-love not as a concept but as something you do, every day, until it becomes who you are.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ 05 TRANSFORMATION ═══ -->
+  <div class="section-block">
+    <p class="section-num">Section 05</p>
+    <h2 class="section-title">Transformation</h2>
+    <p class="section-subtitle">Centred header · Before/After two-column grid · Arrow divider between</p>
+
+    <div class="layout-note">
+      <strong>Layout Note</strong>
+      Centred headline and sub above. Below: two-column before/after grid. Left column = Before state items. Right column = After state items. Central arrow or lion motif as divider. Each item is a single line. Sourced directly from the transformation map in the ICP document.
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Section Header
+      </div>
+      <div class="copy-block-body">
+        <span class="eyebrow-copy">Where people arrive · Where they land</span>
+        <h2 class="headline-copy">The shift<br><em>is real.</em></h2>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="col-block">
+        <p class="col-label">Before — The Stuck State</p>
+        <ul class="item-list">
+          <li>Trapped in the pain narrative — it defines them</li>
+          <li>Performing life, not living it</li>
+          <li>In the head, disconnected from body and feeling</li>
+          <li>Self-sabotaging when success gets close</li>
+          <li>Carrying it alone in shame — nobody knows</li>
+          <li>Quiet sense of purposelessness</li>
+          <li>Love feels conditional or absent entirely</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <p class="col-label">After — The Alive State</p>
+        <ul class="item-list">
+          <li>Pain understood — no longer in control</li>
+          <li>Present, embodied, actually feeling their life</li>
+          <li>Body and mind working together, not against each other</li>
+          <li>Owning wins without collapsing under them</li>
+          <li>Vulnerability without shame — real connection</li>
+          <li>Purpose clear and actively pursued</li>
+          <li>Self-love as a lived practice, not a concept</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ 06 TESTIMONIALS ═══ -->
+  <div class="section-block">
+    <p class="section-num">Section 06</p>
+    <h2 class="section-title">Testimonials</h2>
+    <p class="section-subtitle">Featured full-width card first · 3-column grid below · Each with before/after mini blocks</p>
+
+    <div class="layout-note">
+      <strong>Layout Note</strong>
+      One featured card full-width (Emanuele — peer practitioner, highest authority). Then a 3-column grid: Tim Mathias (long-term), Fatima, then rotate through Dylan, Sam, Simona, Yossi. Cards lift on hover. Each grid card has a small before/after block above the quote. No photos needed in testimonials.
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Section Header
+      </div>
+      <div class="copy-block-body">
+        <span class="eyebrow-copy">What people say</span>
+        <h2 class="headline-copy">Real people.<br><em>Real shifts.</em></h2>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Featured Card — Emanuele (Peer Practitioner)
+        <span class="tag">Full width · Highest authority</span>
+      </div>
+      <div class="copy-block-body">
+        <p class="testi-name">Emanuele · Shadow Work &amp; Inner Work Practitioner</p>
+        <div class="testi-quote">"He's attuned — and that is a very precious gift to have as a healer. His questions came from a place of asking: what is the highest question I can ask right now? I connected to my father during the session — things unsaid and unfelt for years. I left lighter. I left brighter."</div>
+        <hr class="thin">
+        <div class="testi-quote" style="font-size: 0.88rem; margin-top: 0.5rem;">"We have loops in ourselves — I'm not good enough, I won't be able to do this. Through this work you find the original person who told you that. You realise it's just a belief — not reality. And the moment you see it, you can shift it, love it, heal it. It becomes a source of power."</div>
+      </div>
+    </div>
+
+    <p class="body-copy" style="margin-bottom: 1rem; font-size: 0.82rem; color: var(--smoke);">Grid cards — 3 column (use these 6, rotating as needed):</p>
+
+    <div class="testi-block">
+      <p class="testi-name">Tim Mathias · 3 months ongoing</p>
+      <div class="testi-quote">"I trust you wholeheartedly with whatever comes up. I'm not ashamed to tell you anything — and that's a very good sign. It feels like I have a big backup waiting for me — someone taking my hand on this journey."</div>
+    </div>
+
+    <div class="testi-block">
+      <p class="testi-name">Fatima · Trial → Joined Lions</p>
+      <div class="testi-quote">"It feels like I already achieved it. I needed a masculine container to allow things to flow — and you can see exactly what I need. It really fits. What can you wish more?"</div>
+    </div>
+
+    <div class="testi-block">
+      <p class="testi-name">Dylan</p>
+      <div class="testi-quote">"Going deeper into the why — not the surface level, but what's further down — gave me a massive sense of relief."</div>
+    </div>
+
+    <div class="testi-block">
+      <p class="testi-name">Yossi</p>
+      <div class="testi-quote">"I discovered an inner child trapped in a room — I would never have found that without going deep into it."</div>
+    </div>
+
+    <div class="testi-block">
+      <p class="testi-name">Simona</p>
+      <div class="testi-quote">"He gave me so much space — patient, present — which helped me explore what was going on inside. If you feel alone and overwhelmed, he is the right coach."</div>
+    </div>
+
+    <div class="testi-block">
+      <p class="testi-name">Sam</p>
+      <div class="testi-quote">"The meditation was incredibly special — the most personal one I've ever done. Not generic, not cliché. It was specifically about my blocks and my goals."</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ 07 SOMATIC DIAGNOSIS ═══ -->
+  <div class="section-block">
+    <p class="section-num">Section 07</p>
+    <h2 class="section-title">Somatic Self-Diagnosis <span class="status-pill external">External Tool — Plug-in Slot</span></h2>
+    <p class="section-subtitle">Centred · Dark background section · Free entry point · External tool embedded here</p>
+
+    <div class="copy-warning">
+      <strong>Build Note — External Tool Slot</strong>
+      The somatic self-diagnosis will be built in an external tool (Typeform, Tally, or similar) and embedded here. The section is built with an iframe placeholder or embedded block. The surrounding copy and CTA wrapper are built now; the embed URL gets dropped in later. This is the primary "free" entry point — no booking, no purchase required.
+    </div>
+
+    <div class="layout-note">
+      <strong>Layout Note</strong>
+      Full-width dark section (alternating from surrounding sections). Centred headline above. Below: the embed block. Short copy above and below the embed to contextualise it. The goal is to get people to self-identify their phase before they ever get on a call — so Mithu walks in knowing exactly where to meet them.
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Section Copy
+        <span class="tag">Sourced: ICP + roadmap</span>
+      </div>
+      <div class="copy-block-body">
+        <span class="eyebrow-copy">Where are you right now?</span>
+        <h2 class="headline-copy" style="font-size: 1.3rem;">Before anything else —<br><em>find yourself in the work.</em></h2>
+        <p class="body-copy" style="margin-top: 0.8rem;">This takes five minutes. It's free. It's not a sales funnel. It's a genuine map of where you are in the process — so that if you decide to take a step, you already know which step it is.</p>
+      </div>
+    </div>
+
+    <div class="placeholder-slot">
+      <p>[ SOMATIC SELF-DIAGNOSIS EMBED ]</p>
+      <p style="margin-top: 0.5rem; opacity: 0.6; font-size: 0.55rem;">External tool — iframe or embed code drops here</p>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Below-embed Copy
+      </div>
+      <div class="copy-block-body">
+        <p class="body-copy">Not ready for the full work yet? That's exactly where the school begins.</p>
+        <span class="cta-copy">Explore the School ↓</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ 08 SCHOOL ═══ -->
+  <div class="section-block">
+    <p class="section-num">Section 08</p>
+    <h2 class="section-title">Self-Love School</h2>
+    <p class="section-subtitle">Two-column · Photo left · Features + pricing card right · Section id: #school</p>
+
+    <div class="layout-note">
+      <strong>Layout Note</strong>
+      Left column: <strong>Pranava_1.JPEG</strong> — community/workshop image. Right column: eyebrow, headline, body copy (including Mithu's protection instinct + discernment note), features list, pricing card, CTA. The protection/discernment copy is essential here — this is a paid school because he is selective about who is in the room.
+    </div>
+
+    <span class="photo-tag">📷 Pranava_1.JPEG — Left column, school community image</span>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Eyebrow + Headline
+      </div>
+      <div class="copy-block-body">
+        <span class="eyebrow-copy">The Community</span>
+        <h2 class="headline-copy">The Self-Love School.<br><em>Built with intention.</em></h2>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Body Copy — Protection + Discernment (KEY section)
+        <span class="tag">Sourced: protection instinct brief</span>
+      </div>
+      <div class="copy-block-body">
+        <p class="body-copy">This school is paid because of what it protects. Not profit — people. The people inside are in real work. Real vulnerability. Real healing. That requires a room held with intention, not a free-for-all.</p>
+        <p class="body-copy">Mithu calls it discernment. Not everyone is right for this room at this moment — and that's not a judgment, it's a gift. When you join, you join something that was built to hold you. The price is the first act of that container.</p>
+        <div class="quote-copy">"A love that shines through the unbearable cracks of their own pain."</div>
+        <p class="body-copy">That's who's in this room. People who are done pretending. People who are ready to go somewhere true.</p>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Features List (bullet-style on page)
+      </div>
+      <div class="copy-block-body">
+        <ul class="item-list">
+          <li>Mithu's core teachings — ongoing, live, and recorded</li>
+          <li>A community of people walking the same path without shame</li>
+          <li>Practices drawn directly from The Lion Work methodology</li>
+          <li>Real accountability — not just inspiration</li>
+          <li>The foundation for deeper 1-on-1 work</li>
+          <li>Start free — stay because it's working</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Pricing Card + CTA
+        <span class="tag">Links to Skool externally</span>
+      </div>
+      <div class="copy-block-body">
+        <p class="body-copy"><strong>School name:</strong> Self-Love School</p>
+        <p class="body-copy"><strong>Price:</strong> $50 / month</p>
+        <p class="body-copy"><strong>Note:</strong> Free trial available · Cancel anytime</p>
+        <p class="body-copy"><strong>CTA:</strong> Start Your Free Trial → <code>https://skool.com/self-love-school-4884</code> (external, opens new tab)</p>
+        <span class="cta-copy">Start Your Free Trial →</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ 09 COACHING ═══ -->
+  <div class="section-block">
+    <p class="section-num">Section 09</p>
+    <h2 class="section-title">Coaching</h2>
+    <p class="section-subtitle">Two-column · Copy + pull quote left · Two option cards right · Section id: #coaching</p>
+
+    <div class="layout-note">
+      <strong>Layout Note</strong>
+      Left column: eyebrow, headline, body copy, pull quote. Right column: two cards stacked — Discovery Call (featured, more prominent) on top, 1-on-1 Coaching below. CTAs on each card scroll to the booking link. No pricing on cards — CTA only as per brief.
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Left Column Copy
+        <span class="tag">Sourced: ICP + voice lexicon</span>
+      </div>
+      <div class="copy-block-body">
+        <span class="eyebrow-copy">Go deeper</span>
+        <h2 class="headline-copy">If you already know<br><em>you're ready.</em></h2>
+        <p class="body-copy" style="margin-top: 0.8rem;">Some people need more than a community. They need someone who will go directly into the fire with them — who has been there, who knows the terrain, and who won't flinch. That's what this is.</p>
+        <p class="body-copy">I just follow my heart. Follow my intuition. Follow my desire. And I bring that same quality of attention to the people I work with closely. If this is for you, you already feel it.</p>
+        <div class="quote-copy">"I just follow my heart. Follow my intuition. Follow my desire."</div>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Card 1 — Discovery Call (Featured)
+        <span class="tag">CTA → booking link</span>
+      </div>
+      <div class="copy-block-body">
+        <p class="body-copy"><strong>Title:</strong> Book a Discovery Call</p>
+        <p class="body-copy"><strong>Sub:</strong> Free · No obligation · 45 minutes</p>
+        <p class="body-copy"><strong>Copy:</strong> Not sure if you're ready? Let's find out together. This is a real conversation — not a pitch, not a performance. Just an honest look at where you are and where you want to go.</p>
+        <p class="body-copy"><strong>CTA:</strong> Book Your Call → <code>https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1XzW-NMY1Evdnn6Bn92cn4szgXPNBF-KlOLTe46o4JTMpTr7kolQuR1im8c5PMc9wDbQ3-Xo6a</code></p>
+        <span class="cta-copy">Book Your Call →</span>
+      </div>
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Card 2 — 1-on-1 Coaching
+        <span class="tag">CTA → booking link</span>
+      </div>
+      <div class="copy-block-body">
+        <p class="body-copy"><strong>Title:</strong> 1-on-1 Coaching</p>
+        <p class="body-copy"><strong>Sub:</strong> Deep work · Ongoing · By conversation</p>
+        <p class="body-copy"><strong>Copy:</strong> For people who are serious about the full transformation. We go all the way in — at your pace, with full presence. If this is calling you, the first step is a conversation.</p>
+        <p class="body-copy"><strong>CTA:</strong> Start the Conversation → same booking link</p>
+        <span class="cta-ghost-copy">Start the Conversation →</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ 10 BOOK ═══ -->
+  <div class="section-block">
+    <p class="section-num">Section 10</p>
+    <h2 class="section-title">The Book</h2>
+    <p class="section-subtitle">Horizontal centred strip · Book image left · Copy right</p>
+
+    <div class="layout-note">
+      <strong>Layout Note</strong>
+      Full-width horizontal strip — alternating background (slightly lighter or slightly darker than surrounding). Left: <strong>IMG_1899.jpg</strong> (Mithu seated with book — this is the book image). Right: eyebrow, title, short copy, CTA. Compact section — not a full page-height section. Sits between Coaching and Email Capture.
+    </div>
+
+    <span class="photo-tag">📷 IMG_1899.jpg — Book section image (Mithu with book on yoga mat)</span>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Book Section Copy
+        <span class="tag">Sourced: transcript arc</span>
+      </div>
+      <div class="copy-block-body">
+        <span class="eyebrow-copy">The Book</span>
+        <h2 class="headline-copy" style="font-size: 1.2rem;"><em>What's Your Biggest Pain?</em></h2>
+        <p class="body-copy" style="margin-top: 0.7rem;">Written in five days in Ubud, Bali. Channeled, not planned. It came out of asking God what to do — and then doing it. This book is the work in written form: direct, honest, and built for people who are ready to stop running.</p>
+        <p class="body-copy"><strong>CTA:</strong> Get the Book → [purchase link — to be added]</p>
+        <span class="cta-ghost-copy">Get the Book →</span>
+        <p class="body-copy" style="font-size: 0.75rem; color: var(--aged); margin-top: 0.5rem;">Note: book purchase link not yet provided — placeholder CTA in build.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ 11 EMAIL ═══ -->
+  <div class="section-block">
+    <p class="section-num">Section 11</p>
+    <h2 class="section-title">Email Capture</h2>
+    <p class="section-subtitle">Centred · Dark background · Inline form · Mailchimp placeholder</p>
+
+    <div class="layout-note">
+      <strong>Layout Note</strong>
+      Full-width dark section. Centred content: headline, one line of sub-copy, inline email form (input + button side by side). Small note below. Mailchimp integration to be added — placeholder form in build for now.
+    </div>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Email Section Copy
+        <span class="tag">Mailchimp placeholder</span>
+      </div>
+      <div class="copy-block-body">
+        <span class="eyebrow-copy">Stay with the work</span>
+        <h2 class="headline-copy" style="font-size: 1.3rem;">You don't have to<br><em>walk this alone.</em></h2>
+        <p class="body-copy" style="margin-top: 0.7rem;">Mithu's teachings, tools, and honest words — straight to your inbox. No noise. Just the work, when you need it.</p>
+        <p class="body-copy"><strong>Input placeholder:</strong> Your email address</p>
+        <p class="body-copy"><strong>Button text:</strong> I'm In</p>
+        <p class="body-copy"><strong>Below form:</strong> No spam. Unsubscribe whenever you're ready.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ 12 FOOTER ═══ -->
+  <div class="section-block">
+    <p class="section-num">Section 12</p>
+    <h2 class="section-title">Footer</h2>
+    <p class="section-subtitle">Logo + tagline left · Nav links centre · Instagram right</p>
+
+    <div class="copy-block">
+      <div class="copy-block-label">
+        Footer Content
+      </div>
+      <div class="copy-block-body">
+        <p class="body-copy"><strong>Left:</strong> Mithu Surendra (Playfair italic) + tagline below: "Guiding humanity back into a state of love"</p>
+        <p class="body-copy"><strong>Centre:</strong> On-page nav links — Story · The Work · School · Coaching</p>
+        <p class="body-copy"><strong>Right:</strong> @mithu.surendra → <code>https://instagram.com/mithu.surendra</code> (external)</p>
+        <p class="body-copy"><strong>Below footer bar:</strong> © 2026 Mithu Surendra</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ SUMMARY ═══ -->
+  <div class="section-block">
+    <p class="section-num">Build Checklist</p>
+    <h2 class="section-title">Before HTML Build Begins</h2>
+    <p class="section-subtitle">Open items to confirm</p>
+
+    <div class="two-col">
+      <div class="col-block">
+        <p class="col-label">Confirmed ✓</p>
+        <ul class="item-list">
+          <li>All copy sourced from transcripts only</li>
+          <li>Nav links are on-page anchors only</li>
+          <li>Hero image: Profile_Pic.jpg</li>
+          <li>School copy includes protection + discernment</li>
+          <li>Coaching cards: CTA only, no pricing</li>
+          <li>Somatic diagnosis placeholder slot included</li>
+          <li>The Lion Work as methodology name</li>
+          <li>Email form: placeholder (Mailchimp later)</li>
+        </ul>
+      </div>
+      <div class="col-block">
+        <p class="col-label">Still Open</p>
+        <ul class="item-list">
+          <li>Book purchase link (placeholder CTA for now)</li>
+          <li>Somatic diagnosis embed URL (external tool TBC)</li>
+          <li>Photo review — confirm all 6 photos render as expected</li>
+          <li>Stat row numbers — confirm or adjust</li>
+          <li>Mailchimp account / list ID for form</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
