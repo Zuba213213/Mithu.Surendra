@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mithu Surendra — The Lion Work: Methodology Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c1208;
+    --parchment: #f2e8d0;
+    --aged: #c8b48a;
+    --rust: #8b3a1a;
+    --moss: #3d5229;
+    --gold: #b8891e;
+    --terracotta: #a04820;
+    --smoke: #6b5c48;
+    --cream: #faf3e2;
+    --deep: #0f0b06;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.75;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  .torn-top {
+    width: 100%;
+    height: 32px;
+    background: var(--rust);
+    clip-path: polygon(0 0,100% 0,100% 35%,98% 95%,96% 40%,94% 85%,92% 20%,90% 70%,88% 45%,86% 88%,84% 30%,82% 75%,80% 15%,78% 65%,76% 40%,74% 90%,72% 25%,70% 72%,68% 38%,66% 82%,64% 18%,62% 68%,60% 42%,58% 88%,56% 22%,54% 70%,52% 35%,50% 80%,48% 12%,46% 62%,44% 38%,42% 85%,40% 20%,38% 72%,36% 45%,34% 90%,32% 28%,30% 75%,28% 15%,26% 65%,24% 40%,22% 88%,20% 22%,18% 70%,16% 42%,14% 88%,12% 18%,10% 68%,8% 35%,6% 80%,4% 20%,2% 65%,0 30%);
+  }
+
+  .torn-bottom {
+    width: 100%;
+    height: 32px;
+    background: var(--rust);
+    clip-path: polygon(0 100%,100% 100%,100% 65%,98% 10%,96% 60%,94% 18%,92% 75%,90% 38%,88% 82%,86% 22%,84% 68%,82% 38%,80% 85%,78% 18%,76% 65%,74% 28%,72% 78%,70% 42%,68% 88%,66% 22%,64% 72%,62% 32%,60% 82%,58% 15%,56% 62%,54% 35%,52% 80%,50% 18%,48% 68%,46% 30%,44% 78%,42% 15%,40% 65%,38% 28%,36% 72%,34% 15%,32% 62%,30% 32%,28% 82%,26% 18%,24% 65%,22% 28%,20% 78%,18% 20%,16% 68%,14% 32%,12% 78%,10% 22%,8% 68%,6% 30%,4% 78%,2% 20%,0 55%);
+  }
+
+  .header {
+    background: var(--rust);
+    padding: 3rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-55deg, transparent, transparent 3px, rgba(242,232,208,0.03) 3px, rgba(242,232,208,0.03) 6px);
+  }
+
+  .doc-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    color: var(--aged);
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 1.4rem;
+    display: block;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 400;
+    color: var(--parchment);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin-bottom: 0.6rem;
+  }
+
+  .header h1 em { font-style: italic; color: #f0c8a0; }
+
+  .header-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--aged);
+    letter-spacing: 0.2em;
+    opacity: 0.6;
+    margin-top: 1.8rem;
+    text-transform: uppercase;
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 2.5rem 6rem;
+  }
+
+  .section { margin-top: 5rem; }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--aged), transparent);
+    opacity: 0.4;
+  }
+
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--rust);
+    margin-bottom: 1.8rem;
+    line-height: 1.2;
+  }
+
+  .section p {
+    color: var(--smoke);
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+  }
+
+  .section p strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* ── FOUNDATION BOX ── */
+  .foundation-box {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 2.5rem 3rem;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .foundation-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-45deg, transparent, transparent 2px, rgba(184,137,30,0.03) 2px, rgba(184,137,30,0.03) 4px);
+  }
+
+  .foundation-box-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.56rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.8;
+    margin-bottom: 1rem;
+    position: relative;
+    display: block;
+  }
+
+  .foundation-box blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+    font-weight: 400;
+    color: var(--parchment);
+    line-height: 1.4;
+    position: relative;
+  }
+
+  .foundation-box p {
+    font-size: 0.93rem;
+    color: rgba(242,232,208,0.65);
+    line-height: 1.8;
+    margin-top: 1.2rem;
+    position: relative;
+    margin-bottom: 0;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull {
+    border-left: 3px solid var(--rust);
+    padding: 1.2rem 2rem;
+    margin: 2.5rem 0;
+    background: rgba(139,58,26,0.04);
+  }
+
+  .pull p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.65;
+  }
+
+  /* ── THREE PHASES ── */
+  .phases-arc {
+    margin: 2.5rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--aged);
+  }
+
+  .phase-arc-item {
+    background: var(--cream);
+    padding: 2rem 1.8rem;
+    position: relative;
+  }
+
+  .phase-arc-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .phase-arc-item.pain::before { background: var(--terracotta); }
+  .phase-arc-item.purpose::before { background: var(--gold); }
+  .phase-arc-item.shine::before { background: var(--moss); }
+
+  .phase-arc-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+    display: block;
+    opacity: 0.12;
+  }
+
+  .phase-arc-item.pain .phase-arc-num { color: var(--terracotta); }
+  .phase-arc-item.purpose .phase-arc-num { color: var(--gold); }
+  .phase-arc-item.shine .phase-arc-num { color: var(--moss); }
+
+  .phase-arc-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+
+  .phase-arc-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .phase-arc-item.pain .phase-arc-sub { color: var(--terracotta); }
+  .phase-arc-item.purpose .phase-arc-sub { color: var(--gold); }
+  .phase-arc-item.shine .phase-arc-sub { color: var(--moss); }
+
+  .phase-arc-item p {
+    font-size: 0.88rem;
+    color: var(--smoke);
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  /* ── SESSION PHASES ── */
+  .phase-block {
+    border: 1px solid var(--aged);
+    padding: 2.2rem 2rem;
+    margin-bottom: 1.8rem;
+    position: relative;
+    background: rgba(250,243,226,0.5);
+  }
+
+  .phase-block::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--rust);
+  }
+
+  .phase-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.4rem;
+  }
+
+  .phase-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .phase-subtitle {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .phase-block p {
+    font-size: 0.93rem;
+    color: var(--smoke);
+    line-height: 1.72;
+    margin-bottom: 0.8rem;
+  }
+
+  .phase-block p:last-child { margin-bottom: 0; }
+
+  .marker-list {
+    margin-top: 1rem;
+    border-top: 1px solid rgba(200,180,138,0.3);
+    padding-top: 1rem;
+  }
+
+  .marker-list-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--aged);
+    margin-bottom: 0.7rem;
+  }
+
+  .marker-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.6rem;
+    align-items: flex-start;
+  }
+
+  .marker-item::before {
+    content: '→';
+    color: var(--rust);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+  }
+
+  .marker-item span {
+    font-size: 0.9rem;
+    color: var(--smoke);
+    line-height: 1.6;
+  }
+
+  /* ── READINESS GRID ── */
+  .readiness-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--aged);
+    margin: 2rem 0;
+  }
+
+  .readiness-item {
+    background: var(--cream);
+    padding: 1.8rem;
+    position: relative;
+  }
+
+  .readiness-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-style: italic;
+    color: rgba(139,58,26,0.1);
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .readiness-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .readiness-item p {
+    font-size: 0.88rem;
+    color: var(--smoke);
+    line-height: 1.65;
+    margin-bottom: 0;
+  }
+
+  /* ── TRANSFORM TABLE ── */
+  .transform-grid {
+    display: grid;
+    grid-template-columns: 1fr 50px 1fr;
+    gap: 0;
+    margin: 2rem 0;
+    border: 1px solid var(--aged);
+  }
+
+  .transform-col { padding: 2rem 1.8rem; }
+  .transform-col.before { background: rgba(139,58,26,0.04); border-right: 1px solid var(--aged); }
+  .transform-col.after { background: rgba(61,82,41,0.04); border-left: 1px solid var(--aged); }
+
+  .transform-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--aged);
+  }
+
+  .transform-col-head {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .transform-col.before .transform-col-head { color: var(--terracotta); }
+  .transform-col.after .transform-col-head { color: var(--moss); }
+
+  .transform-item {
+    display: flex;
+    gap: 0.7rem;
+    margin-bottom: 0.8rem;
+    align-items: flex-start;
+    font-size: 0.88rem;
+    color: var(--smoke);
+    line-height: 1.5;
+  }
+
+  .transform-item::before { content: '·'; font-family: 'Space Mono', monospace; flex-shrink: 0; margin-top: 0.1rem; }
+  .transform-col.before .transform-item::before { color: var(--terracotta); }
+  .transform-col.after .transform-item::before { color: var(--moss); }
+
+  /* ── DIFFERENCE BOX ── */
+  .diff-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--aged);
+    margin: 2rem 0;
+  }
+
+  .diff-col {
+    padding: 1.8rem 2rem;
+    background: var(--cream);
+  }
+
+  .diff-col-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .diff-col.therapy .diff-col-label { color: var(--smoke); }
+  .diff-col.lion .diff-col-label { color: var(--rust); }
+
+  .diff-col p {
+    font-size: 0.9rem;
+    color: var(--smoke);
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  /* ── MISSION BOX ── */
+  .mission-box {
+    background: var(--ink);
+    padding: 3rem 3.5rem;
+    margin: 3rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mission-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(184,137,30,0.12), transparent 65%);
+  }
+
+  .mission-box-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.56rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.75;
+    margin-bottom: 1.2rem;
+    display: block;
+    position: relative;
+  }
+
+  .mission-box blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+    font-weight: 400;
+    color: var(--parchment);
+    line-height: 1.45;
+    position: relative;
+  }
+
+  .mission-box p {
+    font-size: 0.9rem;
+    color: rgba(242,232,208,0.6);
+    line-height: 1.8;
+    margin-top: 1.2rem;
+    position: relative;
+    margin-bottom: 0;
+  }
+
+  /* ── VOICE NOTES ── */
+  .voice-note {
+    background: rgba(184,137,30,0.07);
+    border: 1px dashed rgba(184,137,30,0.35);
+    padding: 1.2rem 1.6rem;
+    margin: 1.5rem 0;
+  }
+
+  .voice-note-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .voice-note p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--smoke);
+    line-height: 1.65;
+    margin-bottom: 0;
+  }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    margin-top: 6rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(200,180,138,0.35);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .doc-footer-left {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: var(--aged);
+    text-transform: uppercase;
+    line-height: 2;
+  }
+
+  .doc-footer-right {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--aged);
+  }
+
+  @media (max-width: 640px) {
+    .header { padding: 2rem 1.5rem 3rem; }
+    main { padding: 0 1.2rem 4rem; }
+    .phases-arc { grid-template-columns: 1fr; }
+    .readiness-grid { grid-template-columns: 1fr; }
+    .transform-grid { grid-template-columns: 1fr; }
+    .transform-arrow { padding: 1rem; transform: rotate(90deg); }
+    .diff-row { grid-template-columns: 1fr; }
+    .doc-footer { flex-direction: column; gap: 1rem; }
+    .mission-box { padding: 2rem 1.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="torn-top"></div>
+
+<header class="header">
+  <span class="doc-tag">Internal Reference · Phase 4 · Methodology Document · Derived from Interview Transcript</span>
+  <h1>The Lion Work<br><em>Methodology Reference</em></h1>
+  <p class="header-sub">Pain · Purpose · Shine · Session process · Readiness markers · Transformation · Mission</p>
+</header>
+
+<div class="torn-bottom"></div>
+
+<main>
+
+  <!-- ═══ 01 THE FOUNDATION ═══ -->
+  <section class="section">
+    <p class="section-label">01 — The Foundation</p>
+    <h2>The one thing that changes everything.</h2>
+
+    <p>Before the phases, before the framework, before anything else — there is one insight that underpins every session, every client, every result Mithu has ever produced. If a client truly feels this, everything else follows naturally.</p>
+
+    <div class="foundation-box">
+      <span class="foundation-box-label">The core teaching —</span>
+      <blockquote>"Sit with your pain."</blockquote>
+      <p>That's it. People suffer because pain comes up and they don't sit with it. They don't listen to it, understand it, feel it. They ignore it — and then they run from it. They do stupid things in resistance to the pain. The moment someone truly sits with their pain, everything begins to shift. This is not a concept. It is a practice. It is the practice.</p>
+    </div>
+
+    <p>This is not about wallowing. It is not about re-traumatising. It is about the simple, radical act of not running. When pain comes up and there is the instinct to go do something — to check the phone, to start a task, to make it productive — that instinct is the resistance. The work is to stay. To feel. To be intimate with the pain rather than at war with it.</p>
+
+    <div class="voice-note">
+      <span class="voice-note-label">His words, directly —</span>
+      <p>"Even for me to this day, literally this morning — I feel harsh, I need to go and work. No. Sit in my grief. Because it wasn't like this overwhelming grief, but I can feel it. Sit in it. Cool."</p>
+    </div>
+  </section>
+
+  <!-- ═══ 02 THE THREE PHASES ═══ -->
+  <section class="section">
+    <p class="section-label">02 — The Journey</p>
+    <h2>Pain. Purpose. Shine.</h2>
+
+    <p>When asked to name his method in three words — without thinking, just feeling — this is what came out. These are not invented categories. They are the arc of his own life, and the arc every client moves through. This is the macro structure of the work.</p>
+
+    <div class="phases-arc">
+      <div class="phase-arc-item pain">
+        <span class="phase-arc-num">01</span>
+        <span class="phase-arc-name">Pain</span>
+        <span class="phase-arc-sub">The starting point</span>
+        <p>Everyone arrives here. Pain clouds everything — judgment, direction, capacity. People are in survival mode, reacting to everything. They don't have the space in their hearts to let purpose come through. The work begins by going into the pain rather than around it. Sitting with it. Alchemising it into love.</p>
+      </div>
+      <div class="phase-arc-item purpose">
+        <span class="phase-arc-num">02</span>
+        <span class="phase-arc-name">Purpose</span>
+        <span class="phase-arc-sub">What opens up</span>
+        <p>When someone creates an opening through their pain, when they alchemise it into love — they have more space in their heart to love people. And when they start loving people, that love is their purpose. Purpose is the way God wants you to love humanity through you. It comes naturally when the pain clears.</p>
+      </div>
+      <div class="phase-arc-item shine">
+        <span class="phase-arc-num">03</span>
+        <span class="phase-arc-name">Shine</span>
+        <span class="phase-arc-sub">The arrival</span>
+        <p>Everywhere he goes, he just shines. He doesn't know how else to say it. He loves himself. People feel that love. He knows he is doing something amazing. He is close to God. He feels amazing. This is what becomes available on the other side of the work — not a concept of wellbeing, but an actual state of being alive in the world.</p>
+      </div>
+    </div>
+
+    <div class="pull">
+      <p>"The more we move through our pain, the more we have the space in our hearts to love people more and more. And when we start loving people — that's our purpose. Our purpose is the way in which God wants us to love humanity through him."</p>
+    </div>
+  </section>
+
+  <!-- ═══ 03 SESSION PROCESS ═══ -->
+  <section class="section">
+    <p class="section-label">03 — How a Session Works</p>
+    <h2>The five movements of a session.</h2>
+
+    <p>Mithu does not run a fixed protocol. He attunes. But across every session, the same five movements appear — not as a checklist, but as a natural arc. These are the bones. The flesh is always different.</p>
+
+    <div class="phase-block">
+      <p class="phase-num">Movement One</p>
+      <h3>The Welcome</h3>
+      <span class="phase-subtitle">Warmth before depth</span>
+      <p>He enters through humour, presence, and genuine delight in the other person. No agenda. The purpose is nervous system safety — the client needs to feel they are not being assessed or fixed. They are being met. This is not a technique. It is his natural warmth doing what it does.</p>
+      <div class="marker-list">
+        <p class="marker-list-title">Signs this movement is complete</p>
+        <div class="marker-item"><span>Laughter appears — the client's guard begins to lower</span></div>
+        <div class="marker-item"><span>The client starts talking about themselves without being directly asked</span></div>
+        <div class="marker-item"><span>Mithu becomes quieter — he moves from initiating to receiving</span></div>
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <p class="phase-num">Movement Two</p>
+      <h3>The Attunement</h3>
+      <span class="phase-subtitle">Reading what is actually present</span>
+      <p>He reads at a felt-sense level — what is the person hiding, what is the real pain beneath the presenting story, where is the energy contracted. He does not map the client onto a model. He reads them. The presenting issue is almost never the real issue. He is looking underneath it.</p>
+      <div class="marker-list">
+        <p class="marker-list-title">Signs this movement is complete</p>
+        <div class="marker-item"><span>He names something the client hasn't said out loud yet</span></div>
+        <div class="marker-item"><span>The client's body changes — a pause, a shift, recognition without words</span></div>
+        <div class="marker-item"><span>A different quality of silence enters the conversation</span></div>
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <p class="phase-num">Movement Three</p>
+      <h3>The Mirror</h3>
+      <span class="phase-subtitle">Naming the hidden thing with love</span>
+      <p>He names what is true — the wound, the pattern, the thing being hidden — not as a diagnosis but as a loving recognition. The mirror only works because it is unconditional. He is not trying to fix them. He is seeing them. This is the core move. He holds space for the client to do their version of what he did in Berlin — to name it, out loud, in front of someone who does not flinch.</p>
+      <div class="voice-note" style="margin: 1rem 0 0.5rem;">
+        <span class="voice-note-label">The shift that happened in him —</span>
+        <p>"Now it's like: sit with unconditional love. Whereas back then it was: let's try and fix this."</p>
+      </div>
+      <div class="marker-list">
+        <p class="marker-list-title">Signs this movement is complete</p>
+        <div class="marker-item"><span>"No one has ever said that to me before" — or something like it</span></div>
+        <div class="marker-item"><span>Emotion arrives — suddenly, as if a valve opened</span></div>
+        <div class="marker-item"><span>The client stops performing and starts being</span></div>
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <p class="phase-num">Movement Four</p>
+      <h3>The Alchemy</h3>
+      <span class="phase-subtitle">From wound to resource</span>
+      <p>He does not leave the client in the wound. He walks with them through the conversion — the same alchemy he has performed on himself. The hand becomes the lion tattoo. The shame becomes the offer. He does this through questions, through story, through direct transmission. This is where the work becomes theirs, not just his.</p>
+      <div class="marker-list">
+        <p class="marker-list-title">Signs this movement is complete</p>
+        <div class="marker-item"><span>The client starts reframing their own story — spontaneously, without prompting</span></div>
+        <div class="marker-item"><span>The energy in the room shifts — from heavy to something lighter</span></div>
+        <div class="marker-item"><span>Questions change from "why" to "what if"</span></div>
+      </div>
+    </div>
+
+    <div class="phase-block">
+      <p class="phase-num">Movement Five</p>
+      <h3>The Expansion</h3>
+      <span class="phase-subtitle">Leaving bigger than they arrived</span>
+      <p>The end of a session is not a summary. It is a send-off. His marker of success is not whether they feel good — it is whether they feel more real. More capable of being seen. More willing to take up space. They leave with something they didn't have when they walked in.</p>
+      <div class="marker-list">
+        <p class="marker-list-title">Signs this movement is complete</p>
+        <div class="marker-item"><span>The client says something they couldn't have said at the start of the session</span></div>
+        <div class="marker-item"><span>There is a specific decision, intention, or next step they name</span></div>
+        <div class="marker-item"><span>Something in the way they carry themselves has changed — posture, breath, pace</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 04 READINESS ═══ -->
+  <section class="section">
+    <p class="section-label">04 — Who Is Ready</p>
+    <h2>What a client needs before the work can begin.</h2>
+
+    <p>Not everyone is ready for this work at any given moment. That is not a judgment — it is discernment. The work requires specific conditions to be present. When these are there, transformation is possible. When they are not, forcing the work causes harm to everyone involved.</p>
+
+    <div class="readiness-grid">
+      <div class="readiness-item">
+        <span class="readiness-num">01</span>
+        <h4>Pain that can't be ignored</h4>
+        <p>The pain has to be bad enough that the old model no longer works. They can't keep doing the same things. Something has to stop. This is not suffering for its own sake — it is the point where the cost of staying the same exceeds the fear of changing.</p>
+      </div>
+      <div class="readiness-item">
+        <span class="readiness-num">02</span>
+        <h4>Willingness and openness</h4>
+        <p>A genuine desire to do things differently. Not performance of openness — actual willingness. The person who comes in already knowing they're right, already defending their story, cannot be reached yet. The work needs a crack in the certainty.</p>
+      </div>
+      <div class="readiness-item">
+        <span class="readiness-num">03</span>
+        <h4>Humility and intelligence</h4>
+        <p>Not academic intelligence. The capacity to say: I don't know what's going on, and I'm willing to look. Some familiarity with therapy, meditation, trauma, or spirituality is helpful — not required, but it means they won't spend the first sessions fighting the frame.</p>
+      </div>
+      <div class="readiness-item">
+        <span class="readiness-num">04</span>
+        <h4>Belief in Mithu</h4>
+        <p>They have to look at him and be all in. He can lead me into war, and I'll follow. If that trust isn't there, the work won't happen. This is a two-way thing — Mithu has to have earned it, and the client has to be willing to give it. Without it, nothing opens.</p>
+      </div>
+    </div>
+
+    <div class="voice-note">
+      <span class="voice-note-label">On the deepest block —</span>
+      <p>"The ultimate fear, the ultimate point of resistance is this feeling that I'm not worthy of being received for who I truly am. That's the deep sense of shame that is carried in humanity. And if we can love that, and work through that — we naturally just put who we truly are out into the world."</p>
+    </div>
+  </section>
+
+  <!-- ═══ 05 vs THERAPY ═══ -->
+  <section class="section">
+    <p class="section-label">05 — How This Differs from Therapy</p>
+    <h2>What therapy cannot do.</h2>
+
+    <p>Therapy is a valid and valuable starting point. It is not the destination. The work Mithu does operates on a different level — not in opposition to therapy, but beyond the ceiling therapy tends to create.</p>
+
+    <div class="diff-row">
+      <div class="diff-col therapy">
+        <span class="diff-col-label">Therapy</span>
+        <p>Let's talk about it. Let's understand it. Let's look at the same issue week after week, month after month, and make some slow progress. The approach is cognitive — identify, analyse, reframe. The body is mostly absent. The movement is slow by design.</p>
+      </div>
+      <div class="diff-col lion">
+        <span class="diff-col-label">The Lion Work</span>
+        <p>What do you feel? Feel it. Now. Instantaneous forward movement. People naturally open up, naturally move to the next phase of their life, naturally experience relief — right there in the moment. The body is the primary site of the work, not the mind.</p>
+      </div>
+    </div>
+
+    <div class="pull">
+      <p>"Therapy is a good first step but a bad place to stay. This work opens the human to infinite possibilities."</p>
+    </div>
+  </section>
+
+  <!-- ═══ 06 TRANSFORMATION ═══ -->
+  <section class="section">
+    <p class="section-label">06 — The Transformation</p>
+    <h2>What someone looks like on the other side.</h2>
+
+    <p>This is not a promise of perfection. It is a description of a real state — one Mithu lives in himself, and one he has watched clients move toward. These are concrete, observable changes, not concepts.</p>
+
+    <div class="transform-grid">
+      <div class="transform-col before">
+        <span class="transform-col-head">Before — The Stuck State</span>
+        <div class="transform-item">Hiding the thing they're most ashamed of</div>
+        <div class="transform-item">Living to be seen; dying when they're not</div>
+        <div class="transform-item">Running from pain at full speed</div>
+        <div class="transform-item">Performing love and belonging</div>
+        <div class="transform-item">Worth tied to external achievement</div>
+        <div class="transform-item">Survival mode — reacting to everything</div>
+        <div class="transform-item">No sense of purpose or direction</div>
+        <div class="transform-item">Disconnected from God voice / intuition</div>
+      </div>
+      <div class="transform-arrow">→</div>
+      <div class="transform-col after">
+        <span class="transform-col-head">After — The Alive State</span>
+        <div class="transform-item">Confident, present — walks into a room and people feel it</div>
+        <div class="transform-item">Internally sourced — validation welcome but not needed</div>
+        <div class="transform-item">Knows how to sit with pain — has the tools, can do it alone</div>
+        <div class="transform-item">Genuine love, presence, and belonging</div>
+        <div class="transform-item">Worth rooted in self and God — not performance</div>
+        <div class="transform-item">Clear purpose — a reason to wake up every day</div>
+        <div class="transform-item">Community, belonging, support around them</div>
+        <div class="transform-item">Connected to God voice — knows their next step</div>
+      </div>
+    </div>
+
+    <div class="voice-note">
+      <span class="voice-note-label">In his words —</span>
+      <p>"They have 100% certainty that they are going to be successful. They're fulfilling their purpose, their God-given mission. They feel good. They like themselves. They have a reason to wake up every single day. When they experience hardships and pain, they know exactly what to do."</p>
+    </div>
+  </section>
+
+  <!-- ═══ 07 THE MISSION ═══ -->
+  <section class="section">
+    <p class="section-label">07 — Why This Work Exists</p>
+    <h2>The mission beneath the method.</h2>
+
+    <p>This is not a coaching business. It is a calling. Understanding the mission is what separates a session that changes someone from a session that merely helps them — and it is what gives the work its weight and its depth.</p>
+
+    <div class="mission-box">
+      <span class="mission-box-label">The overarching mission —</span>
+      <blockquote>"I am guiding humanity into a state of love."</blockquote>
+      <p>What is love? Love is to take another as a part of you. Love is to realise oneness. Love is to realise that we are God. Love is to see yourself in the other person. Love is to see that you are the other person. Love is to realise we are all one. That is what this work is moving toward — not one person at a time as a metaphor, but literally, one person at a time, until that love spreads.</p>
+    </div>
+
+    <p>The way the mission translates to individual clients: guide their own love into their pain, turn that pain into love, help them connect to their purpose. Their purpose is the way God wants them to love humanity. It grows like that. One person. Then another. Then another.</p>
+
+    <div class="pull">
+      <p>"It was all energy. It was all potential. It's like fuel. It's fuel that made me who I am now. I fucking love it."</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <div class="doc-footer-left">
+      Mithu Surendra<br>
+      The Lion Work — Methodology Reference<br>
+      Derived from methodology interview · April 2026
+    </div>
+    <div class="doc-footer-right">For personal reference &amp; session preparation</div>
+  </div>
+
+</main>
+</body>
+</html>
