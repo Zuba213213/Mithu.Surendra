@@ -1,1 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mithu Surendra — Marketing Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --gold-dim: #8B6914;
+    --ink: #1A1510;
+    --parchment: #F5EDD8;
+    --parchment-mid: #EDE0C0;
+    --parchment-deep: #D6C49A;
+    --smoke: #6B5D48;
+    --accent: #7A4F2A;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--ink);
+    color: var(--parchment);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Textured background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      radial-gradient(ellipse 80% 50% at 20% 20%, rgba(201,168,76,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(122,79,42,0.08) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Decorative border frame */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 16px;
+    border: 1px solid rgba(201,168,76,0.18);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 32px 80px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    text-align: center;
+    padding-bottom: 48px;
+    margin-bottom: 48px;
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+    position: relative;
+  }
+
+  .collab-label {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .collab-label::before,
+  .collab-label::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 40px;
+    background: var(--gold-dim);
+    opacity: 0.5;
+  }
+
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 400;
+    color: var(--gold-light);
+    letter-spacing: 0.08em;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .sub-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(14px, 2.5vw, 20px);
+    color: var(--parchment-deep);
+    letter-spacing: 0.05em;
+    margin-bottom: 18px;
+  }
+
+  .tagline {
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--smoke);
+    margin-bottom: 28px;
+  }
+
+  .badge-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold-dim);
+    padding: 4px 14px;
+    border-radius: 2px;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 56px;
+  }
+
+  .intro p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(17px, 2.5vw, 21px);
+    line-height: 1.75;
+    color: var(--parchment-mid);
+    font-weight: 300;
+  }
+
+  /* ── SECTION HEADINGS ── */
+  .section-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(201,168,76,0.15);
+  }
+
+  /* ── DOCUMENT GRID ── */
+  .doc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .doc-card {
+    display: block;
+    text-decoration: none;
+    background: rgba(245,237,216,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 24px 24px 20px;
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .doc-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--gold);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .doc-card:hover {
+    background: rgba(201,168,76,0.07);
+    border-color: rgba(201,168,76,0.35);
+    transform: translateY(-2px);
+  }
+
+  .doc-card:hover::before {
+    opacity: 1;
+  }
+
+  .card-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+    opacity: 0.75;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--gold-light);
+    font-weight: 400;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .card-desc {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--smoke);
+    line-height: 1.6;
+  }
+
+  .card-tag {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding-top: 8px;
+    width: 100%;
+  }
+
+  /* ── FEATURED CARD ── */
+  .doc-card.featured {
+    background: rgba(201,168,76,0.06);
+    border-color: rgba(201,168,76,0.3);
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 20px;
+    align-items: start;
+    padding: 28px 28px 24px;
+  }
+
+  .doc-card.featured .card-icon {
+    margin-bottom: 0;
+    margin-top: 2px;
+  }
+
+  .doc-card.featured .card-title {
+    font-size: 15px;
+  }
+
+  .doc-card.featured .card-desc {
+    font-size: 13px;
+  }
+
+  /* ── DIVIDER ── */
+  .ornament {
+    text-align: center;
+    margin: 40px 0 36px;
+    color: var(--gold-dim);
+    font-size: 18px;
+    letter-spacing: 0.5em;
+    opacity: 0.5;
+  }
+
+  /* ── EXAMPLES SECTION ── */
+  .examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+
+  .example-card {
+    display: block;
+    text-decoration: none;
+    background: rgba(245,237,216,0.03);
+    border: 1px solid rgba(201,168,76,0.1);
+    padding: 18px 18px 14px;
+    transition: all 0.2s ease;
+  }
+
+  .example-card:hover {
+    background: rgba(201,168,76,0.06);
+    border-color: rgba(201,168,76,0.3);
+    transform: translateY(-2px);
+  }
+
+  .example-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: rgba(201,168,76,0.2);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .example-title {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--parchment-deep);
+    margin-bottom: 6px;
+  }
+
+  .example-desc {
+    font-size: 11px;
+    color: var(--smoke);
+    line-height: 1.5;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 60px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(201,168,76,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .footer-lockup {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--smoke);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-lockup strong {
+    color: var(--gold-dim);
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  .footer-note {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(107,93,72,0.5);
+  }
+
+  @media (max-width: 600px) {
+    .wrapper { padding: 40px 20px 60px; }
+    body::after { inset: 8px; }
+    .doc-card.featured { grid-template-columns: 1fr; }
+  }
+
+  /* Fade-in animation */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header { animation: fadeUp 0.6s ease both; }
+  .intro { animation: fadeUp 0.6s 0.15s ease both; }
+  .doc-grid, .examples-grid { animation: fadeUp 0.6s 0.25s ease both; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header>
+    <div class="collab-label">JRZ Consulting Solutions × Mithu Surendra</div>
+    <h1>The Marketing Vault</h1>
+    <div class="sub-name">Personal Coach · Speaker · Transformation Guide</div>
+    <div class="tagline">Brand Assets &amp; Consulting Collateral</div>
+    <div class="badge-row">
+      <span class="badge">Confidential</span>
+      <span class="badge">Living Document</span>
+      <span class="badge">Built by JRZ</span>
+    </div>
+  </header>
+
+  <div class="intro">
+    <p>A curated archive of strategic brand assets — from ideal client profiles and voice frameworks to live example websites — developed through deep-dive consulting with JRZ Consulting Solutions.</p>
+  </div>
+
+  <!-- CORE DOCUMENTS -->
+  <div class="section-label">Core Brand Documents</div>
+  <div class="doc-grid">
+
+    <a class="doc-card featured" href="mithucollabroadmap/index.html">
+      <span class="card-icon">🗺</span>
+      <div>
+        <div class="card-title">Collaboration Roadmap</div>
+        <div class="card-desc">The strategic overview of the engagement — priorities, timelines, and growth milestones for the coaching brand.</div>
+        <span class="card-tag">Start here</span>
+      </div>
+    </a>
+
+    <a class="doc-card" href="idealclientprofile/index.html">
+      <span class="card-icon">🎯</span>
+      <div class="card-title">Ideal Client Profile</div>
+      <div class="card-desc">Deep psychographic and demographic portrait of Mithu's ideal client. Who she serves, what they carry, what they seek.</div>
+      <span class="card-tag">Strategy</span>
+    </a>
+
+    <a class="doc-card" href="mithucopylayout/index.html">
+      <span class="card-icon">✍️</span>
+      <div class="card-title">Voice &amp; Copy Framework</div>
+      <div class="card-desc">Brand voice, tone guidelines, and copy principles. The language system behind every piece of Mithu's content.</div>
+      <span class="card-tag">Messaging</span>
+    </a>
+
+    <a class="doc-card" href="Mithustoryprocess/index.html">
+      <span class="card-icon">📖</span>
+      <div class="card-title">Story &amp; Process Doc</div>
+      <div class="card-desc">Origin story, transformation arc, and the methodology behind Mithu's coaching process — for speaking, bios, and about pages.</div>
+      <span class="card-tag">Narrative</span>
+    </a>
+
+    <a class="doc-card" href="mithumethodology/index.html">
+      <span class="card-icon">⚙️</span>
+      <div class="card-title">Methodology</div>
+      <div class="card-desc">The frameworks and systems Mithu uses with clients. A structured look at how transformation happens inside her programs.</div>
+      <span class="card-tag">Framework</span>
+    </a>
+
+    <a class="doc-card" href="testimonialdoc/index.html">
+      <span class="card-icon">💬</span>
+      <div class="card-title">Testimonial Archive</div>
+      <div class="card-desc">Client outcomes, proof points, and social proof assets ready for use across sales pages, social media, and proposals.</div>
+      <span class="card-tag">Social Proof</span>
+    </a>
+
+  </div>
+
+  <div class="ornament">· · ·</div>
+
+  <!-- EXAMPLE WEBSITES -->
+  <div class="section-label">Website Examples</div>
+  <div class="examples-grid">
+
+    <a class="example-card" href="Example1/index.html">
+      <div class="example-num">01</div>
+      <div class="example-title">Example Website</div>
+      <div class="example-desc">Site concept one — layout, structure, and copy direction.</div>
+    </a>
+
+    <a class="example-card" href="example1/index.html">
+      <div class="example-num">02</div>
+      <div class="example-title">Example Website</div>
+      <div class="example-desc">Alternate version — visual and structural variation.</div>
+    </a>
+
+    <a class="example-card" href="example2/index.html">
+      <div class="example-num">03</div>
+      <div class="example-title">Example Website</div>
+      <div class="example-desc">Second concept iteration — homepage and offer framing.</div>
+    </a>
+
+    <a class="example-card" href="example3/index.html">
+      <div class="example-num">04</div>
+      <div class="example-title">Example Website</div>
+      <div class="example-desc">Third concept — tone, imagery direction, and CTA focus.</div>
+    </a>
+
+  </div>
+
+  <footer>
+    <div class="footer-lockup">Consulting engagement delivered by <strong>JRZ Consulting Solutions</strong></div>
+    <div class="footer-lockup">in partnership with <strong>Mithu Surendra</strong></div>
+    <div class="footer-note" style="margin-top: 8px;">All materials confidential · For internal use only</div>
+  </footer>
+
+</div>
+</body>
+</html>
